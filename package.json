@@ -1,0 +1,19 @@
+{
+  "name": "pizza_planet",
+  "version": "1.0.0",
+  "description": "Pizza Planet",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barelm/PizzaPlanet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barelm/PizzaPlanet/issues"
+  },
+  "homepage": "https://github.com/barelm/PizzaPlanet#readme"
+}

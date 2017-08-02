@@ -1,0 +1,348 @@
+﻿/*	################################################################
+	1. GENERAL STRUCTURES
+################################################################# */
+	* { 
+		margin: 0;
+		padding: 0px;
+	} 
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body { 
+	background: #ffffff; 
+	margin: 0; 
+	height: 100%; 
+	color: #384452;
+	font-family: sans-serif;
+	font-weight: 400;
+    margin-bottom: 200px;
+	}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: sans-serif;
+	font-weight: 700;
+}
+
+@font-face {
+    font-family: 'navFont';
+    src: url('../../SpongeBob-master/src/FinalProject/wwwroot/fonts/GanCLM-Bold.ttf') format('truetype');
+}
+
+p { 
+	padding: 0; 
+	margin-bottom: 12px; 
+	font-family: sans-serif;
+	font-weight: 400;
+	font-size: 14px; 
+	line-height: 24px;
+	color: #384452; 
+	margin-top: 10px; 
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+a { 
+	padding: 0;
+	margin: 0;
+	text-decoration: none; 
+	-webkit-transition: background-color .4s linear, color .4s linear;
+	-moz-transition: background-color .4s linear, color .4s linear;
+	-o-transition: background-color .4s linear, color .4s linear;
+	-ms-transition: background-color .4s linear, color .4s linear;
+	transition: background-color .4s linear, color .4s linear;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color:#01b2fe;
+}
+
+::-moz-selection  {
+	color: #fff;
+	text-shadow:none;
+	background:#2B2E31;
+}
+::selection {
+	color: #fff;
+	text-shadow:none;
+	background:#2B2E31;
+}
+
+.centered {
+	text-align: center
+}
+
+/*	################################################################
+	BOOTSTRAP MODIFICATIONS & TWEAKS
+################################################################# */
+.navbar {
+	min-height: 70px;
+	padding-top: 10px;
+	margin-bottom: 0px;
+}
+
+.navbar-brand {
+	font-family: navFont, sans-serif;
+    font-size: 25px;
+}
+
+.navbar-header .navbar-brand {
+	color: white;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: white;
+	font-weight: 700;
+	font-size: 17px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #00b3fe;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: #00b3fe;
+	background-color: transparent;
+}
+
+.navbar-default {
+	background-color: #384452;
+	border-color: transparent;
+}
+
+.dropdown-menu {
+	background: #384452;
+}
+
+.dropdown-menu > li > a {
+	color: white;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+.btn-theme {
+  color: #fff;
+  background-color: #384452;
+  border-color: #384452;
+  margin: 4px;
+}
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #fff;
+  background-color: #00b3fe;
+  border-color: #00b3fe;
+}
+
+.mtb {
+	margin-top: 80px;
+	margin-bottom: 80px;
+}
+
+.mb {
+	margin-bottom: 60px;
+}
+
+.mt {
+	margin-top: 60px;
+}
+
+.hline {
+	border-bottom: 2px solid #384452;
+}
+
+.hline-w {
+	border-bottom: 2px solid #ffffff;
+	margin-bottom: 25px;
+}
+/*	################################################################
+	SITE WRAPS
+################################################################# */
+
+#headerwrap {
+	background-color: #00b3fe;
+	min-height: 550px;
+	padding-top: 100px;
+	padding-bottom: 0px;
+	text-align: center;
+}
+
+#headerwrap h3, h5 {
+	color: white;
+	font-weight: 400;
+}
+
+#headerwrap h1 {
+	color: white;
+	margin-bottom: 25px;
+}
+
+#headerwrap .img-responsive {
+	margin: 0 auto;
+}
+
+/* Services Wrap */
+#service {
+	margin-top: 100px;
+	margin-bottom: 80px;
+}
+
+#service i {
+	color: #00b3fe;
+	font-size: 60px;
+	padding: 15px;
+}
+
+/* Footer */
+#footerwrap {
+	padding-top: 25px;
+    padding-bottom: 10px;
+	background: #384452;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+}
+
+#footerwrap p {
+	color: #bfc9d3;
+}
+
+#footerwrap h4 {
+	color: white;
+}
+
+#footerwrap i {
+	font-size: 30px;
+	color: #bfc9d3;
+	padding-right: 25px;
+}
+
+#footerwrap i:hover {
+	color: #00b3fe
+}
+
+/*	################################################################
+	PAGE CONFIGURATIONS
+################################################################# */
+/* General Tweaks */
+
+#blue {
+	background: #00b3fe;
+	margin-top: 50px;
+	margin-bottom: 60px;
+	padding-bottom: 10px;
+}
+
+#blue h3 {
+    text-shadow: 0 0 15px #2B2E31;
+	color: white;
+	margin-left: 15px;
+}
+
+.ctitle {
+	color: #00b3fe;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+
+csmall {
+	font-size: 12px;
+	color: #b3b3b3;
+}
+csmall2 {
+	font-size: 12px;
+	color: #f39c12
+}
+
+.spacing {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+/* Contact Page */
+#contactwrap {
+    background: url('../../SpongeBob-master/src/FinalProject/wwwroot/images/contact.jpg') no-repeat center top;
+    margin-top: -60px;
+    padding-top: 0px;
+    text-align: center;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 190px;
+    width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#person {
+	height: 215px;
+	width: 215px
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#tableHr {
+    text-align: right;
+}
+
+dt.first{
+    margin-top: 0px;
+}
+
+dt{
+    margin-top: 10px;
+}
+
+#messageDiv{
+    white-space:pre-wrap;
+}
+
+video{
+    width:500px;
+    height:300px;
+}
+
+canvas{
+    all:initial;
+    margin-right:20px;
+}
+
+/* Multiple column for the about page */
+.contactAddress{
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    margin-top: 10px;
+}

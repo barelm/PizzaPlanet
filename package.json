@@ -2,7 +2,7 @@
   "name": "pizza_planet",
   "version": "1.0.0",
   "description": "Pizza Planet",
-  "main": "server/app.js",
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/barelm/PizzaPlanet/issues"
   },
-  "homepage": "https://github.com/barelm/PizzaPlanet#readme"
+  "homepage": "https://github.com/barelm/PizzaPlanet#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
 }

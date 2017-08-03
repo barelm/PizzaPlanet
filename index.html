@@ -10,16 +10,8 @@
     <link rel="stylesheet" href="Content/bootstrap.css">
     <link rel="stylesheet" href="Content/site.css">
 
-    <!-- Vendor Libs -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="Scripts/angular.js"></script>
-    <script src="Scripts/angular-route.js"></script>
-
-    <!-- App libs -->
-    <script src="app/app.js"></script>
-
 </head>
-<body dir="rtl">
+<body dir="rtl" data-ng-cloak="">
 
     <!-- Fixed navbar -->-->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -36,7 +28,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a>אודות</a></li>
+                    <li><a ng-href="about">אודות</a></li>
                     <li><a>צור קשר</a></li>
                     <li><a>סניפים</a></li>
                     <li><a>מוצרים</a></li>
@@ -58,8 +50,9 @@
     </div><!-- /blue -->
 
     <!-- Main Content -->
+    <div data-ng-view=""></div>
+
     <div>
-        <div ng-view></div>
 
         <!-- Footer -->
         <div id="footerwrap">
@@ -83,6 +76,18 @@
             </div><! --/container -->
         </div><! --/footerwrap -->
     </div>
+
+    <!--Angular libs-->
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="Scripts/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--App libs-->
     <script src="Scripts/site.js"></script>
+    <script src="app/app.js"></script>
+
+    <!--Branches libs-->
+
 </body>
 </html>

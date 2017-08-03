@@ -1,0 +1,9 @@
+<form>
+    <div class="">שם סניף: {{selBranch.Name}}</div>
+    <div class="">אזור: {{selBranch.Region}}</div>
+    <div class="">עיר: {{selBranch.City}}</div>
+    <div class="">האם כשר? {{selBranch.IsKosher}}</div>
+    <div class="">האם נגיש לנכים? {{selBranch.IsDisabledAccessible}}</div>
+    <button id="submitBranch" class="btn btn-default" type="button"
+            data-ng-click="deleteBranch()">מחיקת סניף</button>
+</form>

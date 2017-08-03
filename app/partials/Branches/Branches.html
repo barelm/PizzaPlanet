@@ -1,0 +1,35 @@
+<table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+    <thead>
+        <tr>
+            <th data-ng-click="setOrder('Name')">שם סניף</th>
+            <th data-ng-click="setOrder('Region')">אזור</th>
+            <th data-ng-click="setOrder('City')">עיר</th>
+            <th data-ng-click="setOrder('IsKosher')">האם כשר?</th>
+            <th data-ng-click="setOrder('IsDisabledAccessible')">האם נגיש לנכים?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-hide="branches || branches.length > 0" class="error">
+            <td colspan="4">
+                <div class="text-center"><strong>לא נמצאו סניפים</strong></div>
+            </td>
+        </tr>
+        <tr data-ng-repeat="branch in branches | orderBy:orderby:reverse">
+            <td>
+                {{ branch.Name }}
+            </td>
+            <td>
+                {{ branch.Region }}
+            </td>
+            <td>
+                {{ branch.City }}
+            </td>
+            <td>
+                {{ branch.IsKosher }}
+            </td>
+            <td>
+                {{ branch.IsDisabledAccessible }}
+            </td>
+        </tr>
+    </tbody>
+</table>

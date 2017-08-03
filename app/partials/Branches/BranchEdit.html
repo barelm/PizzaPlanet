@@ -1,0 +1,26 @@
+<form>
+    <div class="form-group">
+        <label>שם סניף:</label>
+        <input type="text" data-ng-model="editBranch.Name" class="form-control" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label>:אזור</label>
+        <input type="text" data-ng-model="editBranch.Region" class="form-control" placeholder="Region">
+    </div>
+    <div class="form-group">
+        <label>:עיר</label>
+        <input type="text" data-ng-model="editBranch.City" class="form-control" placeholder="City">
+    </div>
+    <div class="form-group">
+        <label>האם כשר?</label>
+        <input type="number" data-ng-model="editBranch.IsKosher" class="form-control" placeholder="isKosher">
+    </div>
+    <div class="form-group">
+        <label>האם נגיש לנכים?</label>
+        <input type="number" data-ng-model="editBranch.IsDisabledAccessible" class="form-control"
+               placeholder="IsDisabledAccessible">
+    </div>
+    <button id="submitBranch" class="btn btn-default" type="button"
+            data-ng-disabled="!editBranch.Name || !editBranch.Region || !editBranch.City"
+            data-ng-click="editBranch()">עדכן פרטי סניף</button>
+</form>

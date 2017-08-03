@@ -1,3 +1,7 @@
 סניפים - אידי סניף, שם סניף, אזור, עיר, כשר?, נגיש לנכים?.
 מוצרים - אידי מוצר, שם מוצר, תיאור, עלות, כשר?, צמחוני?, טבעוני?
 עובדים - אידי עובד, שם עובד, תאריך לידה, שכר, עיר, תאריך הצטרפות, מין, תפקיד.
+
+Branches - Id, Name, Region, City, IsKosher, IsDisabledAccessible
+Products - Id, Name, Description, Cost, IsKosher, IsVegetarian, IsVegan
+Employees - Id, Name, Sex, Role, Wage, City, Birthday, Join_date

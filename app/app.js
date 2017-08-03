@@ -11,13 +11,13 @@ app.config(function ($routeProvider) {
         .when('/home',
             {
                 controller: '',
-                templateUrl: '../../app/partials/home.html'
+                templateUrl: 'app/partials/home.html'
             })
         // Defines a root to 'about'
         .when('/about',
             {
                 controller: '',
-                templateUrl: '../../app/partials/about.html'
+                templateUrl: 'app/partials/about.html'
             })
         .otherwise({ redirectTo: '/home' });
 });

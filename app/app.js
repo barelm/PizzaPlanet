@@ -21,6 +21,13 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller: '',
                 templateUrl: 'app/partials/about.html'
             })
+        .when('/branch',
+            {
+                title: 'סניפים',
+                controller: 'BranchController',
+                templateUrl: 'app/partials/Branches/Branches.html'
+            })
+
         .otherwise({ redirectTo: '/home' });
 
     // Remove unnecessary prefix

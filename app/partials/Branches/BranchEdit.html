@@ -1,26 +1,31 @@
-<form>
+<form name="Form">
     <div class="form-group">
         <label>שם סניף:</label>
-        <input type="text" data-ng-model="editBranch.Name" class="form-control" placeholder="Name">
+        <input type="text" name="Name" data-ng-model="selBranch.Name" class="form-control" placeholder="Name" required>
+        <!--<span style="color:red" ng-show="Form.Name.$dirty && Form.Name.$invalid">-->
+        <span style="color:red" ng-show="Form.Name.$error.required">חובה להזין שם סניף</span>
     </div>
     <div class="form-group">
         <label>:אזור</label>
-        <input type="text" data-ng-model="editBranch.Region" class="form-control" placeholder="Region">
+        <input type="text" name="Region" data-ng-model="selBranch.Region" class="form-control" placeholder="Region" required>
+        <span style="color:red" ng-show="Form.Region.$error.required">חובה להזין אזור</span>
     </div>
     <div class="form-group">
         <label>:עיר</label>
-        <input type="text" data-ng-model="editBranch.City" class="form-control" placeholder="City">
+        <input type="text" name="City" data-ng-model="selBranch.City" class="form-control" placeholder="City" required>
+        <span style="color:red" ng-show="Form.City.$error.required">חובה להזין עיר</span>
     </div>
     <div class="form-group">
         <label>האם כשר?</label>
-        <input type="number" data-ng-model="editBranch.IsKosher" class="form-control" placeholder="isKosher">
+        <input type="checkbox" name="IsKosher" data-ng-model="selBranch.IsKosher" class="form-control" placeholder="IsKosher">
     </div>
     <div class="form-group">
         <label>האם נגיש לנכים?</label>
-        <input type="number" data-ng-model="editBranch.IsDisabledAccessible" class="form-control"
+        <input type="checkbox" name="IsDisabledAccessible" data-ng-model="selBranch.IsDisabledAccessible" class="form-control"
                placeholder="IsDisabledAccessible">
     </div>
     <button id="submitBranch" class="btn btn-default" type="button"
-            data-ng-disabled="!editBranch.Name || !editBranch.Region || !editBranch.City"
+            data-ng-disabled="!selBranch.Name || !selBranch.Region || !selBranch.City"
             data-ng-click="editBranch()">עדכן פרטי סניף</button>
+    <a ng-href="#/branch">חזרה לרשימה</a>
 </form>

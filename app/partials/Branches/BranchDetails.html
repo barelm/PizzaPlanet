@@ -1,9 +1,40 @@
-<form>
-    <section>
-        <div class="">שם סניף: {{selBranch.Name}}</div>
-        <div class="">אזור: {{selBranch.Region}}</div>
-        <div class="">עיר: {{selBranch.City}}</div>
-        <div class="">האם כשר? {{selBranch.IsKosher}}</div>
-        <div class="">האם נגיש לנכים? {{selBranch.IsDisabledAccessible}}</div>
-    </section>
-</form>
+<div>
+    <div>
+        <dl>
+            <dt>
+                <label>שם סניף</label>
+            </dt>
+            <dd>
+                <input type="text" disabled="disabled" ng-model="selBranch.Name">
+            </dd>
+            <dt>
+                <label>אזור</label>
+            </dt>
+            <dd>
+                <input type="text" disabled="disabled" ng-model="selBranch.Region">
+            </dd>
+            <dt>
+                <label>עיר</label>
+            </dt>
+            <dd>
+                <input type="text" disabled="disabled" ng-model="selBranch.City">
+            </dd>
+            <dt>
+                <label>האם כשר?</label>
+            </dt>
+            <dd>
+                <input type="checkbox" disabled="disabled" ng-model="selBranch.IsKosher">
+            </dd>
+            <dt>
+                <label>האם נגיש לנכים?</label>
+            </dt>
+            <dd>
+                <input type="checkbox" disabled="disabled" ng-model="selBranch.IsDisabledAccessible">
+            </dd>
+
+        </dl>
+    </div>
+    <div>
+        <a ng-href="#/branch">חזרה לרשימה</a>
+    </div>
+</div>

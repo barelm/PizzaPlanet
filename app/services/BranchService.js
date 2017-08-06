@@ -51,7 +51,6 @@ app.service('BranchService', function () {
             id: 1, Name: 'The First', Region: 'Center', City: 'Tel Aviv', IsKosher: false,
             IsDisabledAccessible: true
         },
-
         {
             id: 2, Name: 'The Second', Region: 'North', City: 'Tel Aviv', IsKosher: true,
             IsDisabledAccessible: true

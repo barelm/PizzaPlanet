@@ -12,6 +12,24 @@ app.controller('BranchController', function ($scope, BranchService) {
         $scope.branches = BranchService.getBranches();
     }
 
+    $scope.resetSearch = function () {
+        $scope.branchSearch.City = "";
+        $scope.branchSearch.IsKosher = "";
+        $scope.branchSearch.IsDisabledAccessible = "";
+        //$scope.branchSearch = {};
+    }
+});
+
+app.controller('BranchCreateController', function ($scope, $routeParams ,$location, BranchService) {
+
+    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
+    //one place...not required though especially in the simple example below
+    init();
+
+    function init() {
+        var branchID = ($routeParams.branchID) ? parseInt($routeParams.branchID) : 0;
+    }
+
     $scope.insertBranch = function () {
         // Get fields value.
         var Name                 = $scope.newBranch.Name;
@@ -29,15 +47,63 @@ app.controller('BranchController', function ($scope, BranchService) {
         $scope.newBranch.City                 = '';
         $scope.newBranch.IsKosher             = false;
         $scope.newBranch.IsDisabledAccessible = false;
-    };
 
-    $scope.deleteBranch = function (id) {
-        BranchService.deleteBranch(id);
+        // Return to branches list view
+        $location.path('/branch')
+    }
+});
+
+
+app.controller('BranchDetailsController', function ($scope, $routeParams, BranchService) {
+
+    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
+    //one place...not required though especially in the simple example below
+    init();
+
+    function init() {
+        var branchID = ($routeParams.branchID) ? parseInt($routeParams.branchID) : 0;
+        $scope.selBranch = BranchService.getBranch(branchID);
+    }
+});
+
+
+app.controller('BranchDeleteController', function ($scope, $routeParams ,$location, BranchService) {
+
+    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
+    //one place...not required though especially in the simple example below
+    init();
+
+    function init() {
+        var branchID = ($routeParams.branchID) ? parseInt($routeParams.branchID) : 0;
+        $scope.selBranch = BranchService.getBranch(branchID);
+    }
+
+    $scope.deleteBranch = function () {
+        BranchService.deleteBranch($scope.selBranch.id);
+
+        // Return to branches list view
+        $location.path('/branch')
     };
+});
+
+
+app.controller('BranchEditController', function ($scope, $routeParams ,$location, BranchService) {
+
+    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
+    //one place...not required though especially in the simple example below
+    init();
+
+    function init() {
+        var branchID = ($routeParams.branchID) ? parseInt($routeParams.branchID) : 0;
+        $scope.selBranch = BranchService.getBranch(branchID);
+    }
 
     $scope.editBranch = function(){
-        BranchService.insertCustomer($scope.editBranch);
+        BranchService.editBranch($scope.selBranch);
 
         $scope.editBranch = {};
+
+        // Return to branches list view
+        $location.path('/branch')
     }
 });

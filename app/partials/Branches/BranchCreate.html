@@ -1,26 +1,31 @@
-<form>
+<form name="Form">
     <div class="form-group">
         <label>שם סניף:</label>
-        <input type="text" data-ng-model="newBranch.Name" class="form-control" placeholder="Name">
+        <input type="text" name="Name" data-ng-model="newBranch.Name" class="form-control" placeholder="Name" required>
+        <!--<span style="color:red" ng-show="Form.Name.$dirty && Form.Name.$invalid">-->
+        <span style="color:red" ng-show="Form.Name.$error.required">חובה להזין שם סניף</span>
     </div>
     <div class="form-group">
         <label>:אזור</label>
-        <input type="text" data-ng-model="newBranch.Region" class="form-control" placeholder="Region">
+        <input type="text" name="Region" data-ng-model="newBranch.Region" class="form-control" placeholder="Region" required>
+        <span style="color:red" ng-show="Form.Region.$error.required">חובה להזין אזור</span>
     </div>
     <div class="form-group">
         <label>:עיר</label>
-        <input type="text" data-ng-model="newBranch.City" class="form-control" placeholder="City">
+        <input type="text" name="City" data-ng-model="newBranch.City" class="form-control" placeholder="City" required>
+        <span style="color:red" ng-show="Form.City.$error.required">חובה להזין עיר</span>
     </div>
     <div class="form-group">
         <label>האם כשר?</label>
-        <input type="number" data-ng-model="newBranch.IsKosher" class="form-control" placeholder="isKosher">
+        <input type="checkbox" name="IsKosher" data-ng-model="newBranch.IsKosher" class="form-control" placeholder="IsKosher">
     </div>
     <div class="form-group">
         <label>האם נגיש לנכים?</label>
-        <input type="number" data-ng-model="newBranch.IsDisabledAccessible" class="form-control"
+        <input type="checkbox" name="IsDisabledAccessible" data-ng-model="newBranch.IsDisabledAccessible" class="form-control"
                placeholder="IsDisabledAccessible">
     </div>
     <button id="submitBranch" class="btn btn-default" type="button"
             data-ng-disabled="!newBranch.Name || !newBranch.Region || !newBranch.City"
             data-ng-click="insertBranch()">יצירת סניף</button>
+    <a ng-href="#/branch">חזרה לרשימה</a>
 </form>

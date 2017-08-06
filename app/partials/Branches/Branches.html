@@ -1,35 +1,57 @@
-<table class="table table-hover table-striped table-condensed table-bordered ordersTable">
-    <thead>
-        <tr>
-            <th data-ng-click="setOrder('Name')">שם סניף</th>
-            <th data-ng-click="setOrder('Region')">אזור</th>
-            <th data-ng-click="setOrder('City')">עיר</th>
-            <th data-ng-click="setOrder('IsKosher')">האם כשר?</th>
-            <th data-ng-click="setOrder('IsDisabledAccessible')">האם נגיש לנכים?</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr data-ng-hide="branches || .length > 0" class="error">
-            <td colspan="4">
-                <div class="text-center"><strong>לא נמצאו סניפים</strong></div>
-            </td>
-        </tr>
-        <tr data-ng-repeat="branch in branches | orderBy:orderby:reverse">
-            <td>
-                {{ branch.Name }}
-            </td>
-            <td>
-                {{ branch.Region }}
-            </td>
-            <td>
-                {{ branch.City }}
-            </td>
-            <td>
-                {{ branch.IsKosher }}
-            </td>
-            <td>
-                {{ branch.IsDisabledAccessible }}
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div>
+    <p>
+        <a ng-href="#/branchCreate">יצירת סניף</a>
+    </p>
+
+    <div>
+        עיר:
+        <input type="text" ng-model="branchSearch.City">
+        האם כשר:
+        <input type="checkbox" ng-model="branchSearch.IsKosher">
+        האם נגיש לנכים:
+        <input type="checkbox" ng-model="branchSearch.IsDisabledAccessible">
+        <button type="button" data-ng-click="resetSearch()">אפס חיפוש</button>
+    </div>
+
+    <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+        <thead>
+            <tr>
+                <th data-ng-click="setOrder('Name')">שם סניף</th>
+                <th data-ng-click="setOrder('Region')">אזור</th>
+                <th data-ng-click="setOrder('City')">עיר</th>
+                <th data-ng-click="setOrder('IsKosher')">האם כשר?</th>
+                <th data-ng-click="setOrder('IsDisabledAccessible')">האם נגיש לנכים?</th>
+                <th>פעולות</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-hide="branches || branches.length > 0" class="error">
+                <td colspan="4">
+                    <div class="text-center"><strong>לא נמצאו סניפים</strong></div>
+                </td>
+            </tr>
+            <tr data-ng-repeat="branch in branches | filter:branchSearch | orderBy:orderby:reverse">
+                <td>
+                    {{ branch.Name }}
+                </td>
+                <td>
+                    {{ branch.Region }}
+                </td>
+                <td>
+                    {{ branch.City }}
+                </td>
+                <td>
+                    <input type="checkbox" ng-model="branch.IsKosher" disabled="disabled">
+                </td>
+                <td>
+                    <input type="checkbox" ng-model="branch.IsDisabledAccessible" disabled="disabled">
+                </td>
+                <td>
+                    <a ng-href="#/branch/{{branch.id}}">פרטים</a> |
+                    <a ng-href="#/branchEdit/{{branch.id}}">עריכה</a> |
+                    <a ng-href="#/branchDelete/{{branch.id}}">מחיקה</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

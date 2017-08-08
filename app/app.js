@@ -99,5 +99,14 @@ app.config(function ($routeProvider, $locationProvider) {
 app.run(['$rootScope', function($rootScope) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
+
+        if($rootScope.title == "פיצה פלאנט")
+        {
+            $rootScope.hideTitle = true;
+        }
+        else
+        {
+            $rootScope.hideTitle = false;
+        }
     });
 }]);

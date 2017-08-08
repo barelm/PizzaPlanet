@@ -38,17 +38,6 @@
         </div>
     </div>
 
-    <!-- *****************************************************************************************************************
-    BLUE WRAP
-    ***************************************************************************************************************** -->
-    <div id="blue">
-        <div class="container">
-            <div class="row">
-                <h3 ng-bind="title"></h3>
-            </div><!-- /row -->
-        </div> <!-- /container -->
-    </div><!-- /blue -->
-
     <!-- Main Content -->
     <div data-ng-view=""></div>
 
@@ -81,15 +70,24 @@
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular-route.js"></script>
     <script src="Scripts/angular-animate.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!--App libs-->
     <script src="Scripts/site.js"></script>
     <script src="app/app.js"></script>
+    <script src="Scripts/jquery-3.2.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
 
     <!--Branches libs-->
     <script src="app/controllers/BranchController.js"></script>
     <script src="app/services/BranchService.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.myCarousel').carousel({
+                interval: false
+            })
+        });
+    </script>
 
 </body>
 </html>

@@ -2,7 +2,7 @@
  * Created by Barmen on 04/08/2017.
  */
 
-app.controller('BranchController', function ($scope, BranchService) {
+app.controller('BranchController', function ($scope, $http, BranchService) {
 
     //I like to have an init() for controllers that need to perform some initialization. Keeps things in
     //one place...not required though especially in the simple example below
@@ -10,13 +10,22 @@ app.controller('BranchController', function ($scope, BranchService) {
 
     function init() {
         $scope.branches = BranchService.getBranches();
+
+        // Get USD value rate.
+        $http({
+            method: "GET",
+            url: 'http://api.fixer.io/latest?base=ILS&symbols=USD'
+        }).then(function mySucces(response) {
+            $scope.usdRate = response.data.rates['USD']
+        }, function myError(response) {
+            // TODO: לעשות משהו?
+        });
     }
 
     $scope.resetSearch = function () {
         $scope.branchSearch.City = "";
         $scope.branchSearch.IsKosher = "";
         $scope.branchSearch.IsDisabledAccessible = "";
-        //$scope.branchSearch = {};
     }
 });
 
@@ -27,7 +36,7 @@ app.controller('BranchCreateController', function ($scope, $routeParams ,$locati
     init();
 
     function init() {
-        var branchID = ($routeParams.branchID) ? parseInt($routeParams.branchID) : 0;
+        $scope.regionValues = BranchService.getRegionValues();
     }
 
     $scope.insertBranch = function () {
@@ -45,8 +54,8 @@ app.controller('BranchCreateController', function ($scope, $routeParams ,$locati
         $scope.newBranch.Name                 = '';
         $scope.newBranch.Region               = '';
         $scope.newBranch.City                 = '';
-        $scope.newBranch.IsKosher             = false;
-        $scope.newBranch.IsDisabledAccessible = false;
+        $scope.newBranch.IsKosher             = '';
+        $scope.newBranch.IsDisabledAccessible = '';
 
         // Return to branches list view
         $location.path('/branch')
@@ -96,6 +105,8 @@ app.controller('BranchEditController', function ($scope, $routeParams ,$location
     function init() {
         var branchID = ($routeParams.branchID) ? parseInt($routeParams.branchID) : 0;
         $scope.selBranch = BranchService.getBranch(branchID);
+
+        $scope.regionValues = BranchService.getRegionValues();
     }
 
     $scope.editBranch = function(){

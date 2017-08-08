@@ -1,0 +1,65 @@
+<div>
+    <p>
+        <a ng-href="#/employeeCreate">יצירת סניף</a>
+    </p>
+
+    <!--<div>-->
+        <!--עיר:-->
+        <!--<input type="text" ng-model="employeeSearch.City">-->
+        <!--האם כשר:-->
+        <!--<input type="checkbox" ng-model="employeeSearch.IsKosher">-->
+        <!--האם נגיש לנכים:-->
+        <!--<input type="checkbox" ng-model="employeeSearch.IsDisabledAccessible">-->
+        <!--<button type="button" data-ng-click="resetSearch()">אפס חיפוש</button>-->
+    <!--</div>-->
+
+    <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+        <thead>
+        <tr>
+            <th data-ng-click="setOrder('Name')">שם עובד</th>
+            <th data-ng-click="setOrder('Sex')">מין</th>
+            <th data-ng-click="setOrder('Role')">תפקיד</th>
+            <th data-ng-click="setOrder('Wage')">שכר</th>
+            <th data-ng-click="setOrder('City')">עיר</th>
+            <th data-ng-click="setOrder('Birthday')">תאריך לידה</th>
+            <th data-ng-click="setOrder('JoinDate')">תאריך הצטרפות</th>
+            <th>פעולות</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-hide="employees || employees.length > 0" class="error">
+            <td colspan="4">
+                <div class="text-center"><strong>לא נמצאו עובדים</strong></div>
+            </td>
+        </tr>
+        <tr data-ng-repeat="employee in employees | orderBy:orderby:reverse">
+            <td>
+                {{ employee.Name }}
+            </td>
+            <td>
+                {{ employee.Sex }}
+            </td>
+            <td>
+                {{ employee.Role }}
+            </td>
+            <td>
+                {{ employee.Wage }}
+            </td>
+            <td>
+                {{ employee.City }}
+            </td>
+            <td>
+                <input type="date" ng-model="employee.Birthday" disabled="disabled">
+            </td>
+            <td>
+                <input type="date" ng-model="employee.JoinDate" disabled="disabled">
+            </td>
+            <td>
+                <a ng-href="#/employee/{{employee.id}}">פרטים</a> |
+                <a ng-href="#/employeeEdit/{{employee.id}}">עריכה</a> |
+                <a ng-href="#/employeeDelete/{{employee.id}}">מחיקה</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

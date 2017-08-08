@@ -46,6 +46,11 @@ app.service('BranchService', function () {
         }
     }
 
+    this.getRegionValues = function () {
+        var regionValues = ["צפון","מרכז","דרום"];
+        return regionValues;
+    }
+
     var branches = [
         {
             id: 1, Name: 'The First', Region: 'Center', City: 'Tel Aviv', IsKosher: false,

@@ -32,7 +32,8 @@
                     <li><a>צור קשר</a></li>
                     <li><a ng-href="#/branch">סניפים</a></li>
                     <li><a>מוצרים</a></li>
-                    <li><a>עובדים</a></li>
+                    <li><a ng-href="#/employee">עובדים</a></li>
+                    <li><a ng-href="#/graph">גרפים</a></li>
                 </ul>
             </div>
         </div>
@@ -80,6 +81,11 @@
     <!--Branches libs-->
     <script src="app/controllers/BranchController.js"></script>
     <script src="app/services/BranchService.js"></script>
+
+    <!--Employees libs-->
+    <script src="app/controllers/EmployeeController.js"></script>
+    <script src="app/services/EmployeeService.js"></script>
+    <script src="app/controllers/GraphContoroller.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {

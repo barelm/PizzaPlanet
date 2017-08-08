@@ -6,12 +6,13 @@
         <span style="color:red" ng-show="Form.Name.$error.required">חובה להזין שם סניף</span>
     </div>
     <div class="form-group">
-        <label>:אזור</label>
-        <input type="text" name="Region" data-ng-model="selBranch.Region" class="form-control" placeholder="Region" required>
+        <label>אזור:</label>
+        <select name="Region" ng-model="selBranch.Region" ng-options="x for x in regionValues" required></select>
+        <!--<input type="text" name="Region" data-ng-model="newBranch.Region" class="form-control" placeholder="Region" required>-->
         <span style="color:red" ng-show="Form.Region.$error.required">חובה להזין אזור</span>
     </div>
     <div class="form-group">
-        <label>:עיר</label>
+        <label>עיר:</label>
         <input type="text" name="City" data-ng-model="selBranch.City" class="form-control" placeholder="City" required>
         <span style="color:red" ng-show="Form.City.$error.required">חובה להזין עיר</span>
     </div>

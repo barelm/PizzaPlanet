@@ -1,0 +1,54 @@
+<div>
+    <div>
+        <dl>
+            <dt>
+                <label>שם עובד</label>
+            </dt>
+            <dd>
+                <input type="text" disabled="disabled" ng-model="selEmployee.Name">
+            </dd>
+            <dt>
+                <label>מין</label>
+            </dt>
+            <dd>
+                <input type="text" disabled="disabled" ng-model="selEmployee.Sex">
+            </dd>
+            <dt>
+                <label>תפקיד</label>
+            </dt>
+            <dd>
+                <input type="text" disabled="disabled" ng-model="selEmployee.Role">
+            </dd>
+            <dt>
+                <label>שכר</label>
+            </dt>
+            <dd>
+                <input type="number" disabled="disabled" ng-model="selEmployee.Wage">
+            </dd>
+            <dt>
+                <label>עיר</label>
+            </dt>
+            <dd>
+                <input type="text" disabled="disabled" ng-model="selEmployee.City">
+            </dd>
+            <dt>
+                <label>תאריך לידה</label>
+            </dt>
+            <dd>
+                <input type="date" disabled="disabled" ng-model="selEmployee.Birthday">
+            </dd>
+            <dt>
+                <label>תאריך הצטרפות</label>
+            </dt>
+            <dd>
+                <input type="date" disabled="disabled" ng-model="selEmployee.JoinDate">
+            </dd>
+
+        </dl>
+    </div>
+    <div>
+        <button id="submitEmployee" class="btn btn-default" type="button"
+                data-ng-click="deleteEmployee()">מחיקת עובד</button>
+        <a ng-href="#/employee">חזרה לרשימה</a>
+    </div>
+</div>

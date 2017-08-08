@@ -48,9 +48,45 @@ app.config(function ($routeProvider, $locationProvider) {
             })
         .when('/branch/:branchID',
             {
-                title: 'סניפים',
+                title: 'צפייה בסניף',
                 controller: 'BranchDetailsController',
                 templateUrl: 'app/partials/Branches/BranchDetails.html'
+            })
+        .when('/employee',
+            {
+                title: 'עובדים',
+                controller: 'EmployeeController',
+                templateUrl: 'app/partials/Employees/Employees.html'
+            })
+        .when('/employeeEdit/:employeeID',
+            {
+                title: 'עריכת עובד',
+                controller: 'EmployeeEditController',
+                templateUrl: 'app/partials/Employees/EmployeeEdit.html'
+            })
+        .when('/employeeDelete/:employeeID',
+            {
+                title: 'מחיקת עובד',
+                controller: 'EmployeeDeleteController',
+                templateUrl: 'app/partials/Employees/EmployeeDelete.html'
+            })
+        .when('/employeeCreate',
+            {
+                title: 'יצירת עובד',
+                controller: 'EmployeeCreateController',
+                templateUrl: 'app/partials/Employees/EmployeeCreate.html'
+            })
+        .when('/employee/:employeeID',
+            {
+                title: 'צפייה בעובד',
+                controller: 'EmployeeDetailsController',
+                templateUrl: 'app/partials/Employees/EmployeeDetails.html'
+            })
+        .when('/graph',
+            {
+                title: 'גרפים',
+                controller: 'GraphController',
+                templateUrl: 'app/partials/graph.html'
             })
 
         .otherwise({ redirectTo: '/home' });

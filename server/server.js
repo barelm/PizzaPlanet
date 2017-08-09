@@ -3,12 +3,13 @@
  */
 
 var express = require("express");
+var cors = require("cors");
+var routes = require("./routes");
 var app = express();
 
-// app.get('/', function (req, res) {
-//     res.send('Hello World!')
-// })
+app.use(cors());
+app.use(routes);
 
-app.listen(3000, function () {
-    console.log('Example app listening on port %s!', this.address().port)
-})
+app.listen(3000, function() {
+    console.log('Server running at port %s!', this.address().port)
+});

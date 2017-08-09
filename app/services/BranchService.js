@@ -8,13 +8,14 @@ app.service('BranchService', function () {
         return branches;
     };
 
-    this.insertBranch= function (Name, Region, City, IsKosher, IsDisabledAccessible) {
+    this.insertBranch= function (Name, Region, City, Address, IsKosher, IsDisabledAccessible) {
         var topID = branches.length + 1;
         branches.push({
             id: topID,
             Name: Name,
             Region: Region,
             City: City,
+            Address: Address,
             IsKosher: IsKosher,
             IsDisabledAccessible: IsDisabledAccessible
         });
@@ -53,15 +54,15 @@ app.service('BranchService', function () {
 
     var branches = [
         {
-            id: 1, Name: 'The First', Region: 'Center', City: 'Tel Aviv', IsKosher: false, address: "אלי ויזל 2, ראשון לציון",
+            id: 1, Name: 'The First', Region: 'צפון', City: 'ראשון לציון', IsKosher: false, Address: "אלי ויזל 2",
             IsDisabledAccessible: true
         },
         {
-            id: 2, Name: 'The Second', Region: 'North', City: 'Tel Aviv', IsKosher: true, address: "ראשון לציון",
+            id: 2, Name: 'The Second', Region: 'מרכז', City: 'רמת גן', IsKosher: true, Address: "בן גוריון 100",
             IsDisabledAccessible: true
         },
         {
-            id: 3, Name: 'The First', Region: 'South', City: 'Tel Aviv', IsKosher: true, address: "רמת גן",
+            id: 3, Name: 'The First', Region: 'מרכז', City: 'פתח תקווה', IsKosher: true, Address: "דגל ראובן 40",
             IsDisabledAccessible: false
         }
     ];

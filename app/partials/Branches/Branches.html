@@ -20,6 +20,7 @@
                 <th data-ng-click="setOrder('Name')">שם סניף</th>
                 <th data-ng-click="setOrder('Region')">אזור</th>
                 <th data-ng-click="setOrder('City')">עיר</th>
+                <th data-ng-click="setOrder('Address')">כתובת</th>
                 <th data-ng-click="setOrder('IsKosher')">האם כשר?</th>
                 <th data-ng-click="setOrder('IsDisabledAccessible')">האם נגיש לנכים?</th>
                 <th>פעולות</th>
@@ -40,6 +41,9 @@
                 </td>
                 <td>
                     {{ branch.City }}
+                </td>
+                <td>
+                    {{ branch.Address }}
                 </td>
                 <td>
                     <input type="checkbox" ng-model="branch.IsKosher" disabled="disabled">

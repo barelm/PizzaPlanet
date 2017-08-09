@@ -34,16 +34,18 @@ app.controller('BranchCreateController', function ($scope, $routeParams ,$locati
         var Name                 = $scope.newBranch.Name;
         var Region               = $scope.newBranch.Region;
         var City                 = $scope.newBranch.City;
+        var Address              = $scope.newBranch.Address;
         var IsKosher             = $scope.newBranch.IsKosher;
         var IsDisabledAccessible = $scope.newBranch.IsDisabledAccessible;
 
         // Add new customer
-        BranchService.insertBranch(Name, Region, City, IsKosher, IsDisabledAccessible);
+        BranchService.insertBranch(Name, Region, City, Address, IsKosher, IsDisabledAccessible);
 
         // Clear fields.
         $scope.newBranch.Name                 = '';
         $scope.newBranch.Region               = '';
         $scope.newBranch.City                 = '';
+        $scope.newBranch.Address              = '';
         $scope.newBranch.IsKosher             = '';
         $scope.newBranch.IsDisabledAccessible = '';
 
@@ -149,14 +151,15 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
             // Using the JQuery "each" selector to iterate through the JSON list and drop marker pins
             $.each(branchesData, function (i, item) {
 
+                var adress = item.Address && ' ' && item.City;
                 // Initiate a request to the Google geocoding service to get the location of the branch by the address
-                geocoder.geocode({'address': item.address}, function(results, status) {
+                geocoder.geocode({'address': adress}, function(results, status) {
 
                     // Set marker in the relevant location on the map
                     var marker = new google.maps.Marker({
                         'position': results[0].geometry.location,
                         'map': map,
-                        'title': item.name
+                        'title': item.Name
                     });
 
                     // Make the marker-pin blue
@@ -164,7 +167,7 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
 
                     // Put in some information about each JSON object - branch's name. address and phone number
                     var infowindow = new google.maps.InfoWindow({
-                        content: "<div class='infoDiv'><h2><u><center>" + item.name + "</h2></u></center>" + "<h3><center>" + item.address + "<br>" + item.phoneNumber + "</h3></center>" + "</div></div>"
+                        content: "<div class='infoDiv'><h2><u><center>" + item.Name + "</h2></u></center>" + "<h3><center>" + item.Address + "<br>" + item.City + "</h3></center>" + "</div></div>"
                     });
 
                     // Finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked

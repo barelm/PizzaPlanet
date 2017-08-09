@@ -17,6 +17,11 @@
         <span style="color:red" ng-show="Form.City.$error.required">חובה להזין עיר</span>
     </div>
     <div class="form-group">
+        <label>כתובת:</label>
+        <input type="text" name="Address" data-ng-model="newBranch.Address" class="form-control" placeholder="Address" required>
+        <span style="color:red" ng-show="Form.Address.$error.required">חובה להזין כתובת</span>
+    </div>
+    <div class="form-group">
         <label>האם כשר?</label>
         <input type="checkbox" name="IsKosher" data-ng-model="newBranch.IsKosher" class="form-control" placeholder="IsKosher">
     </div>
@@ -26,7 +31,7 @@
                placeholder="IsDisabledAccessible">
     </div>
     <button id="submitBranch" class="btn btn-default" type="button"
-            data-ng-disabled="!newBranch.Name || !newBranch.Region || !newBranch.City"
+            data-ng-disabled="!newBranch.Name || !newBranch.Region || !newBranch.City || !newBranch.Address"
             data-ng-click="insertBranch()">יצירת סניף</button>
     <a ng-href="#/branch">חזרה לרשימה</a>
 </form>

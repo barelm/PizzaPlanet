@@ -2,14 +2,17 @@
  * Created by Barmen on 04/08/2017.
  */
 
-app.controller('BranchController', function ($scope, BranchService) {
+app.controller('BranchController', function ($scope, $http, BranchService) {
 
     //I like to have an init() for controllers that need to perform some initialization. Keeps things in
     //one place...not required though especially in the simple example below
     init();
 
     function init() {
-        $scope.branches = BranchService.getBranches();
+        BranchService.getBranches().then(function(response) {
+            $scope.branches = response;
+        })
+        //$scope.branches = BranchService.getBranches();
     }
 
     $scope.resetSearch = function () {

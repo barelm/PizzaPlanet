@@ -4,6 +4,7 @@
 //This handles retrieving data and is used by controllers. 3 options (server, factory, provider) with
 //each doing the same thing just structuring the functions/data differently.
 app.service('BranchService', function ($http) {
+
     this.getBranches = function () {
 
         return $http.get('http://localhost:3000/Branches')
@@ -12,7 +13,8 @@ app.service('BranchService', function ($http) {
         }, function myError(response) {
             // TODO: לעשות משהו?
         });
-        //return branches;
+
+        //return this.data;
     };
 
     this.insertBranch= function (Name, Region, City, Address, IsKosher, IsDisabledAccessible) {

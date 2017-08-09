@@ -4,4 +4,4 @@
 
 Branches - Id, Name, Region, City, IsKosher, IsDisabledAccessible
 Products - Id, Name, Description, Cost, IsKosher, IsVegetarian, IsVegan
-Employees - Id, Name, Sex, Role, Wage, City, Birthday, Join_date
+Employees - Id, Name, Sex, Role, Wage, City, Birthday, JoinDate

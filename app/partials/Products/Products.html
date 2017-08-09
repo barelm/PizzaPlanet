@@ -1,0 +1,70 @@
+<div>
+    <p>
+        <a ng-href="#/productCreate">יצירת סניף</a>
+    </p>
+
+    <div>
+          שם מוצר:
+        <input type="text" ng-model="productSearch.Name">
+        תיאור:
+        <input type="text" ng-model="productSearch.Description">
+            האם כשר?
+        <input type="checkbox" ng-model="productSearch.IsKosher" ng-false-value="">
+       האם צמחוני?
+        <input type="checkbox" ng-model="productSearch.IsVegetarian" ng-false-value="">
+       האם טבעוני?
+        <input type="checkbox" ng-model="productSearch.IsVegan" ng-false-value="">
+
+        <button type="button" data-ng-click="resetSearch()">אפס חיפוש</button>
+    </div>
+
+    <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+        <thead>
+        <tr>
+            <th data-ng-click="setOrder('Name')">שם מוצר</th>
+            <th data-ng-click="setOrder('Description')">תיאור</th>
+            <th data-ng-click="setOrder('Cost')">מחיר</th>
+            <th data-ng-click="setOrder('IsKosher')">האם כשר?</th>
+            <th data-ng-click="setOrder('IsVegetarian')">האם צמחוני?</th>
+            <th data-ng-click="setOrder('IsVegen')">האם טבעוני?</th>
+            <th data-ng-click="setOrder('usdRate')">מחיר בדולרים</th>
+            <th>פעולות</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-hide="products || products.length > 0" class="error">
+            <td colspan="4">
+                <div class="text-center"><strong>לא נמצאו מוצרים</strong></div>
+            </td>
+        </tr>
+        <tr data-ng-repeat="product in products | filter:productSearch | orderBy:orderby:reverse">
+            <td>
+                {{ product.Name }}
+            </td>
+            <td>
+                {{ product.Description }}
+            </td>
+            <td>
+                {{ product.Cost }}
+            </td>
+            <td>
+                <input type="checkbox" ng-model="product.IsKosher" disabled="disabled">
+            </td>
+            <td>
+                <input type="checkbox" ng-model="product.IsVegetarian" disabled="disabled">
+            </td>
+            <td>
+                <input type="checkbox" ng-model="product.IsVegan" disabled="disabled">
+            </td>
+            <td>
+                {{ (product.Cost * usdRate).toFixed(1) }}
+            </td>
+            <td>
+                <a ng-href="#/product/{{product.id}}">פרטים</a> |
+                <a ng-href="#/productEdit/{{product.id}}">עריכה</a> |
+                <a ng-href="#/productDelete/{{product.id}}">מחיקה</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

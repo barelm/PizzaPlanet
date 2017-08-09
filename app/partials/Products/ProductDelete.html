@@ -1,0 +1,47 @@
+<div>
+    <div>
+        <dl>
+            <dt>
+                <label>שם מוצר</label>
+            </dt>
+            <dd>
+                <input type="text" disabled="disabled" ng-model="selProduct.Name">
+            </dd>
+            <dt>
+                <label>תיאור</label>
+            </dt>
+            <dd>
+                <input type="text" disabled="disabled" ng-model="selProduct.Description">
+            </dd>
+            <dt>
+                <label>מחיר</label>
+            </dt>
+            <dd>
+                <input type="text" disabled="disabled" ng-model="selProduct.Cost">
+            </dd>
+            <dt>
+                <label>האם כשר?</label>
+            </dt>
+            <dd>
+                <input type="checkbox" disabled="disabled" ng-model="selProduct.IsKosher">
+            </dd>
+            <dt>
+                <label>האם צמחוני?</label>
+            </dt>
+            <dd>
+                <input type="checkbox" disabled="disabled" ng-model="selProduct.IsVegetarian">
+            </dd>
+            <dt>
+                <label>האם טבעוני?</label>
+            </dt>
+            <dd>
+                <input type="checkbox" disabled="disabled" ng-model="selProduct.IsVegan">
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <button id="submitProduct" class="btn btn-default" type="button"
+                data-ng-click="deleteProduct()">מחיקת מוצר</button>
+        <a ng-href="#/product">חזרה לרשימה</a>
+    </div>
+</div>

@@ -82,6 +82,36 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller: 'EmployeeDetailsController',
                 templateUrl: 'app/partials/Employees/EmployeeDetails.html'
             })
+        .when('/product',
+            {
+                title: 'מוצרים',
+                controller: 'ProductController',
+                templateUrl: 'app/partials/Products/Products.html'
+            })
+        .when('/productEdit/:productID',
+            {
+                title: 'עריכת מוצר',
+                controller: 'ProductEditController',
+                templateUrl: 'app/partials/Products/ProductEdit.html'
+            })
+        .when('/productDelete/:productID',
+            {
+                title: 'מחיקת מוצר',
+                controller: 'ProductDeleteController',
+                templateUrl: 'app/partials/Products/ProductDelete.html'
+            })
+        .when('/productCreate',
+            {
+                title: 'הוספת מוצר',
+                controller: 'ProductCreateController',
+                templateUrl: 'app/partials/Products/ProductCreate.html'
+            })
+        .when('/product/:productID',
+            {
+                title: 'פרטי מוצר',
+                controller: 'ProductDetailsController',
+                templateUrl: 'app/partials/Products/ProductDetails.html'
+            })
         .when('/graph',
             {
                 title: 'גרפים',

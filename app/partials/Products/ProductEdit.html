@@ -1,0 +1,39 @@
+<form name="Form">
+    <div class="form-group">
+        <label>שם מוצר:</label>
+        <input type="text" name="Name" data-ng-model="selProduct.Name" class="form-control" placeholder="Name" required>
+        <!--<span style="color:red" ng-show="Form.Name.$dirty && Form.Name.$invalid">-->
+        <span style="color:red" ng-show="Form.Name.$error.required">חובה להזין שם מוצר</span>
+    </div>
+    <div class="form-group">
+        <label>תיאור:</label>
+        <input type="text" name="Description" ng-model="selProduct.Description" class="form-control" placeholder="Name"
+               required>
+        <!--<input type="text" name="Sex" data-ng-model="selProduct.Sex" class="form-control" placeholder="Sex" required>-->
+        <span style="color:red" ng-show="Form.Description.$error.required">חובה להזין תיאור</span>
+    </div>
+    <div class="form-group">
+        <label>מחיר:</label>
+        <input type="number" name="Cost" ng-model="selProduct.Cost" class="form-control" placeholder="Cost"
+               min="1" required>
+        <span style="color:red" ng-show="Form.Cost.$error.required">חובה להזין מחיר</span>
+        <span style="color:red" ng-show="Form.Cost.$error.min">נא להזין מחיר גדול מ0</span>
+        <span style="color:red" ng-show="Form.Cost.$error.number">נא להזין מספר</span>
+    </div>
+    <div class="form-group">
+        <label>האם כשר?</label>
+        <input type="checkbox" name="IsKosher" data-ng-model="selProduct.IsKosher" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>האם צמחוני?</label>
+        <input type="checkbox" name="IsVegetarian" data-ng-model="selProduct.IsVegetarian" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>האם טבעוני?</label>
+        <input type="checkbox" name="IsVegan" data-ng-model="selProduct.IsVegan" class="form-control">
+    </div>
+    <button id="submitProduct" class="btn btn-default" type="button"
+            data-ng-disabled="!selProduct.Name || !selProduct.Description || !selProduct.Cost"
+            data-ng-click="editProduct()">עריכת פרטי מוצר</button>
+    <a ng-href="#/product">חזרה לרשימה</a>
+</form>

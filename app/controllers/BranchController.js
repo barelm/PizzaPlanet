@@ -2,7 +2,7 @@
  * Created by Barmen on 04/08/2017.
  */
 
-app.controller('BranchController', function ($scope, $http, BranchService) {
+app.controller('BranchController', function ($scope, BranchService) {
 
     //I like to have an init() for controllers that need to perform some initialization. Keeps things in
     //one place...not required though especially in the simple example below
@@ -10,16 +10,6 @@ app.controller('BranchController', function ($scope, $http, BranchService) {
 
     function init() {
         $scope.branches = BranchService.getBranches();
-
-        // Get USD value rate.
-        $http({
-            method: "GET",
-            url: 'http://api.fixer.io/latest?base=ILS&symbols=USD'
-        }).then(function mySucces(response) {
-            $scope.usdRate = response.data.rates['USD']
-        }, function myError(response) {
-            // TODO: לעשות משהו?
-        });
     }
 
     $scope.resetSearch = function () {

@@ -11,12 +11,6 @@ app.controller('EmployeeController', function ($scope, EmployeeService) {
     function init() {
         $scope.employees = EmployeeService.getEmployees();
     }
-
-    $scope.resetSearch = function () {
-        // $scope.EmployeeSearch.City = "";
-        // $scope.EmployeeSearch.IsKosher = "";
-        // $scope.EmployeeSearch.IsDisabledAccessible = "";
-    }
 });
 
 app.controller('EmployeeCreateController', function ($scope, $routeParams ,$location, EmployeeService) {

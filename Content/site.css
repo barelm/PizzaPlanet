@@ -1,25 +1,25 @@
 ﻿/*	################################################################
 	1. GENERAL STRUCTURES
 ################################################################# */
-	* { 
-		margin: 0;
-		padding: 0px;
-	} 
-
-html {
-    position: relative;
-    min-height: 100%;
+* {
+	margin: 0;
+	padding: 0px;
 }
 
-body { 
-	background: #ffffff; 
-	margin: 0; 
-	height: 100%; 
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	background: #ffffff;
+	margin: 0;
+	height: 100%;
 	color: #384452;
 	font-family: sans-serif;
 	font-weight: 400;
-    margin-bottom: 200px;
-	}
+	margin-bottom: 200px;
+}
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: sans-serif;
@@ -27,19 +27,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @font-face {
-    font-family: 'navFont';
-    src: url('../Content/fonts/GanCLM-Bold.ttf') format('truetype');
+	font-family: 'navFont';
+	src: url('../Content/fonts/GanCLM-Bold.ttf') format('truetype');
 }
 
-p { 
-	padding: 0; 
-	margin-bottom: 12px; 
+p {
+	padding: 0;
+	margin-bottom: 12px;
 	font-family: sans-serif;
 	font-weight: 400;
-	font-size: 14px; 
+	font-size: 14px;
 	line-height: 24px;
-	color: #384452; 
-	margin-top: 10px; 
+	color: #384452;
+	margin-top: 10px;
 }
 
 img {
@@ -47,20 +47,20 @@ img {
 	max-width: 100%;
 }
 
-a { 
+a {
 	padding: 0;
 	margin: 0;
-	text-decoration: none; 
-	-webkit-transition: background-color .4s linear, color .4s linear;
-	-moz-transition: background-color .4s linear, color .4s linear;
-	-o-transition: background-color .4s linear, color .4s linear;
-	-ms-transition: background-color .4s linear, color .4s linear;
-	transition: background-color .4s linear, color .4s linear;
+	text-decoration: none;
+	-webkit-transition: font-size 1s;
+	-moz-transition: font-size 1s;
+	-o-transition: font-size 1s;
+	-ms-transition: font-size 1s;
+	transition: font-size 1s;
 }
 a:hover,
 a:focus {
-  text-decoration: none;
-  color:#01b2fe;
+	text-decoration: none;
+	color:#01b2fe;
 }
 
 ::-moz-selection  {
@@ -89,7 +89,7 @@ a:focus {
 
 .navbar-brand {
 	font-family: navFont, sans-serif;
-    font-size: 25px;
+	font-size: 25px;
 }
 
 .navbar-header .navbar-brand {
@@ -104,6 +104,7 @@ a:focus {
 
 .navbar-default .navbar-nav > li > a:focus {
 	color: #999;
+	font-size: 25px;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
@@ -131,19 +132,19 @@ a:focus {
 }
 
 .btn-theme {
-  color: #fff;
-  background-color: #384452;
-  border-color: #384452;
-  margin: 4px;
+	color: #fff;
+	background-color: #384452;
+	border-color: #384452;
+	margin: 4px;
 }
 .btn-theme:hover,
 .btn-theme:focus,
 .btn-theme:active,
 .btn-theme.active,
 .open .dropdown-toggle.btn-theme {
-  color: #fff;
-  background-color: #00b3fe;
-  border-color: #00b3fe;
+	color: #fff;
+	background-color: #00b3fe;
+	border-color: #00b3fe;
 }
 
 .mtb {
@@ -208,12 +209,12 @@ a:focus {
 /* Footer */
 #footerwrap {
 	padding-top: 25px;
-    padding-bottom: 10px;
+	padding-bottom: 10px;
 	background: #384452;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 200px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 200px;
 }
 
 #footerwrap p {
@@ -247,7 +248,7 @@ a:focus {
 }
 
 #blue h3 {
-    text-shadow: 0 0 15px #2B2E31;
+	text-shadow: 0 0 15px #2B2E31;
 	color: white;
 	margin-left: 15px;
 }
@@ -274,22 +275,22 @@ csmall2 {
 
 /* Contact Page */
 #contactwrap {
-    background: url('../../SpongeBob-master/src/FinalProject/wwwroot/images/contact.jpg') no-repeat center top;
-    margin-top: -60px;
-    padding-top: 0px;
-    text-align: center;
-    background-attachment: relative;
-    background-position: center center;
-    min-height: 190px;
-    width: 100%;
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 100%;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	background: url('../../SpongeBob-master/src/FinalProject/wwwroot/images/contact.jpg') no-repeat center top;
+	margin-top: -60px;
+	padding-top: 0px;
+	text-align: center;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 190px;
+	width: 100%;
+	-webkit-background-size: 100%;
+	-moz-background-size: 100%;
+	-o-background-size: 100%;
+	background-size: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 #person {
@@ -298,57 +299,57 @@ csmall2 {
 }
 
 .loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
+	border: 16px solid #f3f3f3;
+	border-radius: 50%;
+	border-top: 16px solid #3498db;
+	width: 120px;
+	height: 120px;
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
 }
 
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }
 
 #tableHr {
-    text-align: right;
+	text-align: right;
 }
 
 dt.first{
-    margin-top: 0px;
+	margin-top: 0px;
 }
 
 dt{
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 #messageDiv{
-    white-space:pre-wrap;
+	white-space:pre-wrap;
 }
 
 video{
-    width:500px;
-    height:300px;
+	width:500px;
+	height:300px;
 }
 
 canvas{
-    all:initial;
-    margin-right:20px;
+	all:initial;
+	margin-right:20px;
 }
 
 /* Multiple column for the about page */
 .contactAddress{
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2;
-    margin-top: 10px;
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+	margin-top: 10px;
 }
 
 #mainImage{
@@ -383,7 +384,7 @@ canvas{
 }
 
 /*.CarouselImg img {*/
-	/*width: auto;*/
-	/*height: 400px !important;*/
-	/*max-height: 400px !important;*/
+/*width: auto;*/
+/*height: 400px !important;*/
+/*max-height: 400px !important;*/
 /*}*/

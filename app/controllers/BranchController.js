@@ -122,7 +122,6 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
 
     function init() {
         $scope.branches = BranchService.getBranches();
-        console.log($scope.branches);
 
         var script = document.createElement('script');
         script.type = 'text/javascript';
@@ -183,6 +182,6 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
             console.log('Done');
         }
 
-        document.body.appendChild(script).then;
+        document.body.appendChild(script);
     }
 });

@@ -12,7 +12,7 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/home',
             {
                 title: 'פיצה פלאנט',
-                controller: '',
+                controller: 'HomeController',
                 templateUrl: 'app/partials/home.html'
             })
         // Defines a root to 'about'
@@ -118,13 +118,6 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller: 'ProductDetailsController',
                 templateUrl: 'app/partials/Products/ProductDetails.html'
             })
-        .when('/graph',
-            {
-                title: 'גרפים',
-                controller: 'GraphController',
-                templateUrl: 'app/partials/graph.html'
-            })
-
         .otherwise({ redirectTo: '/home' });
 
     // Remove unnecessary prefix

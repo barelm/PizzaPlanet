@@ -3,9 +3,16 @@
  */
 //This handles retrieving data and is used by controllers. 3 options (server, factory, provider) with
 //each doing the same thing just structuring the functions/data differently.
-app.service('BranchService', function () {
+app.service('BranchService', function ($http) {
     this.getBranches = function () {
-        return branches;
+
+        return $http.get('http://localhost:3000/Branches')
+        .then(function mySucces(response) {
+            return response.data;
+        }, function myError(response) {
+            // TODO: לעשות משהו?
+        });
+        //return branches;
     };
 
     this.insertBranch= function (Name, Region, City, Address, IsKosher, IsDisabledAccessible) {
@@ -45,6 +52,16 @@ app.service('BranchService', function () {
                 branches[i] = branch;
             }
         }
+
+        jsonBranch = JSON.stringify(branch);
+
+        $http.post('http://localhost:3000/Branches', jsonBranch)
+            .then(function mySucces(response) {
+                var abc = 1;
+            }, function myError(response) {
+                // TODO: לעשות משהו?
+            });
+
     }
 
     this.getRegionValues = function () {

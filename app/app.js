@@ -46,6 +46,12 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller: 'BranchCreateController',
                 templateUrl: 'app/partials/Branches/BranchCreate.html'
             })
+        .when('/branchMap',
+            {
+                title: 'מפת סניפים',
+                controller: 'BranchMapController',
+                templateUrl: 'app/partials/Branches/BranchMap.html'
+            })
         .when('/branch/:branchID',
             {
                 title: 'צפייה בסניף',

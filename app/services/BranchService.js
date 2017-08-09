@@ -53,15 +53,15 @@ app.service('BranchService', function () {
 
     var branches = [
         {
-            id: 1, Name: 'The First', Region: 'Center', City: 'Tel Aviv', IsKosher: false,
+            id: 1, Name: 'The First', Region: 'Center', City: 'Tel Aviv', IsKosher: false, address: "אלי ויזל 2, ראשון לציון",
             IsDisabledAccessible: true
         },
         {
-            id: 2, Name: 'The Second', Region: 'North', City: 'Tel Aviv', IsKosher: true,
+            id: 2, Name: 'The Second', Region: 'North', City: 'Tel Aviv', IsKosher: true, address: "ראשון לציון",
             IsDisabledAccessible: true
         },
         {
-            id: 3, Name: 'The First', Region: 'South', City: 'Tel Aviv', IsKosher: true,
+            id: 3, Name: 'The First', Region: 'South', City: 'Tel Aviv', IsKosher: true, address: "רמת גן",
             IsDisabledAccessible: false
         }
     ];

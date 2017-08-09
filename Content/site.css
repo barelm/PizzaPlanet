@@ -102,6 +102,10 @@ a:focus {
 	font-size: 17px;
 }
 
+.navbar-default .navbar-nav > li > a:focus {
+	color: #999;
+}
+
 .navbar-default .navbar-nav > li > a:hover {
 	color: #00b3fe;
 }
@@ -360,7 +364,7 @@ canvas{
 }
 
 .carousel-inner img{
-	max-height:450px;
+	height:400px !important;
 }
 
 .carousel-caption{
@@ -378,8 +382,8 @@ canvas{
 	position: relative;
 }
 
-.CarouselImg img {
-	width: auto;
-	height: 400px !important;
-	max-height: 400px !important;
-}
+/*.CarouselImg img {*/
+	/*width: auto;*/
+	/*height: 400px !important;*/
+	/*max-height: 400px !important;*/
+/*}*/

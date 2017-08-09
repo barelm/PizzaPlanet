@@ -5,7 +5,7 @@
 var express = require('express'),
     router = express.Router();
 
-router.use('/', require('./Branches'));
+router.use('/Branches', require('./Branches'));
 
 router.get('/', function(req, res) {
     res.send('Home page')

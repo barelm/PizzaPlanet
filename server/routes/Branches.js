@@ -7,7 +7,9 @@ var branchesController = require('../controllers/Branches.js');
 var express = require('express'),
     router = express.Router();
 
-router.get('/Branches', branchesController.getAllBranches);
-router.post('/Branches', branchesController.createBranch);
+router.get('/', branchesController.getAllBranches);
+router.post('/', branchesController.createBranch);
+router.put('/:id', branchesController.updateBranch);
+router.delete('/:id', branchesController.deleteBranch);
 
 module.exports = router;

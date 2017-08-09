@@ -10,3 +10,7 @@ Employees - Id, Name, Sex, Role, Wage, City, Birthday, JoinDate
 
 1. האם צריך שהשרת יפתח את האתר, או פשוט להריץ את index.html מהכרום?
 2. nav, aside, footer, header, section...
+
+post - אותה כתובת כמו GET עם JSON - יצירה.
+DELETE - /ID.
+PUT - /ID.

@@ -26,9 +26,9 @@ exports.createBranch = function(req, res) {
 };
 
 exports.updateBranch = function(req, res) {
-    res.send("OK FROM SERVER");
+    res.send("OK FROM SERVER - id: " + req.params.id);
 };
 
 exports.deleteBranch = function(req, res) {
-    res.send("OK FROM SERVER");
+    res.send("OK FROM SERVER - id: " + req.params.id);
 };

@@ -12,6 +12,7 @@ app.controller('BranchController', function ($scope, $http, BranchService) {
         BranchService.getBranches().then(function(response) {
             $scope.branches = response;
         })
+        //$scope.branches = BranchService.getBranches();
     }
 
     $scope.resetSearch = function () {
@@ -183,6 +184,6 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
             console.log('Done');
         }
 
-        document.body.appendChild(script).then;
+        document.body.appendChild(script);
     }
 });

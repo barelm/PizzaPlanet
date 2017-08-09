@@ -13,70 +13,74 @@
 </head>
 <body dir="rtl" data-ng-cloak="">
 
-    <!-- Fixed navbar -->-->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <canvas id="canvas" class="navbar-left" height="50" width="120"></canvas>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="#/home" class="navbar-brand">פיצה פלנט</a>
+    <header>
+        <nav>
+            <!-- Fixed navbar -->-->
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <canvas id="canvas" class="navbar-left" height="50" width="120"></canvas>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="#/home" class="navbar-brand">פיצה פלנט</a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a ng-href="#/about">אודות</a></li>
+                            <li><a ng-href="#/branch">סניפים</a></li>
+                            <li><a ng-href="#/product">מוצרים</a></li>
+                            <li><a ng-href="#/employee">עובדים</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a ng-href="#/about">אודות</a></li>
-                    <li><a>צור קשר</a></li>
-                    <li><a ng-href="#/branch">סניפים</a></li>
-                    <li><a ng-href="#/product">מוצרים</a></li>
-                    <li><a ng-href="#/employee">עובדים</a></li>
-                    <li><a ng-href="#/graph">גרפים</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        </nav>
 
-    <!-- *****************************************************************************************************************
-    BLUE WRAP
-    ***************************************************************************************************************** -->
-    <div id="blue" ng-hide="hideTitle">
-        <div class="container">
-            <div class="row">
-                <h3 ng-bind="title"></h3>
-            </div><!-- /row -->
-        </div> <!-- /container -->
-    </div><!-- /blue -->
-
-    <!-- Main Content -->
-    <div data-ng-view=""></div>
-
-    <div>
-
-        <!-- Footer -->
-        <div id="footerwrap">
+        <!-- Page title -->
+        <div id="blue" ng-hide="hideTitle">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <h4>אודות</h4>
-                        <div class="hline-w"></div>
-                        <p>הפיצרייה הנפלאה שלנו נוצרה אי שם בשנת 2016 ומאז אנחנו ממשיכים לצמוח ולפתוח סניפים חדשים.</p>
-                    </div>
-                    <div class="col-lg-6">
-                        <h4>המשרדים שלנו</h4>
-                        <div class="hline-w"></div>
-                        <p>
-                            אלי ויזל, 2<br />
-                            ראשון לציון<br />
-                            ישראל<br />
-                        </p>
-                    </div>
-                </div><! --/row -->
-            </div><! --/container -->
-        </div><! --/footerwrap -->
-    </div>
+                    <h3 ng-bind="title"></h3>
+                </div><!-- /row -->
+            </div> <!-- /container -->
+        </div><!-- /blue -->
+
+    </header>
+
+    <section>
+        <!-- Main Content -->
+        <div data-ng-view=""></div>
+    </section>
+
+    <footer>
+        <div>
+            <!-- Footer -->
+            <div id="footerwrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>אודות</h4>
+                            <div class="hline-w"></div>
+                            <p>הפיצרייה הנפלאה שלנו נוצרה אי שם בשנת 2016 ומאז אנחנו ממשיכים לצמוח ולפתוח סניפים חדשים.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <h4>המשרדים שלנו</h4>
+                            <div class="hline-w"></div>
+                            <p>
+                                אלי ויזל, 2<br />
+                                ראשון לציון<br />
+                                ישראל<br />
+                            </p>
+                        </div>
+                    </div><! --/row -->
+                </div><! --/container -->
+            </div><! --/footerwrap -->
+        </div>
+    </footer>
 
     <!--Angular libs-->
     <script src="Scripts/angular.js"></script>
@@ -89,6 +93,9 @@
     <script src="Scripts/jquery-3.2.1.js"></script>
     <script src="Scripts/bootstrap.js"></script>
 
+    <!--Home libs-->
+    <script src="app/controllers/HomeController.js"></script>
+
     <!--Branches libs-->
     <script src="app/controllers/BranchController.js"></script>
     <script src="app/services/BranchService.js"></script>
@@ -96,19 +103,10 @@
     <!--Employees libs-->
     <script src="app/controllers/EmployeeController.js"></script>
     <script src="app/services/EmployeeService.js"></script>
-    <script src="app/controllers/GraphContoroller.js"></script>
 
     <!--Products libs-->
     <script src="app/controllers/ProductController.js"></script>
     <script src="app/services/ProductService.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.myCarousel').carousel({
-                interval: false
-            })
-        });
-    </script>
 
 </body>
 </html>

@@ -26,6 +26,14 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 700;
 }
 
+th {
+	text-align: center;
+}
+
+tr {
+	text-align: center;
+}
+
 @font-face {
 	font-family: 'navFont';
 	src: url('../Content/fonts/GanCLM-Bold.ttf') format('truetype');

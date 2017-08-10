@@ -34,15 +34,15 @@ app.controller('BranchCreateController', function ($scope, $routeParams ,$locati
 
     $scope.insertBranch = function () {
         // Get fields value.
-        var Name                 = $scope.newBranch.Name;
-        var Region               = $scope.newBranch.Region;
-        var City                 = $scope.newBranch.City;
-        var Address              = $scope.newBranch.Address;
-        var IsKosher             = $scope.newBranch.IsKosher;
-        var IsDisabledAccessible = $scope.newBranch.IsDisabledAccessible;
+        // var Name                 = $scope.newBranch.Name;
+        // var Region               = $scope.newBranch.Region;
+        // var City                 = $scope.newBranch.City;
+        // var Address              = $scope.newBranch.Address;
+        // var IsKosher             = $scope.newBranch.IsKosher;
+        // var IsDisabledAccessible = $scope.newBranch.IsDisabledAccessible;
 
         // Add new customer
-        BranchService.insertBranch(Name, Region, City, Address, IsKosher, IsDisabledAccessible);
+        BranchService.insertBranch($scope.newBranch);
 
         // Clear fields.
         $scope.newBranch.Name                 = '';
@@ -121,7 +121,9 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
     init();
 
     function init() {
-        $scope.branches = BranchService.getBranches();
+        BranchService.getBranches().then(function(response) {
+            $scope.branches = response;
+        })
 
         var script = document.createElement('script');
         script.type = 'text/javascript';
@@ -153,9 +155,9 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
             // Using the JQuery "each" selector to iterate through the JSON list and drop marker pins
             $.each(branchesData, function (i, item) {
 
-                var adress = item.Address && ' ' && item.City;
+                var address = item.Address && ' ' && item.City;
                 // Initiate a request to the Google geocoding service to get the location of the branch by the address
-                geocoder.geocode({'address': adress}, function(results, status) {
+                geocoder.geocode({'address': address}, function(results, status) {
 
                     // Set marker in the relevant location on the map
                     var marker = new google.maps.Marker({

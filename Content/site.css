@@ -361,7 +361,6 @@ canvas{
 
 .carousel-inner{
 	width:100%;
-	/*max-height: 450px !important;*/
 }
 
 .carousel-inner img{
@@ -383,8 +382,20 @@ canvas{
 	position: relative;
 }
 
-/*.CarouselImg img {*/
-/*width: auto;*/
-/*height: 400px !important;*/
-/*max-height: 400px !important;*/
-/*}*/
+.multipleColumnsRadius {
+	-webkit-column-count: 3; /* Chrome, Safari, Opera */
+	-moz-column-count: 3; /* Firefox */
+	column-count: 3;
+	-webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+	-moz-column-gap: 40px; /* Firefox */
+	column-gap: 40px;
+	-webkit-column-rule-style: solid; /* Chrome, Safari, Opera */
+	-moz-column-rule-style: solid; /* Firefox */
+	column-rule-style: solid;
+	border: 2px solid #a1a1a1;
+	padding: 10px 40px;
+	background: #dddddd;
+	/*width: 300px;*/
+	border-radius: 25px;
+}
+

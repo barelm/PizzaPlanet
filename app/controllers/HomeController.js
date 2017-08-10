@@ -10,7 +10,7 @@ app.controller('HomeController', function () {
     function init() {
 
         $('.carousel').carousel({
-            interval: 3000
+            interval: 5000
         })
     }
 });

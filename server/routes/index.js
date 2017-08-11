@@ -11,4 +11,9 @@ router.get('/', function(req, res) {
     res.send('Home page')
 });
 
+// Middleware for errors handling
+router.use(function(err, req, res, next) {
+    res.send(err);
+})
+
 module.exports = router;

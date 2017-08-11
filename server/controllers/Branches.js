@@ -2,33 +2,64 @@
  * Created by evronor on 09/08/2017.
  */
 
-exports.getAllBranches = function(req, res) {
-    var branches = [
-        {
-            id: 1, Name: 'The First', Region: 'צפון', City: 'ראשון לציון', IsKosher: false, Address: "אלי ויזל 2",
-            IsDisabledAccessible: true
-        },
-        {
-            id: 2, Name: 'The Second', Region: 'מרכז', City: 'רמת גן', IsKosher: true, Address: "בן גוריון 100",
-            IsDisabledAccessible: true
-        },
-        {
-            id: 3, Name: 'The First', Region: 'מרכז', City: 'פתח תקווה', IsKosher: true, Address: "דגל ראובן 40",
-            IsDisabledAccessible: false
-        }
-    ];
+var Branch = require("../models/Branch");
 
-    res.send(branches);
+exports.getAllBranches = function(req, res, next) {
+
+    // Get all branches
+    Branch.find({}, function(err, branches) {
+        if (err) return next(err);
+
+        // Send the fetched branches in the response
+        res.send(branches);
+    });
 };
 
-exports.createBranch = function(req, res) {
-    res.send("OK FROM SERVER");
+exports.createBranch = function(req, res, next) {
+
+    // Create a new branch
+    var newBranch = Branch({
+        id: 999,
+        Name: req.body.Name,
+        Region: req.body.Region,
+        City: req.body.City,
+        IsKosher: req.body.IsKosher,
+        Address: req.body.Address,
+        IsDisabledAccessible: req.body.IsDisabledAccessible
+    });
+
+    // Save the branch
+    newBranch.save(function(err) {
+        if (err) return next(err);
+
+        // We have created the branch
+        console.log('Branch created!');
+        res.send(newBranch.id.toString());
+    });
 };
 
-exports.updateBranch = function(req, res) {
-    res.send("OK FROM SERVER - id: " + req.params.id);
+exports.updateBranch = function(req, res, next) {
+
+    // Find the required branch by id
+    Branch.findOneAndUpdate({ id: req.params.id }, req.body, function(err, branch) {
+        if (err) return next(err);
+        if (!branch) return next(new Error("There is no branch with ID: " + req.params.id));
+
+        // We have updated the branch
+        console.log('Branch updated!');
+        res.send(req.params.id);
+    });
 };
 
-exports.deleteBranch = function(req, res) {
-    res.send("OK FROM SERVER - id: " + req.params.id);
+exports.deleteBranch = function(req, res, next) {
+
+    // Find the required branch by id
+    Branch.findOneAndRemove({ id: req.params.id }, function(err, branch) {
+        if (err) return next(err);
+        if (!branch) return next(new Error("There is no branch with ID: " + req.params.id));
+
+        // We have deleted the branch
+        console.log('Branch deleted!');
+        res.send(req.params.id);
+    });
 };

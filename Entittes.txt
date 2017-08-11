@@ -14,3 +14,13 @@ Employees - Id, Name, Sex, Role, Wage, City, Birthday, JoinDate
 post - אותה כתובת כמו GET עם JSON - יצירה.
 DELETE - /ID.
 PUT - /ID.
+
+
+
+
+db - user & password
+PizzaPlanet
+Aa123456
+
+db - url
+mongodb://PizzaPlanet:Aa123456@ds055812.mlab.com:55812/pizza_planet

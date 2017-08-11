@@ -41,7 +41,7 @@ exports.createProduct = function(req, res, next) {
 exports.updateProduct = function(req, res, next) {
 
     // Find the required product by id
-    Product.findOneAndUpdate({ id: req.params.id }, req.body, function(err, product) {
+    Product.findOneAndUpdate({ id: req.params.id }, req.body, { runValidators: true }, function(err, product) {
         if (err) return next(err);
         if (!product) return next(new Error("There is no product with ID: " + req.params.id));
 

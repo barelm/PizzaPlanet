@@ -13,7 +13,8 @@ router.get('/', function(req, res) {
 
 // Middleware for errors handling
 router.use(function(err, req, res, next) {
-    res.send(err);
+    console.log(err.stack);
+    res.status(500).send(err.message);
 })
 
 module.exports = router;

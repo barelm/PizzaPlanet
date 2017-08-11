@@ -6,6 +6,7 @@ var express = require('express'),
     router = express.Router();
 
 router.use('/Branches', require('./Branches'));
+router.use('/Products', require('./products'));
 
 router.get('/', function(req, res) {
     res.send('Home page')
@@ -15,6 +16,6 @@ router.get('/', function(req, res) {
 router.use(function(err, req, res, next) {
     console.log(err.stack);
     res.status(500).send(err.message);
-})
+});
 
 module.exports = router;

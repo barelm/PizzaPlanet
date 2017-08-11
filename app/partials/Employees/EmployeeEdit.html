@@ -1,59 +1,61 @@
-<form name="Form">
-    <div class="form-group">
-        <label>שם עובד:</label>
-        <input type="text" name="Name" data-ng-model="selEmployee.Name" class="form-control" placeholder="Name" required>
-        <!--<span style="color:red" ng-show="Form.Name.$dirty && Form.Name.$invalid">-->
-        <span style="color:red" ng-show="Form.Name.$error.required">חובה להזין שם סניף</span>
-    </div>
-    <div class="form-group">
-        <label>מין:</label>
-        <select name="Sex" ng-model="selEmployee.Sex" ng-options="x for x in sexValues" required></select>
-        <!--<input type="text" name="Sex" data-ng-model="newEmployee.Sex" class="form-control" placeholder="Sex" required>-->
-        <span style="color:red" ng-show="Form.Sex.$error.required">חובה להזין מין</span>
-    </div>
-    <div class="form-group">
-        <label>תפקיד:</label>
-        <select name="Role" ng-model="selEmployee.Role" ng-options="x for x in roleValues" required></select>
-        <!--<input type="text" name="Role" data-ng-model="newEmployee.Role" class="form-control" placeholder="Role" required>-->
-        <span style="color:red" ng-show="Form.Role.$error.required">חובה להזין תפקיד</span>
-    </div>
-    <div class="form-group">
-        <label>שכר:</label>
-        <input type="number" name="Wage" data-ng-model="selEmployee.Wage" class="form-control" placeholder="Wage"
-               min = "0" required>
-        <span style="color:red" ng-show="Form.Wage.$error.required">חובה להזין שכר</span>
-        <span style="color:red" ng-show="Form.Wage.$error.min">לא ניתן להזין שכר שלילי</span>
-        <span style="color:red" ng-show="Form.Wage.$error.number">נא להזין מספר</span>
+<div class="container mtb">
+    <form name="Form">
+        <div class="form-group">
+            <label>שם עובד:</label>
+            <input type="text" name="Name" data-ng-model="selEmployee.Name" class="form-control" placeholder="Name" required>
+            <!--<span style="color:red" ng-show="Form.Name.$dirty && Form.Name.$invalid">-->
+            <span style="color:red" ng-show="Form.Name.$error.required">חובה להזין שם סניף</span>
+        </div>
+        <div class="form-group">
+            <label>מין:</label>
+            <select name="Sex" ng-model="selEmployee.Sex" ng-options="x for x in sexValues" required></select>
+            <!--<input type="text" name="Sex" data-ng-model="newEmployee.Sex" class="form-control" placeholder="Sex" required>-->
+            <span style="color:red" ng-show="Form.Sex.$error.required">חובה להזין מין</span>
+        </div>
+        <div class="form-group">
+            <label>תפקיד:</label>
+            <select name="Role" ng-model="selEmployee.Role" ng-options="x for x in roleValues" required></select>
+            <!--<input type="text" name="Role" data-ng-model="newEmployee.Role" class="form-control" placeholder="Role" required>-->
+            <span style="color:red" ng-show="Form.Role.$error.required">חובה להזין תפקיד</span>
+        </div>
+        <div class="form-group">
+            <label>שכר:</label>
+            <input type="number" name="Wage" data-ng-model="selEmployee.Wage" class="form-control" placeholder="Wage"
+                   min = "0" required>
+            <span style="color:red" ng-show="Form.Wage.$error.required">חובה להזין שכר</span>
+            <span style="color:red" ng-show="Form.Wage.$error.min">לא ניתן להזין שכר שלילי</span>
+            <span style="color:red" ng-show="Form.Wage.$error.number">נא להזין מספר</span>
 
-    </div>
-    <div class="form-group">
-        <label>עיר:</label>
-        <input type="text" name="City" data-ng-model="selEmployee.City" class="form-control" placeholder="City"
-               required>
-        <span style="color:red" ng-show="Form.City.$error.required">חובה להזין עיר</span>
+        </div>
+        <div class="form-group">
+            <label>עיר:</label>
+            <input type="text" name="City" data-ng-model="selEmployee.City" class="form-control" placeholder="City"
+                   required>
+            <span style="color:red" ng-show="Form.City.$error.required">חובה להזין עיר</span>
 
-    </div>
-    <div class="form-group">
-        <label>תאריך לידה:</label>
-        <input type="date" name="Birthday" data-ng-model="selEmployee.Birthday" class="form-control"
-               max="{{maxDate | date:'yyyy-MM-dd'}}" required>
-        <span style="color:red" ng-show="Form.Birthday.$error.required">חובה להזין תאריך לידה</span>
-        <span style="color:red" ng-show="Form.Birthday.$error.date">תאריך לא תקין</span>
-        <span style="color:red" ng-show="Form.Birthday.$error.max">לא ניתן להזין תאריך עתידי</span>
+        </div>
+        <div class="form-group">
+            <label>תאריך לידה:</label>
+            <input type="date" name="Birthday" data-ng-model="selEmployee.Birthday" class="form-control"
+                   max="{{maxDate | date:'yyyy-MM-dd'}}" required>
+            <span style="color:red" ng-show="Form.Birthday.$error.required">חובה להזין תאריך לידה</span>
+            <span style="color:red" ng-show="Form.Birthday.$error.date">תאריך לא תקין</span>
+            <span style="color:red" ng-show="Form.Birthday.$error.max">לא ניתן להזין תאריך עתידי</span>
 
-    </div>
-    <div class="form-group">
-        <label>תאריך הצטרפות:</label>
-        <input type="date" name="JoinDate" data-ng-model="selEmployee.JoinDate" class="form-control"
-               max="{{maxDate | date:'yyyy-MM-dd'}}" required>
-        <span style="color:red" ng-show="Form.JoinDate.$error.required">חובה להזין תאריך הצטרפות</span>
-        <span style="color:red" ng-show="Form.JoinDate.$error.date">תאריך לא תקין</span>
-        <span style="color:red" ng-show="Form.JoinDate.$error.max">לא ניתן להזין תאריך עתידי</span>
+        </div>
+        <div class="form-group">
+            <label>תאריך הצטרפות:</label>
+            <input type="date" name="JoinDate" data-ng-model="selEmployee.JoinDate" class="form-control"
+                   max="{{maxDate | date:'yyyy-MM-dd'}}" required>
+            <span style="color:red" ng-show="Form.JoinDate.$error.required">חובה להזין תאריך הצטרפות</span>
+            <span style="color:red" ng-show="Form.JoinDate.$error.date">תאריך לא תקין</span>
+            <span style="color:red" ng-show="Form.JoinDate.$error.max">לא ניתן להזין תאריך עתידי</span>
 
-    </div>
-    <button id="submitEmployee" class="btn btn-default" type="button"
-            data-ng-disabled="!selEmployee.Name || !selEmployee.Sex || !selEmployee.Role || !selEmployee.Wage ||
-                              !selEmployee.City || !selEmployee.Birthday || !selEmployee.JoinDate"
-            data-ng-click="editEmployee()">עדכון פרטי עובד</button>
-    <a ng-href="#/employee">חזרה לרשימה</a>
-</form>
+        </div>
+        <button id="submitEmployee" class="btn btn-default" type="button"
+                data-ng-disabled="!selEmployee.Name || !selEmployee.Sex || !selEmployee.Role || !selEmployee.Wage ||
+                                  !selEmployee.City || !selEmployee.Birthday || !selEmployee.JoinDate"
+                data-ng-click="editEmployee()">עדכון פרטי עובד</button>
+        <a ng-href="#/employee">חזרה לרשימה</a>
+    </form>
+</div>

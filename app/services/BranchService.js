@@ -5,7 +5,7 @@
 //each doing the same thing just structuring the functions/data differently.
 app.service('BranchService', function ($http) {
 
-    this.branches = {};
+    this.branches = [];
 
     this.getBranches = function () {
 
@@ -21,72 +21,81 @@ app.service('BranchService', function ($http) {
     };
 
     this.insertBranch= function (branch) {
-
-        jsonBranch = JSON.stringify(branch);
+        var jsonBranch = JSON.stringify(branch);
 
         var url = 'http://localhost:3000' + '/Branches';
 
         return $http.post(url, jsonBranch)
             .then(function mySucces(response) {
+                this.insertBranchLocal(branch);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
             });
-        // var topID = branches.length + 1;
-        // branches.push({
-        //     id: topID,
-        //     Name: Name,
-        //     Region: Region,
-        //     City: City,
-        //     Address: Address,
-        //     IsKosher: IsKosher,
-        //     IsDisabledAccessible: IsDisabledAccessible
-        // });
     };
 
+    this.insertBranchLocal = function (branch) {
+        branches.push({
+            id: branch.id,
+            Name: branch.Name,
+            Region: branch.Region,
+            City: branch.City,
+            Address: branch.Address,
+            IsKosher: branch.IsKosher,
+            IsDisabledAccessible: branch.IsDisabledAccessible
+        });
+    }
+
     this.deleteBranch = function (id) {
-        // for (var i = branches.length - 1; i >= 0; i--) {
-        //     if (branches[i].id === id) {
-        //         branches.splice(i, 1);
-        //         break;
-        //     }
-        // }
         var url = 'http://localhost:3000' + '/Branches/' + id;
 
         return $http.delete(url)
             .then(function mySucces(response) {
+                this.deleteBranchLocal(id);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
             });
     };
 
+    this.deleteBranchLocal = function (id) {
+        for (var i = branches.length - 1; i >= 0; i--) {
+            if (branches[i].id === id) {
+                branches.splice(i, 1);
+                break;
+            }
+        }
+    }
+
     this.getBranch = function (id) {
-        for (var i = 0; i < this.branches.length; i++) {
-            if (this.branches[i].id === id) {
-                return this.branches[i];
+        for (var i = 0; i < branches.length; i++) {
+            if (branches[i].id === id) {
+                return branches[i];
             }
         }
         return null;
     };
 
     this.editBranch = function (branch) {
-        // for (var i = branches.length - 1; i >= 0; i--) {
-        //     if (branches[i].id === branch.id) {
-        //         branches[i] = branch;
-        //     }
-        // }
-
-        jsonBranch = JSON.stringify(branch);
+        var jsonBranch = JSON.stringify(branch);
 
         var url = 'http://localhost:3000' + '/Branches/' + branch.id;
 
         return $http.put(url, jsonBranch)
-            .then(function mySucces(response) {
+            .then(function mySuccess(response) {
+                this.editBranchLocal(branch)
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
             });
+    }
+
+    this.editBranchLocal = function (branch) {
+        for (var i = branches.length - 1; i >= 0; i--) {
+            if (branches[i].id === branch.id) {
+                branches[i] = branch;
+            }
+        }
     }
 
     this.getRegionValues = function () {

@@ -9,7 +9,11 @@ app.controller('ProductController', function ($scope, $http, ProductService) {
     init();
 
     function init() {
-        $scope.products = ProductService.getProducts();
+        ProductService.getProducts().then(function mySuccess(response) {
+            $scope.products = response;
+        }, function myError(error) {
+
+        })
 
         // Get USD value rate.
         $http({
@@ -38,8 +42,6 @@ app.controller('ProductCreateController', function ($scope, $routeParams ,$locat
     init();
 
     function init() {
-        //$scope.sexValues = ProductService.getSexValues();
-        //$scope.roleValues = ProductService.getRoleValues();
     }
 
     $scope.insertProduct = function () {
@@ -50,21 +52,24 @@ app.controller('ProductCreateController', function ($scope, $routeParams ,$locat
         var Cost         = $scope.newProduct.Cost;
         var IsKosher     = $scope.newProduct.IsKosher;
         var IsVegetarian = $scope.newProduct.IsVegetarian;
-        var IsVegen      = $scope.newProduct.IsVegan;
+        var IsVegan      = $scope.newProduct.IsVegan;
 
         // Add new customer
-        ProductService.insertProduct(Name, Description, Cost, IsKosher, IsKosher, IsVegetarian, IsVegan);
+        ProductService.insertProduct($scope.newProduct).then(function mySuccess(response) {
+            // Clear fields.
+            $scope.newProduct.Name         = '';
+            $scope.newProduct.Description  = '';
+            $scope.newProduct.Cost         = '';
+            $scope.newProduct.IsKosher     = '';
+            $scope.newProduct.IsVegetarian = '';
+            $scope.newProduct.IsVegan      = '';
 
-        // Clear fields.
-        $scope.newProduct.Name         = '';
-        $scope.newProduct.Description  = '';
-        $scope.newProduct.Cost         = '';
-        $scope.newProduct.IsKosher     = '';
-        $scope.newProduct.IsVegetarian = '';
-        $scope.newProduct.IsVegan      = '';
+            // Return to Products list view
+            $location.path('/product')
 
-        // Return to Products list view
-        $location.path('/product')
+        }, function myError(error) {
+
+        })
     }
 });
 
@@ -94,10 +99,12 @@ app.controller('ProductDeleteController', function ($scope, $routeParams ,$locat
     }
 
     $scope.deleteProduct = function () {
-        ProductService.deleteProduct($scope.selProduct.id);
+        ProductService.deleteProduct($scope.selProduct.id).then(function mySuccess(response) {
+            // Return to Products list view
+            $location.path('/product')
+        }, function myError(error) {
 
-        // Return to Products list view
-        $location.path('/product')
+        })
     };
 });
 
@@ -117,11 +124,13 @@ app.controller('ProductEditController', function ($scope, $routeParams ,$locatio
     }
 
     $scope.editProduct = function(){
-        ProductService.editProduct($scope.selProduct);
+        ProductService.editProduct($scope.selProduct).then(function mySuccess(response) {
+            $scope.editProduct = {};
 
-        $scope.editProduct = {};
+            // Return to Products list view
+            $location.path('/product')
+        }, function myError(error) {
 
-        // Return to Products list view
-        $location.path('/product')
+        })
     }
 });

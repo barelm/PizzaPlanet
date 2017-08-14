@@ -9,10 +9,11 @@ app.controller('BranchController', function ($scope, $http, BranchService) {
     init();
 
     function init() {
-        BranchService.getBranches().then(function(response) {
+        BranchService.getBranches().then(function mySuccess(response) {
             $scope.branches = response;
+        }, function myError(error) {
+
         })
-        //$scope.branches = BranchService.getBranches();
     }
 
     $scope.resetSearch = function () {
@@ -42,18 +43,20 @@ app.controller('BranchCreateController', function ($scope, $routeParams ,$locati
         // var IsDisabledAccessible = $scope.newBranch.IsDisabledAccessible;
 
         // Add new customer
-        BranchService.insertBranch($scope.newBranch);
+        BranchService.insertBranch($scope.newBranch).then(function mySuccess(response) {
+            // Clear fields.
+            $scope.newBranch.Name                 = '';
+            $scope.newBranch.Region               = '';
+            $scope.newBranch.City                 = '';
+            $scope.newBranch.Address              = '';
+            $scope.newBranch.IsKosher             = '';
+            $scope.newBranch.IsDisabledAccessible = '';
 
-        // Clear fields.
-        $scope.newBranch.Name                 = '';
-        $scope.newBranch.Region               = '';
-        $scope.newBranch.City                 = '';
-        $scope.newBranch.Address              = '';
-        $scope.newBranch.IsKosher             = '';
-        $scope.newBranch.IsDisabledAccessible = '';
+            // Return to branches list view
+            $location.path('/branch')
+        }, function myError(error) {
 
-        // Return to branches list view
-        $location.path('/branch')
+        })
     }
 });
 
@@ -83,10 +86,12 @@ app.controller('BranchDeleteController', function ($scope, $routeParams ,$locati
     }
 
     $scope.deleteBranch = function () {
-        BranchService.deleteBranch($scope.selBranch.id);
+        BranchService.deleteBranch($scope.selBranch.id).then(function mySuccess(response) {
+            // Return to branches list view
+            $location.path('/branch')
+        }, function myError(error) {
 
-        // Return to branches list view
-        $location.path('/branch')
+        })
     };
 });
 
@@ -105,12 +110,16 @@ app.controller('BranchEditController', function ($scope, $routeParams ,$location
     }
 
     $scope.editBranch = function(){
-        BranchService.editBranch($scope.selBranch);
+        BranchService.editBranch($scope.selBranch).then(function mySuccess(response) {
 
-        $scope.editBranch = {};
+            $scope.editBranch = {};
 
-        // Return to branches list view
-        $location.path('/branch')
+            // Return to branches list view
+            $location.path('/branch')
+        }, function myError(error) {
+
+        })
+
     }
 });
 
@@ -121,8 +130,10 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
     init();
 
     function init() {
-        BranchService.getBranches().then(function(response) {
+        BranchService.getBranches().then(function mySuccess(response) {
             $scope.branches = response;
+        }, function myError(error){
+
         })
 
         var script = document.createElement('script');

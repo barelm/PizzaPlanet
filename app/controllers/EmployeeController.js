@@ -9,7 +9,11 @@ app.controller('EmployeeController', function ($scope, EmployeeService) {
     init();
 
     function init() {
-        $scope.employees = EmployeeService.getEmployees();
+        EmployeeService.getEmployees().then(function mySuccess(response) {
+            $scope.employees = response;
+        }, function myError(error) {
+
+        })
     }
 });
 
@@ -28,28 +32,30 @@ app.controller('EmployeeCreateController', function ($scope, $routeParams ,$loca
     $scope.insertEmployee = function () {
 
         // Get fields value.
-        var Name     = $scope.newEmployee.Name;
-        var Sex      = $scope.newEmployee.Sex;
-        var Role     = $scope.newEmployee.Role;
-        var Wage     = $scope.newEmployee.Wage;
-        var City     = $scope.newEmployee.City;
-        var Birthday = $scope.newEmployee.Birthday;
-        var JoinDate = $scope.newEmployee.JoinDate;
+        // var Name     = $scope.newEmployee.Name;
+        // var Sex      = $scope.newEmployee.Sex;
+        // var Role     = $scope.newEmployee.Role;
+        // var Wage     = $scope.newEmployee.Wage;
+        // var City     = $scope.newEmployee.City;
+        // var Birthday = $scope.newEmployee.Birthday;
+        // var JoinDate = $scope.newEmployee.JoinDate;
 
-        // Add new customer
-        EmployeeService.insertEmployee(Name, Sex, Role, Wage, City, Birthday, JoinDate);
+        EmployeeService.insertEmployee($scope.newEmployee).then(function mySuccess(response) {
+            // Clear fields.
+            $scope.newEmployee.Name     = '';
+            $scope.newEmployee.Sex      = '';
+            $scope.newEmployee.Role     = '';
+            $scope.newEmployee.Wage     = '';
+            $scope.newEmployee.City     = '';
+            $scope.newEmployee.Birthday = '';
+            $scope.newEmployee.JoinDate = '';
 
-        // Clear fields.
-        $scope.newEmployee.Name     = '';
-        $scope.newEmployee.Sex      = '';
-        $scope.newEmployee.Role     = '';
-        $scope.newEmployee.Wage     = '';
-        $scope.newEmployee.City     = '';
-        $scope.newEmployee.Birthday = '';
-        $scope.newEmployee.JoinDate = '';
+            // Return to Employees list view
+            $location.path('/employee')
 
-        // Return to Employees list view
-        $location.path('/employee')
+        }, function myError(error) {
+
+        })
     }
 });
 
@@ -79,10 +85,12 @@ app.controller('EmployeeDeleteController', function ($scope, $routeParams ,$loca
     }
 
     $scope.deleteEmployee = function () {
-        EmployeeService.deleteEmployee($scope.selEmployee.id);
 
-        // Return to Employees list view
-        $location.path('/employee')
+        EmployeeService.deleteEmployee($scope.selEmployee.id).then(function mySuccess(response) {
+            $location.path('/employee')
+        }, function myError(error) {
+
+        })
     };
 });
 
@@ -102,11 +110,13 @@ app.controller('EmployeeEditController', function ($scope, $routeParams ,$locati
     }
 
     $scope.editEmployee = function(){
-        EmployeeService.editEmployee($scope.selEmployee);
+        EmployeeService.editEmployee($scope.selEmployee).then(function mySuccess(response) {
+            $scope.editEmployee = {};
 
-        $scope.editEmployee = {};
+            // Return to Employees list view
+            $location.path('/employee')
+        }, function myError(error) {
 
-        // Return to Employees list view
-        $location.path('/employee')
+        })
     }
 });

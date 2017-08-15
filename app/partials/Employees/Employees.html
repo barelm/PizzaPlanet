@@ -39,13 +39,10 @@
                 {{ employee.City }}
             </td>
             <td>
-                <p ng-bind="employee.Birthday | date:'dd/MM/yyyy'"></p>
-                <!--<input type="date" ng-model="employee.Birthday" disabled="disabled">-->
+                <span ng-bind="employee.Birthday | date:'dd/MM/yyyy'"></span>
             </td>
             <td>
-                <p ng-bind="employee.Birthday | date:'dd/MM/yyyy'"></p>
-
-                <!--<input type="date" ng-model="employee.JoinDate" disabled="disabled">-->
+                <span ng-bind="employee.Birthday | date:'dd/MM/yyyy'"></span>
             </td>
             <td>
                 <a ng-href="#/employee/{{employee.id}}">פרטים</a> |

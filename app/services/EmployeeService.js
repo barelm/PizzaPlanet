@@ -39,7 +39,7 @@ app.service('EmployeeService', function ($http) {
 
         return $http.post(url, jsonEmployee)
             .then(function mySuccess(response) {
-                self.insertEmployeeLocal(response.data);
+                // self.insertEmployeeLocal(response.data);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -64,7 +64,7 @@ app.service('EmployeeService', function ($http) {
 
         return $http.delete(url)
             .then(function mySuccess(response) {
-                self.deleteEmployeeLocal(id);
+                // self.deleteEmployeeLocal(id);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -92,11 +92,11 @@ app.service('EmployeeService', function ($http) {
     this.editEmployee = function (employee) {
         var jsonEmployee = JSON.stringify(angular.copy(employee));
 
-        var url = SERVER_URL + '/Employees/' + employee.id;
+        var url = SERVER_URL + '/Employees/' + employee._id;
 
         return $http.put(url, jsonEmployee)
             .then(function mySuccess(response) {
-                self.editEmployeeLocal(employee);
+                // self.editEmployeeLocal(employee);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -105,7 +105,7 @@ app.service('EmployeeService', function ($http) {
 
     this.editEmployeeLocal = function (employee) {
         for (var i = this.employees.length - 1; i >= 0; i--) {
-            if (this.employees[i].id === employee.id) {
+            if (this.employees[i]._id === employee.id) {
                 this.employees[i] = employee;
             }
         }

@@ -24,7 +24,7 @@ exports.createProduct = function(req, res, next) {
         Cost: req.body.Cost,
         IsKosher: req.body.IsKosher,
         IsVegetarian: req.body.IsVegetarian,
-        IsVegen: req.body.IsVegen
+        IsVegan: req.body.IsVegan
     });
 
     // Save the product

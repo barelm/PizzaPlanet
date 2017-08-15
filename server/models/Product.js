@@ -8,7 +8,7 @@ var productSchema = new Schema({
     Cost: {type: Number, required: true, min: 0},
     IsKosher: Boolean,
     IsVegetarian: Boolean,
-    IsVegen: Boolean
+    IsVegan: Boolean
 });
 
 // the schema is useless so far

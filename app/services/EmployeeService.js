@@ -92,7 +92,7 @@ app.service('EmployeeService', function ($http) {
     this.editEmployee = function (employee) {
         var jsonEmployee = JSON.stringify(angular.copy(employee));
 
-        var url = SERVER_URL + '/Employees/' + employee.id;
+        var url = SERVER_URL + '/Employees/' + employee._id;
 
         return $http.put(url, jsonEmployee)
             .then(function mySuccess(response) {
@@ -105,7 +105,7 @@ app.service('EmployeeService', function ($http) {
 
     this.editEmployeeLocal = function (employee) {
         for (var i = this.employees.length - 1; i >= 0; i--) {
-            if (this.employees[i].id === employee.id) {
+            if (this.employees[i]._id === employee.id) {
                 this.employees[i] = employee;
             }
         }

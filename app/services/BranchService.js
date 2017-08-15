@@ -10,7 +10,7 @@ app.service('BranchService', function ($http) {
 
     this.getBranches = function () {
 
-        var url = 'http://localhost:3000' + '/Branches';
+        var url = SERVER_URL + '/Branches';
 
         return $http.get(url)
         .then(function mySucces(response) {
@@ -24,7 +24,7 @@ app.service('BranchService', function ($http) {
     this.insertBranch= function (branch) {
         var jsonBranch = JSON.stringify(branch);
 
-        var url = 'http://localhost:3000' + '/Branches';
+        var url = SERVER_URL + '/Branches';
 
         return $http.post(url, jsonBranch)
             .then(function mySucces(response) {
@@ -48,7 +48,7 @@ app.service('BranchService', function ($http) {
     }
 
     this.deleteBranch = function (id) {
-        var url = 'http://localhost:3000' + '/Branches/' + id;
+        var url = SERVER_URL + '/Branches/' + id;
 
         return $http.delete(url)
             .then(function mySucces(response) {
@@ -80,7 +80,7 @@ app.service('BranchService', function ($http) {
     this.editBranch = function (branch) {
         var jsonBranch = JSON.stringify(angular.copy(branch));
 
-        var url = 'http://localhost:3000' + '/Branches/' + branch.id;
+        var url = SERVER_URL + '/Branches/' + branch.id;
 
         return $http.put(url, jsonBranch)
             .then(function mySuccess(response) {

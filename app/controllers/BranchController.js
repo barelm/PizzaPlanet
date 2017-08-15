@@ -26,7 +26,6 @@ app.controller('BranchController', function ($scope, $http, BranchService) {
     }
 
     $scope.propertyName = 'Name';
-    $scope.reverse = true;
 
     $scope.sortBy = function(propertyName) {
         $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
@@ -229,6 +228,13 @@ app.controller('BranchByRegionController', function ($scope, $http, BranchServic
                 Region: 'דרום', BranchNumber: 25546
             }
         ];
+
+        $scope.propertyName = 'Region';
+
+        $scope.sortBy = function(propertyName) {
+            $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+            $scope.propertyName = propertyName;
+        };
 
         // BranchService.getBranchesByRegion().then(function mySuccess(response) {
         //     $scope.branchesByRegion = response;

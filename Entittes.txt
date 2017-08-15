@@ -24,3 +24,15 @@ Aa123456
 
 db - url
 mongodb://PizzaPlanet:Aa123456@ds055812.mlab.com:55812/pizza_planet
+
+
+
+
+
+
+    var request = require('request');
+    request({ uri: 'http://api.fixer.io/latest?base=ILS&symbols=USD', json: true }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body.rates['USD']);
+        }
+    });

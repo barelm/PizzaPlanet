@@ -6,8 +6,18 @@ var Employee = require("../models/Employee");
 
 exports.getAllEmployees = function(req, res, next) {
 
-    // Get all employees
-    Employee.find({}, function(err, employees) {
+    // // Get all employees
+    // Employee.find({}, function(err, employees) {
+    //     if (err) return next(err);
+    //
+    //     // Send the fetched employees in the response
+    //     res.send(employees);
+    // });
+
+
+
+
+    Employee.find({}).populate('BranchId').exec(function(err, employees) {
         if (err) return next(err);
 
         // Send the fetched employees in the response
@@ -22,6 +32,7 @@ exports.createEmployee = function(req, res, next) {
         Name: req.body.Name,
         Sex: req.body.Sex,
         Role: req.body.Role,
+        BranchId: req.body.BranchId,
         Wage: req.body.Wage,
         City: req.body.City,
         Birthday: req.body.Birthday,

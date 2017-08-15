@@ -15,6 +15,11 @@ exports.getAllBranches = function(req, res, next) {
     });
 };
 
+exports.refreshBranches = function() {
+    // Get all branches and return promise
+    return Branch.find({}).exec();
+};
+
 exports.createBranch = function(req, res, next) {
 
     // Create a new branch

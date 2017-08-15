@@ -35,7 +35,6 @@ app.controller('BranchController', function ($scope, $http, BranchService) {
 
     var socket = io.connect(SERVER_URL);
     socket.on('refreshBranches', function (data) {
-        console.log(data);
         $scope.$apply(function() {
             $scope.branches = data;
         });

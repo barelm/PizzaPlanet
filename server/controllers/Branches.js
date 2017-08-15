@@ -19,7 +19,6 @@ exports.createBranch = function(req, res, next) {
 
     // Create a new branch
     var newBranch = Branch({
-        id: 999,
         Name: req.body.Name,
         Region: req.body.Region,
         City: req.body.City,

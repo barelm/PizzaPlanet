@@ -67,7 +67,7 @@ app.controller('EmployeeDetailsController', function ($scope, $routeParams, Empl
     init();
 
     function init() {
-        var employeeID = ($routeParams.employeeID) ? parseInt($routeParams.employeeID) : 0;
+        var employeeID = ($routeParams.employeeID) ? ($routeParams.employeeID) : 0;
         $scope.selEmployee = EmployeeService.getEmployee(employeeID);
     }
 });
@@ -80,13 +80,13 @@ app.controller('EmployeeDeleteController', function ($scope, $routeParams ,$loca
     init();
 
     function init() {
-        var employeeID = ($routeParams.employeeID) ? parseInt($routeParams.employeeID) : 0;
+        var employeeID = ($routeParams.employeeID) ? ($routeParams.employeeID) : 0;
         $scope.selEmployee = EmployeeService.getEmployee(employeeID);
     }
 
     $scope.deleteEmployee = function () {
 
-        EmployeeService.deleteEmployee($scope.selEmployee.id).then(function mySuccess(response) {
+        EmployeeService.deleteEmployee($scope.selEmployee._id).then(function mySuccess(response) {
             $location.path('/employee')
         }, function myError(error) {
 
@@ -102,7 +102,7 @@ app.controller('EmployeeEditController', function ($scope, $routeParams ,$locati
     init();
 
     function init() {
-        var employeeID = ($routeParams.employeeID) ? parseInt($routeParams.employeeID) : 0;
+        var employeeID = ($routeParams.employeeID) ? ($routeParams.employeeID) : 0;
         $scope.selEmployee = EmployeeService.getEmployee(employeeID);
 
         $scope.sexValues = EmployeeService.getSexValues();

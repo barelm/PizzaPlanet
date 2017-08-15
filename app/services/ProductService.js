@@ -9,7 +9,7 @@ app.service('ProductService', function ($http) {
     var self = this;
 
     this.getProducts = function () {
-        var url = 'http://localhost:3000' + '/Products';
+        var url = SERVER_URL + '/Products';
         return $http.get(url)
             .then(function mySuccess(response) {
                 self.products = response.data;
@@ -23,7 +23,7 @@ app.service('ProductService', function ($http) {
     this.insertProduct= function (product) {
         var jsonProduct = JSON.stringify(product);
 
-        var url = 'http://localhost:3000' + '/Products';
+        var url = SERVER_URL + '/Products';
 
         return $http.post(url, jsonProduct)
             .then(function mySuccess(response) {
@@ -47,7 +47,7 @@ app.service('ProductService', function ($http) {
     };
 
     this.deleteProduct = function (id) {
-        var url = 'http://localhost:3000' + '/Products/' + id;
+        var url = SERVER_URL + '/Products/' + id;
 
         return $http.delete(url)
             .then(function mySuccess(response) {
@@ -80,7 +80,7 @@ app.service('ProductService', function ($http) {
     this.editProduct = function (product) {
         var jsonProduct = JSON.stringify(product);
 
-        var url = 'http://localhost:3000' + '/Products/' + product.id;
+        var url = SERVER_URL + '/Products/' + product.id;
 
         return $http.put(url, jsonProduct)
             .then(function mySuccess(response) {

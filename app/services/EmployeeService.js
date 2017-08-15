@@ -10,7 +10,7 @@ app.service('EmployeeService', function ($http) {
 
     this.getEmployees = function () {
 
-        var url = 'http://localhost:3000' + '/Employees';
+        var url = SERVER_URL + '/Employees';
         return $http.get(url)
             .then(function mySuccess(response) {
                 self.employees = self.mongoToAngularDate(response.data)
@@ -35,7 +35,7 @@ app.service('EmployeeService', function ($http) {
     this.insertEmployee= function (employee) {
         var jsonEmployee = JSON.stringify(employee);
 
-        var url = 'http://localhost:3000' + '/Employees';
+        var url = SERVER_URL + '/Employees';
 
         return $http.post(url, jsonEmployee)
             .then(function mySuccess(response) {
@@ -60,7 +60,7 @@ app.service('EmployeeService', function ($http) {
     }
 
     this.deleteEmployee = function (id) {
-        var url = 'http://localhost:3000' + '/Employees/' + id;
+        var url = SERVER_URL + '/Employees/' + id;
 
         return $http.delete(url)
             .then(function mySuccess(response) {
@@ -82,7 +82,7 @@ app.service('EmployeeService', function ($http) {
 
     this.getEmployee = function (id) {
         for (var i = 0; i < this.employees.length; i++) {
-            if (this.employees[i].id === id) {
+            if (this.employees[i]._id === id) {
                 return this.employees[i];
             }
         }
@@ -92,7 +92,7 @@ app.service('EmployeeService', function ($http) {
     this.editEmployee = function (employee) {
         var jsonEmployee = JSON.stringify(employee);
 
-        var url = 'http://localhost:3000' + '/Employees/' + employee.id;
+        var url = SERVER_URL + '/Employees/' + employee.id;
 
         return $http.put(url, jsonEmployee)
             .then(function mySuccess(response) {

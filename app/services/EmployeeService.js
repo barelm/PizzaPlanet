@@ -90,7 +90,7 @@ app.service('EmployeeService', function ($http) {
     };
 
     this.editEmployee = function (employee) {
-        var jsonEmployee = JSON.stringify(employee);
+        var jsonEmployee = JSON.stringify(angular.copy(employee));
 
         var url = SERVER_URL + '/Employees/' + employee.id;
 

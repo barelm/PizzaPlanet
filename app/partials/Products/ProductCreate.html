@@ -2,40 +2,44 @@
     <form name="Form">
         <div class="form-group">
             <label>שם מוצר:</label>
-            <input type="text" name="Name" data-ng-model="newProduct.Name" class="form-control" placeholder="Name" required>
-            <!--<span style="color:red" ng-show="Form.Name.$dirty && Form.Name.$invalid">-->
-            <span style="color:red" ng-show="Form.Name.$error.required">חובה להזין שם מוצר</span>
+            <div class="form-inline">
+                <input type="text" name="Name" data-ng-model="newProduct.Name" class="form-control" required>
+                <span style="color:red" ng-show="Form.Name.$error.required">חובה להזין שם מוצר</span>
+            </div>
         </div>
         <div class="form-group">
             <label>תיאור:</label>
-            <input type="text" name="Description" ng-model="newProduct.Description" class="form-control" placeholder="Name"
-                   required>
-            <!--<input type="text" name="Sex" data-ng-model="newProduct.Sex" class="form-control" placeholder="Sex" required>-->
-            <span style="color:red" ng-show="Form.Description.$error.required">חובה להזין תיאור</span>
+            <div class="form-inline">
+                <input type="text" name="Description" ng-model="newProduct.Description" class="form-control" required>
+                <span style="color:red" ng-show="Form.Description.$error.required">חובה להזין תיאור</span>
+            </div>
         </div>
         <div class="form-group">
             <label>מחיר:</label>
-            <input type="number" name="Cost" ng-model="newProduct.Cost" class="form-control" placeholder="Cost"
-                   min="1" required>
-            <span style="color:red" ng-show="Form.Cost.$error.required">חובה להזין מחיר</span>
-            <span style="color:red" ng-show="Form.Cost.$error.min">נא להזין מחיר גדול מ0</span>
-            <span style="color:red" ng-show="Form.Cost.$error.number">נא להזין מספר</span>
+            <div class="form-inline">
+                <input type="number" name="Cost" ng-model="newProduct.Cost" class="form-control" min="1" required>
+                <span style="color:red" ng-show="Form.Cost.$error.required">חובה להזין מחיר</span>
+                <span style="color:red" ng-show="Form.Cost.$error.min">נא להזין מחיר גדול מ0</span>
+                <span style="color:red" ng-show="Form.Cost.$error.number">נא להזין מספר</span>
+            </div>
         </div>
-        <div class="form-group">
-            <label>האם כשר?</label>
-            <input type="checkbox" name="IsKosher" data-ng-model="newProduct.IsKosher" class="form-control">
+        <div class="checkbox">
+            <input type="checkbox" name="IsKosher" data-ng-model="newProduct.IsKosher">
+            <label class="cbLabel">האם כשר?</label>
         </div>
-        <div class="form-group">
-            <label>האם צמחוני?</label>
-            <input type="checkbox" name="IsVegetarian" data-ng-model="newProduct.IsVegetarian" class="form-control">
+        <div class="checkbox">
+            <input type="checkbox" name="IsVegetarian" data-ng-model="newProduct.IsVegetarian">
+            <label class="cbLabel">האם צמחוני?</label>
         </div>
-        <div class="form-group">
-            <label>האם טבעוני?</label>
-            <input type="checkbox" name="IsVegan" data-ng-model="newProduct.IsVegan" class="form-control">
+        <div class="checkbox">
+            <input type="checkbox" name="IsVegan" data-ng-model="newProduct.IsVegan">
+            <label class="cbLabel">האם טבעוני?</label>
         </div>
+        <br>
         <button id="submitProduct" class="btn btn-default" type="button"
                 data-ng-disabled="!newProduct.Name || !newProduct.Description || !newProduct.Cost"
                 data-ng-click="insertProduct()">הוספת מוצר</button>
+        &nbsp;
         <a ng-href="#/product">חזרה לרשימה</a>
     </form>
 </div>

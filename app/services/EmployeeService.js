@@ -39,7 +39,7 @@ app.service('EmployeeService', function ($http) {
 
         return $http.post(url, jsonEmployee)
             .then(function mySuccess(response) {
-                self.insertEmployeeLocal(response.data);
+                // self.insertEmployeeLocal(response.data);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -64,7 +64,7 @@ app.service('EmployeeService', function ($http) {
 
         return $http.delete(url)
             .then(function mySuccess(response) {
-                self.deleteEmployeeLocal(id);
+                // self.deleteEmployeeLocal(id);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -96,7 +96,7 @@ app.service('EmployeeService', function ($http) {
 
         return $http.put(url, jsonEmployee)
             .then(function mySuccess(response) {
-                self.editEmployeeLocal(employee);
+                // self.editEmployeeLocal(employee);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?

@@ -407,3 +407,11 @@ canvas{
 	border-radius: 25px;
 }
 
+.cbLabel {
+	margin-right: 25px;
+	font-weight: bold !important;
+}
+
+.form-group input {
+	width: 25%;
+}

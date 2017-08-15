@@ -24,6 +24,14 @@ app.controller('BranchController', function ($scope, $http, BranchService) {
         $scope.branchSearch.IsKosher = "";
         $scope.branchSearch.IsDisabledAccessible = "";
     }
+
+    $scope.propertyName = 'Name';
+    $scope.reverse = true;
+
+    $scope.sortBy = function(propertyName) {
+        $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+        $scope.propertyName = propertyName;
+    };
 });
 
 app.controller('BranchCreateController', function ($scope, $routeParams ,$location, BranchService) {
@@ -199,5 +207,33 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
         }
 
         document.body.appendChild(script);
+    }
+});
+
+app.controller('BranchByRegionController', function ($scope, $http, BranchService) {
+
+    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
+    //one place...not required though especially in the simple example below
+    init();
+
+    function init() {
+
+        $scope.branchesByRegion = [
+            {
+                Region: 'צפון', BranchNumber: 3
+            },
+            {
+                Region: 'מרכז', BranchNumber: 7
+            },
+            {
+                Region: 'דרום', BranchNumber: 25546
+            }
+        ];
+
+        // BranchService.getBranchesByRegion().then(function mySuccess(response) {
+        //     $scope.branchesByRegion = response;
+        // }, function myError(error) {
+        //
+        // })
     }
 });

@@ -1,0 +1,25 @@
+<div class="container mtb">
+    <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+        <thead>
+        <tr>
+            <th data-ng-click="setOrder('Region')">איזור</th>
+            <th data-ng-click="setOrder('BranchNumber')">מס' סניפים</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-hide="branchesByRegion.length > 0" class="error">
+            <td colspan="2">
+                <div class="text-center"><strong>לא נמצאו סניפים</strong></div>
+            </td>
+        </tr>
+        <tr data-ng-repeat="branchRegion in branchesByRegion | orderBy:orderby:reverse">
+            <td>
+                {{ branchRegion.Region }}
+            </td>
+            <td>
+                {{ branchRegion.BranchNumber }}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -52,6 +52,12 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller: 'BranchMapController',
                 templateUrl: 'app/partials/Branches/BranchMap.html'
             })
+        .when('/branchByRegion',
+            {
+                title: 'סניפים לפי איזורים',
+                controller: 'BranchByRegionController',
+                templateUrl: 'app/partials/Branches/BranchByRegion.html'
+            })
         .when('/branch/:branchID',
             {
                 title: 'צפייה בסניף',

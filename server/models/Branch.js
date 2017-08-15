@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var branchSchema = new Schema({
     id: {type: Number, required: true, unique: true},
     Name: {type: String, required: true},
-    Region: {type: String, required: true},
+    Region: {type: String, required: true, enum: ["מרכז", "צפון", "דרום"]},
     City: {type: String, required: true},
     IsKosher: Boolean,
     Address: {type: String, required: true},

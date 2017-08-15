@@ -2,38 +2,45 @@
     <form name="Form">
         <div class="form-group">
             <label>שם סניף:</label>
-            <input type="text" name="Name" data-ng-model="selBranch.Name" class="form-control" placeholder="Name" required>
-            <!--<span style="color:red" ng-show="Form.Name.$dirty && Form.Name.$invalid">-->
-            <span style="color:red" ng-show="Form.Name.$error.required">חובה להזין שם סניף</span>
+            <div class="form-inline">
+                <input type="text" name="Name" data-ng-model="selBranch.Name" class="form-control" required>
+                <span style="color:red" ng-show="Form.Name.$error.required">חובה להזין שם סניף</span>
+            </div>
         </div>
         <div class="form-group">
             <label>אזור:</label>
-            <select name="Region" ng-model="selBranch.Region" ng-options="x for x in regionValues" required></select>
-            <!--<input type="text" name="Region" data-ng-model="newBranch.Region" class="form-control" placeholder="Region" required>-->
-            <span style="color:red" ng-show="Form.Region.$error.required">חובה להזין אזור</span>
+            <div class="form-inline">
+                <select name="Region" ng-model="selBranch.Region" ng-options="x for x in regionValues" required></select>
+                <span style="color:red" ng-show="Form.Region.$error.required">חובה להזין אזור</span>
+            </div>
         </div>
         <div class="form-group">
             <label>עיר:</label>
-            <input type="text" name="City" data-ng-model="selBranch.City" class="form-control" placeholder="City" required>
-            <span style="color:red" ng-show="Form.City.$error.required">חובה להזין עיר</span>
+            <div class="form-inline">
+                <input type="text" name="City" data-ng-model="selBranch.City" class="form-control" required>
+                <span style="color:red" ng-show="Form.City.$error.required">חובה להזין עיר</span>
+            </div>
         </div>
         <div class="form-group">
             <label>כתובת:</label>
-            <input type="text" name="Address" data-ng-model="selBranch.Address" class="form-control" placeholder="Address" required>
-            <span style="color:red" ng-show="Form.Address.$error.required">חובה להזין כתובת</span>
+            <div class="form-inline">
+                <input type="text" name="Address" data-ng-model="selBranch.Address" class="form-control" required>
+                <span style="color:red" ng-show="Form.Address.$error.required">חובה להזין כתובת</span>
+            </div>
         </div>
-        <div class="form-group">
-            <label>האם כשר?</label>
-            <input type="checkbox" name="IsKosher" data-ng-model="selBranch.IsKosher" class="form-control" placeholder="IsKosher">
+        <div class="checkbox">
+            <input type="checkbox" name="IsKosher" data-ng-model="selBranch.IsKosher">
+            <label class="cbLabel">האם כשר?</label>
         </div>
-        <div class="form-group">
-            <label>האם נגיש לנכים?</label>
-            <input type="checkbox" name="IsDisabledAccessible" data-ng-model="selBranch.IsDisabledAccessible" class="form-control"
-                   placeholder="IsDisabledAccessible">
+        <div class="checkbox">
+            <input type="checkbox" name="IsDisabledAccessible" data-ng-model="selBranch.IsDisabledAccessible">
+            <label class="cbLabel">האם נגיש לנכים?</label>
         </div>
+        <br>
         <button id="submitBranch" class="btn btn-default" type="button"
                 data-ng-disabled="!selBranch.Name || !selBranch.Region || !selBranch.City || !selBranch.Address"
                 data-ng-click="editBranch()">עדכן פרטי סניף</button>
+        &nbsp;
         <a ng-href="#/branch">חזרה לרשימה</a>
     </form>
 </div>

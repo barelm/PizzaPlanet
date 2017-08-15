@@ -2,8 +2,14 @@
     <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
         <thead>
         <tr>
-            <th data-ng-click="setOrder('Region')">איזור</th>
-            <th data-ng-click="setOrder('BranchNumber')">מס' סניפים</th>
+            <th data-ng-click="sortBy('Region')">
+איזור
+                <span class="sortorder" ng-show="propertyName === 'Region'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th data-ng-click="sortBy('BranchNumber')">
+                מס' סניפים
+                <span class="sortorder" ng-show="propertyName === 'BranchNumber'" ng-class="{reverse: reverse}"></span>
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -12,7 +18,7 @@
                 <div class="text-center"><strong>לא נמצאו סניפים</strong></div>
             </td>
         </tr>
-        <tr data-ng-repeat="branchRegion in branchesByRegion | orderBy:orderby:reverse">
+        <tr data-ng-repeat="branchRegion in branchesByRegion | orderBy:propertyName:reverse">
             <td>
                 {{ branchRegion.Region }}
             </td>

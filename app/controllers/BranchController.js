@@ -31,6 +31,14 @@ app.controller('BranchController', function ($scope, $http, BranchService) {
         $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
         $scope.propertyName = propertyName;
     };
+
+    var socket = io.connect(SERVER_URL);
+    socket.on('refreshBranches', function (data) {
+        console.log(data);
+        $scope.$apply(function() {
+            $scope.branches = data;
+        });
+    });
 });
 
 app.controller('BranchCreateController', function ($scope, $routeParams ,$location, BranchService) {
@@ -54,6 +62,13 @@ app.controller('BranchCreateController', function ($scope, $routeParams ,$locati
 
         // Add new customer
         BranchService.insertBranch($scope.newBranch).then(function mySuccess(response) {
+
+            var socket = io.connect(SERVER_URL);
+            socket.emit('branchCreated', {
+                message: 'A new branch has been created: ',
+                name: $scope.newBranch.Name
+            });
+
             // Clear fields.
             $scope.newBranch.Name                 = '';
             $scope.newBranch.Region               = '';

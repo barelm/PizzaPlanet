@@ -77,7 +77,7 @@ app.service('ProductService', function ($http) {
     };
 
     this.editProduct = function (product) {
-        var jsonProduct = JSON.stringify(product);
+        var jsonProduct = JSON.stringify(angular.copy(product));
 
         var url = 'http://localhost:3000' + '/Products/' + product.id;
 

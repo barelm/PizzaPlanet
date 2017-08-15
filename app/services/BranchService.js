@@ -77,7 +77,7 @@ app.service('BranchService', function ($http) {
     };
 
     this.editBranch = function (branch) {
-        var jsonBranch = JSON.stringify(branch);
+        var jsonBranch = JSON.stringify(angular.copy(branch));
 
         var url = 'http://localhost:3000' + '/Branches/' + branch.id;
 

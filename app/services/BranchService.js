@@ -6,6 +6,7 @@
 app.service('BranchService', function ($http) {
 
     this.branches = [];
+    this.branchesByRegion = [];
     var self = this;
 
     this.getBranches = function () {
@@ -19,6 +20,19 @@ app.service('BranchService', function ($http) {
         }, function myError(response) {
             // TODO: לעשות משהו?
         });
+    };
+
+    this.getBranchesByRegion = function () {
+
+        var url = SERVER_URL + '/BranchesByRegion';
+
+        return $http.get(url)
+            .then(function mySucces(response) {
+                self.branchesByRegion = response.data;
+                return response.data;
+            }, function myError(response) {
+                // TODO: לעשות משהו?
+            });
     };
 
     this.insertBranch= function (branch) {

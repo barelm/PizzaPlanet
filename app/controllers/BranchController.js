@@ -86,7 +86,7 @@ app.controller('BranchDeleteController', function ($scope, $routeParams ,$locati
     }
 
     $scope.deleteBranch = function () {
-        BranchService.deleteBranch($scope.selBranch.id).then(function mySuccess(response) {
+        BranchService.deleteBranch($scope.selBranch._id).then(function mySuccess(response) {
             // Return to branches list view
             $location.path('/branch')
         }, function myError(error) {
@@ -154,7 +154,7 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
                 mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
             };
 
-            // This makes the div with id "map_canvas" a google map
+            // This makes the div with _id "map_canvas" a google map
             var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
             // Create the geocoder object

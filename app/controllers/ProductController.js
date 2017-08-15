@@ -99,7 +99,7 @@ app.controller('ProductDeleteController', function ($scope, $routeParams ,$locat
     }
 
     $scope.deleteProduct = function () {
-        ProductService.deleteProduct($scope.selProduct.id).then(function mySuccess(response) {
+        ProductService.deleteProduct($scope.selProduct._id).then(function mySuccess(response) {
             // Return to Products list view
             $location.path('/product')
         }, function myError(error) {

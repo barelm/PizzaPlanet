@@ -19,7 +19,6 @@ exports.createEmployee = function(req, res, next) {
 
     // Create a new employee
     var newEmployee = Employee({
-        id: 999,
         Name: req.body.Name,
         Sex: req.body.Sex,
         Role: req.body.Role,
@@ -30,19 +29,19 @@ exports.createEmployee = function(req, res, next) {
     });
 
     // Save the employee
-    newEmployee.save(function(err) {
+    newEmployee.save(function(err, employee) {
         if (err) return next(err);
 
         // We have created the employee
         console.log('Employee created!');
-        res.send(newEmployee.id.toString());
+        res.send(employee._id);
     });
 };
 
 exports.updateEmployee = function(req, res, next) {
 
     // Find the required employee by id
-    Employee.findOneAndUpdate({ id: req.params.id }, req.body, { runValidators: true }, function(err, employee) {
+    Employee.findByIdAndUpdate(req.params.id, req.body, { runValidators: true }, function(err, employee) {
         if (err) return next(err);
         if (!employee) return next(new Error("There is no employee with ID: " + req.params.id));
 
@@ -55,7 +54,7 @@ exports.updateEmployee = function(req, res, next) {
 exports.deleteEmployee = function(req, res, next) {
 
     // Find the required employee by id
-    Employee.findOneAndRemove({ id: req.params.id }, function(err, employee) {
+    Employee.findByIdAndRemove(req.params.id, function(err, employee) {
         if (err) return next(err);
         if (!employee) return next(new Error("There is no employee with ID: " + req.params.id));
 

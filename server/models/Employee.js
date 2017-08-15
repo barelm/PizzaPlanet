@@ -3,7 +3,6 @@ var Schema = mongoose.Schema;
 
 // create a schema
 var employeeSchema = new Schema({
-    id: {type: Number, required: true, unique: true},
     Name: {type: String, required: true},
     Sex: {type: String, required: true, enum: ["זכר", "נקבה"]},
     Role: {type: String, required: true},

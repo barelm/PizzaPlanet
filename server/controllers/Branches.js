@@ -29,19 +29,19 @@ exports.createBranch = function(req, res, next) {
     });
 
     // Save the branch
-    newBranch.save(function(err) {
+    newBranch.save(function(err, branch) {
         if (err) return next(err);
 
         // We have created the branch
         console.log('Branch created!');
-        res.send(newBranch.id.toString());
+        res.send(branch._id);
     });
 };
 
 exports.updateBranch = function(req, res, next) {
 
     // Find the required branch by id
-    Branch.findOneAndUpdate({ id: req.params.id }, req.body, function(err, branch) {
+    Branch.findByIdAndUpdate(req.params.id, req.body, function(err, branch) {
         if (err) return next(err);
         if (!branch) return next(new Error("There is no branch with ID: " + req.params.id));
 
@@ -54,7 +54,7 @@ exports.updateBranch = function(req, res, next) {
 exports.deleteBranch = function(req, res, next) {
 
     // Find the required branch by id
-    Branch.findOneAndRemove({ id: req.params.id }, function(err, branch) {
+    Branch.findByIdAndRemove(req.params.id, function(err, branch) {
         if (err) return next(err);
         if (!branch) return next(new Error("There is no branch with ID: " + req.params.id));
 

@@ -22,6 +22,15 @@
             </div>
         </div>
         <div class="form-group">
+            <label>סניף:</label>
+            <div class="form-inline">
+                <select name="Branch" ng-model="newEmployee.BranchId" required>
+                    <option ng-repeat="x in branches" value="{{x._id}}">{{x.Name}}</option>
+                </select>
+                <span style="color:red" ng-show="Form.Branch.$error.required">חובה להזין סניף</span>
+            </div>
+        </div>
+        <div class="form-group">
             <label>שכר:</label>
             <div class="form-inline">
                 <input type="number" name="Wage" data-ng-model="newEmployee.Wage" class="form-control" min = "0" required>

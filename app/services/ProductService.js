@@ -6,12 +6,13 @@
 app.service('ProductService', function ($http) {
 
     this.products = [];
+    var self = this;
 
     this.getProducts = function () {
         var url = 'http://localhost:3000' + '/Products';
         return $http.get(url)
             .then(function mySuccess(response) {
-                this.products = response.data;
+                self.products = response.data;
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -26,7 +27,7 @@ app.service('ProductService', function ($http) {
 
         return $http.post(url, jsonProduct)
             .then(function mySuccess(response) {
-                this.insertProductLocal(response.data);
+                self.insertProductLocal(response.data);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -50,7 +51,7 @@ app.service('ProductService', function ($http) {
 
         return $http.delete(url)
             .then(function mySuccess(response) {
-                this.deleteProductLocal(id);
+                self.deleteProductLocal(id);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -58,18 +59,18 @@ app.service('ProductService', function ($http) {
     };
 
     this.deleteProductLocal = function (id) {
-        for (var i = products.length - 1; i >= 0; i--) {
-            if (products[i].id === id) {
-                products.splice(i, 1);
+        for (var i = this.products.length - 1; i >= 0; i--) {
+            if (this.products[i].id === id) {
+                this.products.splice(i, 1);
                 break;
             }
         }
     };
 
     this.getProduct = function (id) {
-        for (var i = 0; i < products.length; i++) {
-            if (products[i].id === id) {
-                return products[i];
+        for (var i = 0; i < this.products.length; i++) {
+            if (this.products[i].id === id) {
+                return this.products[i];
             }
         }
 
@@ -83,7 +84,7 @@ app.service('ProductService', function ($http) {
 
         return $http.put(url, jsonProduct)
             .then(function mySuccess(response) {
-                this.editProductLocal(product);
+                self.editProductLocal(product);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -91,9 +92,9 @@ app.service('ProductService', function ($http) {
     }
 
     this.editProductLocal = function (product) {
-        for (var i = products.length - 1; i >= 0; i--) {
-            if (products[i].id === Product.id) {
-                products[i] = Product;
+        for (var i = this.products.length - 1; i >= 0; i--) {
+            if (this.products[i].id === Product.id) {
+                this.products[i] = Product;
             }
         }
     }

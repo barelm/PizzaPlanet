@@ -6,15 +6,16 @@
 app.service('EmployeeService', function ($http) {
 
     this.employees = [];
+    var self = this;
 
     this.getEmployees = function () {
 
         var url = 'http://localhost:3000' + '/Employees';
         return $http.get(url)
             .then(function mySuccess(response) {
-                this.employees = this.mongoToAngularDate(response.data)
+                self.employees = self.mongoToAngularDate(response.data)
                 // this.employees = response.data;
-                return this.employees;
+                return self.employees;
             }, function myError(response) {
                 // TODO: לעשות משהו?
             });
@@ -38,7 +39,7 @@ app.service('EmployeeService', function ($http) {
 
         return $http.post(url, jsonEmployee)
             .then(function mySuccess(response) {
-                this.insertEmployeeLocal(response.data);
+                self.insertEmployeeLocal(response.data);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -63,7 +64,7 @@ app.service('EmployeeService', function ($http) {
 
         return $http.delete(url)
             .then(function mySuccess(response) {
-                this.deleteEmployeeLocal(id);
+                self.deleteEmployeeLocal(id);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -71,18 +72,18 @@ app.service('EmployeeService', function ($http) {
     };
 
     this.deleteEmployeeLocal = function (id) {
-        for (var i = employees.length - 1; i >= 0; i--) {
-            if (employees[i].id === id) {
-                employees.splice(i, 1);
+        for (var i = this.employees.length - 1; i >= 0; i--) {
+            if (this.employees[i].id === id) {
+                this.employees.splice(i, 1);
                 break;
             }
         }
     }
 
     this.getEmployee = function (id) {
-        for (var i = 0; i < employees.length; i++) {
-            if (employees[i].id === id) {
-                return employees[i];
+        for (var i = 0; i < this.employees.length; i++) {
+            if (this.employees[i].id === id) {
+                return this.employees[i];
             }
         }
         return null;
@@ -95,7 +96,7 @@ app.service('EmployeeService', function ($http) {
 
         return $http.put(url, jsonEmployee)
             .then(function mySuccess(response) {
-                this.editEmployeeLocal(employee);
+                self.editEmployeeLocal(employee);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -103,9 +104,9 @@ app.service('EmployeeService', function ($http) {
     }
 
     this.editEmployeeLocal = function (employee) {
-        for (var i = employees.length - 1; i >= 0; i--) {
-            if (employees[i].id === employee.id) {
-                employees[i] = employee;
+        for (var i = this.employees.length - 1; i >= 0; i--) {
+            if (this.employees[i].id === employee.id) {
+                this.employees[i] = employee;
             }
         }
     }

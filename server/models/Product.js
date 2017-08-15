@@ -6,9 +6,9 @@ var productSchema = new Schema({
     Name: {type: String, required: true},
     Description: {type: String, required: true},
     Cost: {type: Number, required: true, min: 0},
-    IsKosher: Boolean,
-    IsVegetarian: Boolean,
-    IsVegan: Boolean
+    IsKosher: {type: Boolean, default: false },
+    IsVegetarian: {type: Boolean, default: false },
+    IsVegan: {type: Boolean, default: false }
 });
 
 // the schema is useless so far

@@ -40,16 +40,6 @@ app.controller('EmployeeCreateController', function ($scope, $routeParams ,$loca
     }
 
     $scope.insertEmployee = function () {
-
-        // Get fields value.
-        // var Name     = $scope.newEmployee.Name;
-        // var Sex      = $scope.newEmployee.Sex;
-        // var Role     = $scope.newEmployee.Role;
-        // var Wage     = $scope.newEmployee.Wage;
-        // var City     = $scope.newEmployee.City;
-        // var Birthday = $scope.newEmployee.Birthday;
-        // var JoinDate = $scope.newEmployee.JoinDate;
-
         EmployeeService.insertEmployee($scope.newEmployee).then(function mySuccess(response) {
             // Clear fields.
             $scope.newEmployee.Name     = '';
@@ -71,7 +61,7 @@ app.controller('EmployeeCreateController', function ($scope, $routeParams ,$loca
 });
 
 
-app.controller('EmployeeDetailsController', function ($scope, $routeParams, EmployeeService) {
+app.controller('EmployeeDetailsController', function ($scope, $routeParams, $location, EmployeeService) {
 
     //I like to have an init() for controllers that need to perform some initialization. Keeps things in
     //one place...not required though especially in the simple example below
@@ -80,6 +70,10 @@ app.controller('EmployeeDetailsController', function ($scope, $routeParams, Empl
     function init() {
         var employeeID = ($routeParams.employeeID) ? ($routeParams.employeeID) : 0;
         $scope.selEmployee = EmployeeService.getEmployee(employeeID);
+
+        if ($scope.selEmployee === null) {
+            $location.path('/employee');
+        }
     }
 });
 
@@ -93,6 +87,10 @@ app.controller('EmployeeDeleteController', function ($scope, $routeParams ,$loca
     function init() {
         var employeeID = ($routeParams.employeeID) ? ($routeParams.employeeID) : 0;
         $scope.selEmployee = EmployeeService.getEmployee(employeeID);
+
+        if ($scope.selEmployee === null) {
+            $location.path('/employee');
+        }
     }
 
     $scope.deleteEmployee = function () {
@@ -106,7 +104,7 @@ app.controller('EmployeeDeleteController', function ($scope, $routeParams ,$loca
 });
 
 
-app.controller('EmployeeEditController', function ($scope, $routeParams ,$location, EmployeeService) {
+app.controller('EmployeeEditController', function ($scope, $routeParams ,$location, EmployeeService, BranchService) {
 
     //I like to have an init() for controllers that need to perform some initialization. Keeps things in
     //one place...not required though especially in the simple example below
@@ -116,15 +114,20 @@ app.controller('EmployeeEditController', function ($scope, $routeParams ,$locati
         var employeeID = ($routeParams.employeeID) ? ($routeParams.employeeID) : 0;
         $scope.selEmployee = EmployeeService.getEmployee(employeeID);
 
-        $scope.sexValues = EmployeeService.getSexValues();
-        $scope.roleValues = EmployeeService.getRoleValues();
+        if ($scope.selEmployee === null) {
+            $location.path('/employee');
+        } else {
 
-        // Get branches list.
-        BranchService.getBranches().then(function mySuccess(response) {
-            $scope.branches = response;
-        }, function myError(error) {
+            $scope.sexValues = EmployeeService.getSexValues();
+            $scope.roleValues = EmployeeService.getRoleValues();
 
-        })
+            // Get branches list.
+            BranchService.getBranches().then(function mySuccess(response) {
+                $scope.branches = response;
+            }, function myError(error) {
+
+            })
+        }
     }
 
     $scope.editEmployee = function(){

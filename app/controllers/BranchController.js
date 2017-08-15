@@ -51,14 +51,6 @@ app.controller('BranchCreateController', function ($scope, $routeParams ,$locati
     }
 
     $scope.insertBranch = function () {
-        // Get fields value.
-        // var Name                 = $scope.newBranch.Name;
-        // var Region               = $scope.newBranch.Region;
-        // var City                 = $scope.newBranch.City;
-        // var Address              = $scope.newBranch.Address;
-        // var IsKosher             = $scope.newBranch.IsKosher;
-        // var IsDisabledAccessible = $scope.newBranch.IsDisabledAccessible;
-
         // Add new customer
         BranchService.insertBranch($scope.newBranch).then(function mySuccess(response) {
 
@@ -85,7 +77,7 @@ app.controller('BranchCreateController', function ($scope, $routeParams ,$locati
 });
 
 
-app.controller('BranchDetailsController', function ($scope, $routeParams, BranchService) {
+app.controller('BranchDetailsController', function ($scope, $routeParams, $location, BranchService) {
 
     //I like to have an init() for controllers that need to perform some initialization. Keeps things in
     //one place...not required though especially in the simple example below
@@ -94,6 +86,10 @@ app.controller('BranchDetailsController', function ($scope, $routeParams, Branch
     function init() {
         var branchID = ($routeParams.branchID) ? ($routeParams.branchID) : 0;
         $scope.selBranch = BranchService.getBranch(branchID);
+
+        if ($scope.selBranch === null) {
+            $location.path('/branch');
+        }
     }
 });
 
@@ -107,6 +103,10 @@ app.controller('BranchDeleteController', function ($scope, $routeParams ,$locati
     function init() {
         var branchID = ($routeParams.branchID) ? ($routeParams.branchID) : 0;
         $scope.selBranch = BranchService.getBranch(branchID);
+
+        if ($scope.selBranch === null) {
+            $location.path('/branch');
+        }
     }
 
     $scope.deleteBranch = function () {
@@ -130,20 +130,22 @@ app.controller('BranchEditController', function ($scope, $routeParams ,$location
         var branchID = ($routeParams.branchID) ? ($routeParams.branchID) : 0;
         $scope.selBranch = BranchService.getBranch(branchID);
 
-        $scope.regionValues = BranchService.getRegionValues();
+        if ($scope.selBranch === null) {
+            $location.path('/branch');
+        } else {
+            $scope.regionValues = BranchService.getRegionValues();
+        }
     }
 
     $scope.editBranch = function(){
         BranchService.editBranch($scope.selBranch).then(function mySuccess(response) {
-
             $scope.editBranch = {};
 
             // Return to branches list view
             $location.path('/branch')
         }, function myError(error) {
 
-        })
-
+        });
     }
 });
 

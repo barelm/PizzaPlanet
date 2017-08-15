@@ -100,22 +100,12 @@ app.service('ProductService', function ($http) {
     }
 
     this.getDollarRate = function () {
-
+        return $http.get(DOLLAR_RATE_WEB_SERVICE_URL)
+            .then(function mySucces(response) {
+                return response.data.rates['USD']
+            }, function myError(response) {
+                // TODO: לעשות משהו?
+            });
     }
-
-    // var products = [
-    //     {
-    //         _id: 1, Name: 'The First', Description: 'פיצה מאוד מאוד טעימה', Cost: 23, IsKosher: true,
-    //         IsVegetarian: true, IsVegan: false
-    //     },
-    //     {
-    //         _id: 2, Name: 'The Second', Description: 'חרא של סוסים', Cost: 123, IsKosher: true,
-    //         IsVegetarian: true, IsVegan: true
-    //     },
-    //     {
-    //         _id: 3, Name: 'The Third', Description: 'פיצה מאוד מאוד לא טעימה', Cost: 44, IsKosher: false,
-    //         IsVegetarian: false, IsVegan: false
-    //     }
-    // ];
 
 });

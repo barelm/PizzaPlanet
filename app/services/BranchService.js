@@ -117,20 +117,4 @@ app.service('BranchService', function ($http) {
         var regionValues = ["צפון","מרכז","דרום"];
         return regionValues;
     }
-
-    // var branches = [
-    //     {
-    //         _id: 1, Name: 'The First', Region: 'צפון', City: 'ראשון לציון', IsKosher: false, Address: "אלי ויזל 2",
-    //         IsDisabledAccessible: true
-    //     },
-    //     {
-    //         _id: 2, Name: 'The Second', Region: 'מרכז', City: 'רמת גן', IsKosher: true, Address: "בן גוריון 100",
-    //         IsDisabledAccessible: true
-    //     },
-    //     {
-    //         _id: 3, Name: 'The First', Region: 'מרכז', City: 'פתח תקווה', IsKosher: true, Address: "דגל ראובן 40",
-    //         IsDisabledAccessible: false
-    //     }
-    // ];
-
 });

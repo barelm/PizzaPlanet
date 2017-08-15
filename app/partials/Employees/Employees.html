@@ -9,6 +9,7 @@
             <th data-ng-click="setOrder('Name')">שם עובד</th>
             <th data-ng-click="setOrder('Sex')">מין</th>
             <th data-ng-click="setOrder('Role')">תפקיד</th>
+            <th data-ng-click="setOrder('BranchName')">סניף</th>
             <th data-ng-click="setOrder('Wage')">שכר</th>
             <th data-ng-click="setOrder('City')">עיר</th>
             <th data-ng-click="setOrder('Birthday')">תאריך לידה</th>
@@ -18,7 +19,7 @@
         </thead>
         <tbody>
         <tr data-ng-hide="employees.length > 0" class="error">
-            <td colspan="8">
+            <td colspan="9">
                 <div class="text-center"><strong>לא נמצאו עובדים</strong></div>
             </td>
         </tr>

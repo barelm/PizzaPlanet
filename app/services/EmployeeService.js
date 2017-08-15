@@ -13,7 +13,7 @@ app.service('EmployeeService', function ($http) {
         var url = SERVER_URL + '/Employees';
         return $http.get(url)
             .then(function mySuccess(response) {
-                self.employees = self.mongoToAngularDate(response.data)
+                self.employees = self.mongoToAngularData(response.data)
                 // this.employees = response.data;
                 return self.employees;
             }, function myError(response) {
@@ -23,10 +23,15 @@ app.service('EmployeeService', function ($http) {
         // return employees;
     };
 
-    this.mongoToAngularDate = function (branches) {
+    this.mongoToAngularData = function (branches) {
         branches.forEach(function(v,i) {
+            // Convert date.
             branches[i].Birthday = new Date(branches[i].Birthday);
             branches[i].JoinDate = new Date(branches[i].JoinDate);
+
+            var branch = branches[i].BranchId;
+            branches[i].BranchId   = branch._id;
+            branches[i].BranchName = branch.Name;
         });
 
         return branches
@@ -120,20 +125,5 @@ app.service('EmployeeService', function ($http) {
         var roleValues = ["מנהל סניף","שליח","אחראי משמרת","מוכר","טבח"];
         return roleValues;
     }
-
-    // var employees = [
-    //     {
-    //         _id: 1, Name: 'The First', Sex: 'זכר', Role: 'מנהל סניף', Wage: 13400,
-    //         City: 'Tel Aviv', Birthday: new Date('12/12/1994'), JoinDate: new Date('12/12/2016')
-    //     },
-    //     {
-    //         _id: 2, Name: 'The Second', Sex: 'נקבה', Role: 'שליח', Wage: 1400,
-    //         City: 'Tel Aviv', Birthday: new Date('06/01/1963'), JoinDate: new Date('01/15/2017')
-    //     },
-    //     {
-    //         _id: 3, Name: 'The Third', Sex: 'זכר', Role: 'שליח', Wage: 300,
-    //         City: 'Tel Aviv', Birthday: new Date('07/19/2002'), JoinDate: new Date('04/21/2017')
-    //     }
-    // ];
 
 });

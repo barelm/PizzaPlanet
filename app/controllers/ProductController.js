@@ -18,15 +18,11 @@ app.controller('ProductController', function ($scope, $http, ProductService) {
 
         })
 
-        // Get USD value rate.
-        $http({
-            method: "GET",
-            url: 'http://api.fixer.io/latest?base=ILS&symbols=USD'
-        }).then(function mySucces(response) {
-            $scope.usdRate = response.data.rates['USD']
-        }, function myError(response) {
-            // TODO: לעשות משהו?
-        });
+        ProductService.getDollarRate().then(function mySuccess(response) {
+            $scope.usdRate = response;
+        }, function myError(error) {
+
+        })
     }
 
     $scope.resetSearch = function () {
@@ -48,15 +44,6 @@ app.controller('ProductCreateController', function ($scope, $routeParams ,$locat
     }
 
     $scope.insertProduct = function () {
-
-        // Get fields value.
-        var Name         = $scope.newProduct.Name;
-        var Description  = $scope.newProduct.Description;
-        var Cost         = $scope.newProduct.Cost;
-        var IsKosher     = $scope.newProduct.IsKosher;
-        var IsVegetarian = $scope.newProduct.IsVegetarian;
-        var IsVegan      = $scope.newProduct.IsVegan;
-
         // Add new customer
         ProductService.insertProduct($scope.newProduct).then(function mySuccess(response) {
             // Clear fields.
@@ -77,7 +64,7 @@ app.controller('ProductCreateController', function ($scope, $routeParams ,$locat
 });
 
 
-app.controller('ProductDetailsController', function ($scope, $routeParams, ProductService) {
+app.controller('ProductDetailsController', function ($scope, $routeParams, $location, ProductService) {
 
     //I like to have an init() for controllers that need to perform some initialization. Keeps things in
     //one place...not required though especially in the simple example below
@@ -86,6 +73,10 @@ app.controller('ProductDetailsController', function ($scope, $routeParams, Produ
     function init() {
         var productID = ($routeParams.productID) ? ($routeParams.productID) : 0;
         $scope.selProduct = ProductService.getProduct(productID);
+
+        if ($scope.selProduct == null) {
+            $location.path('/product');
+        }
     }
 });
 
@@ -99,6 +90,10 @@ app.controller('ProductDeleteController', function ($scope, $routeParams ,$locat
     function init() {
         var productID = ($routeParams.productID) ? ($routeParams.productID) : 0;
         $scope.selProduct = ProductService.getProduct(productID);
+
+        if ($scope.selProduct === null) {
+            $location.path('/product');
+        }
     }
 
     $scope.deleteProduct = function () {
@@ -122,8 +117,9 @@ app.controller('ProductEditController', function ($scope, $routeParams ,$locatio
         var productID = ($routeParams.productID) ? ($routeParams.productID) : 0;
         $scope.selProduct = ProductService.getProduct(productID);
 
-        //$scope.sexValues = ProductService.getSexValues();
-        //$scope.roleValues = ProductService.getRoleValues();
+        if ($scope.selProduct === null) {
+            $location.path('/product');
+        }
     }
 
     $scope.editProduct = function(){

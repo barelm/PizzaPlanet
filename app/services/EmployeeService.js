@@ -6,15 +6,16 @@
 app.service('EmployeeService', function ($http) {
 
     this.employees = [];
+    var self = this;
 
     this.getEmployees = function () {
 
-        var url = 'http://localhost:3000' + '/Employees';
+        var url = SERVER_URL + '/Employees';
         return $http.get(url)
             .then(function mySuccess(response) {
-                this.employees = this.mongoToAngularDate(response.data)
+                self.employees = self.mongoToAngularDate(response.data)
                 // this.employees = response.data;
-                return this.employees;
+                return self.employees;
             }, function myError(response) {
                 // TODO: לעשות משהו?
             });
@@ -34,11 +35,11 @@ app.service('EmployeeService', function ($http) {
     this.insertEmployee= function (employee) {
         var jsonEmployee = JSON.stringify(employee);
 
-        var url = 'http://localhost:3000' + '/Employees';
+        var url = SERVER_URL + '/Employees';
 
         return $http.post(url, jsonEmployee)
             .then(function mySuccess(response) {
-                this.insertEmployeeLocal(response.data);
+                self.insertEmployeeLocal(response.data);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -59,11 +60,11 @@ app.service('EmployeeService', function ($http) {
     }
 
     this.deleteEmployee = function (id) {
-        var url = 'http://localhost:3000' + '/Employees/' + id;
+        var url = SERVER_URL + '/Employees/' + id;
 
         return $http.delete(url)
             .then(function mySuccess(response) {
-                this.deleteEmployeeLocal(id);
+                self.deleteEmployeeLocal(id);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -71,31 +72,31 @@ app.service('EmployeeService', function ($http) {
     };
 
     this.deleteEmployeeLocal = function (id) {
-        for (var i = employees.length - 1; i >= 0; i--) {
-            if (employees[i].id === id) {
-                employees.splice(i, 1);
+        for (var i = this.employees.length - 1; i >= 0; i--) {
+            if (this.employees[i].id === id) {
+                this.employees.splice(i, 1);
                 break;
             }
         }
     }
 
     this.getEmployee = function (id) {
-        for (var i = 0; i < employees.length; i++) {
-            if (employees[i].id === id) {
-                return employees[i];
+        for (var i = 0; i < this.employees.length; i++) {
+            if (this.employees[i]._id === id) {
+                return this.employees[i];
             }
         }
         return null;
     };
 
     this.editEmployee = function (employee) {
-        var jsonEmployee = JSON.stringify(employee);
+        var jsonEmployee = JSON.stringify(angular.copy(employee));
 
-        var url = 'http://localhost:3000' + '/Employees/' + employee.id;
+        var url = SERVER_URL + '/Employees/' + employee.id;
 
         return $http.put(url, jsonEmployee)
             .then(function mySuccess(response) {
-                this.editEmployeeLocal(employee);
+                self.editEmployeeLocal(employee);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -103,9 +104,9 @@ app.service('EmployeeService', function ($http) {
     }
 
     this.editEmployeeLocal = function (employee) {
-        for (var i = employees.length - 1; i >= 0; i--) {
-            if (employees[i].id === employee.id) {
-                employees[i] = employee;
+        for (var i = this.employees.length - 1; i >= 0; i--) {
+            if (this.employees[i].id === employee.id) {
+                this.employees[i] = employee;
             }
         }
     }

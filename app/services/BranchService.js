@@ -6,14 +6,15 @@
 app.service('BranchService', function ($http) {
 
     this.branches = [];
+    var self = this;
 
     this.getBranches = function () {
 
-        var url = 'http://localhost:3000' + '/Branches';
+        var url = SERVER_URL + '/Branches';
 
         return $http.get(url)
         .then(function mySucces(response) {
-            this.branches = response.data;
+            self.branches = response.data;
             return response.data;
         }, function myError(response) {
             // TODO: לעשות משהו?
@@ -23,11 +24,11 @@ app.service('BranchService', function ($http) {
     this.insertBranch= function (branch) {
         var jsonBranch = JSON.stringify(branch);
 
-        var url = 'http://localhost:3000' + '/Branches';
+        var url = SERVER_URL + '/Branches';
 
         return $http.post(url, jsonBranch)
             .then(function mySucces(response) {
-                this.insertBranchLocal(branch);
+                self.insertBranchLocal(branch);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -47,11 +48,11 @@ app.service('BranchService', function ($http) {
     }
 
     this.deleteBranch = function (id) {
-        var url = 'http://localhost:3000' + '/Branches/' + id;
+        var url = SERVER_URL + '/Branches/' + id;
 
         return $http.delete(url)
             .then(function mySucces(response) {
-                this.deleteBranchLocal(id);
+                self.deleteBranchLocal(id);
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -59,31 +60,31 @@ app.service('BranchService', function ($http) {
     };
 
     this.deleteBranchLocal = function (id) {
-        for (var i = branches.length - 1; i >= 0; i--) {
-            if (branches[i].id === id) {
-                branches.splice(i, 1);
+        for (var i = this.branches.length - 1; i >= 0; i--) {
+            if (this.branches[i].id === id) {
+                this.branches.splice(i, 1);
                 break;
             }
         }
     }
 
     this.getBranch = function (id) {
-        for (var i = 0; i < branches.length; i++) {
-            if (branches[i].id === id) {
-                return branches[i];
+        for (var i = 0; i < this.branches.length; i++) {
+            if (this.branches[i].id === id) {
+                return this.branches[i];
             }
         }
         return null;
     };
 
     this.editBranch = function (branch) {
-        var jsonBranch = JSON.stringify(branch);
+        var jsonBranch = JSON.stringify(angular.copy(branch));
 
-        var url = 'http://localhost:3000' + '/Branches/' + branch.id;
+        var url = SERVER_URL + '/Branches/' + branch.id;
 
         return $http.put(url, jsonBranch)
             .then(function mySuccess(response) {
-                this.editBranchLocal(branch)
+                self.editBranchLocal(branch)
                 return response.data;
             }, function myError(response) {
                 // TODO: לעשות משהו?
@@ -91,9 +92,9 @@ app.service('BranchService', function ($http) {
     }
 
     this.editBranchLocal = function (branch) {
-        for (var i = branches.length - 1; i >= 0; i--) {
-            if (branches[i].id === branch.id) {
-                branches[i] = branch;
+        for (var i = this.branches.length - 1; i >= 0; i--) {
+            if (this.branches[i].id === branch.id) {
+                this.branches[i] = branch;
             }
         }
     }

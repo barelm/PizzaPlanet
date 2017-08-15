@@ -6,9 +6,9 @@ var branchSchema = new Schema({
     Name: {type: String, required: true},
     Region: {type: String, required: true, enum: ["מרכז", "צפון", "דרום"]},
     City: {type: String, required: true},
-    IsKosher: Boolean,
+    IsKosher: {type: Boolean, default: false },
     Address: {type: String, required: true},
-    IsDisabledAccessible: Boolean
+    IsDisabledAccessible: {type: Boolean, default: false }
 });
 
 // the schema is useless so far

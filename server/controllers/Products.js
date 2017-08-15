@@ -19,7 +19,6 @@ exports.createProduct = function(req, res, next) {
 
     // Create a new product
     var newProduct = Product({
-        id: 999,
         Name: req.body.Name,
         Description: req.body.Description,
         Cost: req.body.Cost,
@@ -29,19 +28,19 @@ exports.createProduct = function(req, res, next) {
     });
 
     // Save the product
-    newProduct.save(function(err) {
+    newProduct.save(function(err, product) {
         if (err) return next(err);
 
         // We have created the product
         console.log('Product created!');
-        res.send(newProduct.id.toString());
+        res.send(product._id);
     });
 };
 
 exports.updateProduct = function(req, res, next) {
 
     // Find the required product by id
-    Product.findOneAndUpdate({ id: req.params.id }, req.body, { runValidators: true }, function(err, product) {
+    Product.findByIdAndUpdate(req.params.id, req.body, { runValidators: true }, function(err, product) {
         if (err) return next(err);
         if (!product) return next(new Error("There is no product with ID: " + req.params.id));
 
@@ -54,7 +53,7 @@ exports.updateProduct = function(req, res, next) {
 exports.deleteProduct = function(req, res, next) {
 
     // Find the required product by id
-    Product.findOneAndRemove({ id: req.params.id }, function(err, product) {
+    Product.findByIdAndRemove(req.params.id, function(err, product) {
         if (err) return next(err);
         if (!product) return next(new Error("There is no product with ID: " + req.params.id));
 

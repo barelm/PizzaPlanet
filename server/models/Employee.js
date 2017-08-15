@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var employeeSchema = new Schema({
     id: {type: Number, required: true, unique: true},
     Name: {type: String, required: true},
-    Sex: {type: String, required: true},
+    Sex: {type: String, required: true, enum: ["זכר", "נקבה"]},
     Role: {type: String, required: true},
     Wage: {type: Number, required: true, min: 0},
     City: {type: String, required: true},

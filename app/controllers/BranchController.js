@@ -9,6 +9,9 @@ app.controller('BranchController', function ($scope, $http, BranchService) {
     init();
 
     function init() {
+
+        $scope.branches = [];
+
         BranchService.getBranches().then(function mySuccess(response) {
             $scope.branches = response;
         }, function myError(error) {
@@ -68,7 +71,7 @@ app.controller('BranchDetailsController', function ($scope, $routeParams, Branch
     init();
 
     function init() {
-        var branchID = ($routeParams.branchID) ? parseInt($routeParams.branchID) : 0;
+        var branchID = ($routeParams.branchID) ? ($routeParams.branchID) : 0;
         $scope.selBranch = BranchService.getBranch(branchID);
     }
 });
@@ -81,7 +84,7 @@ app.controller('BranchDeleteController', function ($scope, $routeParams ,$locati
     init();
 
     function init() {
-        var branchID = ($routeParams.branchID) ? parseInt($routeParams.branchID) : 0;
+        var branchID = ($routeParams.branchID) ? ($routeParams.branchID) : 0;
         $scope.selBranch = BranchService.getBranch(branchID);
     }
 
@@ -103,7 +106,7 @@ app.controller('BranchEditController', function ($scope, $routeParams ,$location
     init();
 
     function init() {
-        var branchID = ($routeParams.branchID) ? parseInt($routeParams.branchID) : 0;
+        var branchID = ($routeParams.branchID) ? ($routeParams.branchID) : 0;
         $scope.selBranch = BranchService.getBranch(branchID);
 
         $scope.regionValues = BranchService.getRegionValues();

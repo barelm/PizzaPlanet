@@ -9,6 +9,9 @@ app.controller('EmployeeController', function ($scope, EmployeeService) {
     init();
 
     function init() {
+
+        $scope.employees = [];
+
         EmployeeService.getEmployees().then(function mySuccess(response) {
             $scope.employees = response;
         }, function myError(error) {

@@ -9,6 +9,9 @@ app.controller('ProductController', function ($scope, $http, ProductService) {
     init();
 
     function init() {
+
+        $scope.products = [];
+
         ProductService.getProducts().then(function mySuccess(response) {
             $scope.products = response;
         }, function myError(error) {
@@ -81,7 +84,7 @@ app.controller('ProductDetailsController', function ($scope, $routeParams, Produ
     init();
 
     function init() {
-        var productID = ($routeParams.productID) ? parseInt($routeParams.productID) : 0;
+        var productID = ($routeParams.productID) ? ($routeParams.productID) : 0;
         $scope.selProduct = ProductService.getProduct(productID);
     }
 });
@@ -94,7 +97,7 @@ app.controller('ProductDeleteController', function ($scope, $routeParams ,$locat
     init();
 
     function init() {
-        var productID = ($routeParams.productID) ? parseInt($routeParams.productID) : 0;
+        var productID = ($routeParams.productID) ? ($routeParams.productID) : 0;
         $scope.selProduct = ProductService.getProduct(productID);
     }
 
@@ -116,7 +119,7 @@ app.controller('ProductEditController', function ($scope, $routeParams ,$locatio
     init();
 
     function init() {
-        var productID = ($routeParams.productID) ? parseInt($routeParams.productID) : 0;
+        var productID = ($routeParams.productID) ? ($routeParams.productID) : 0;
         $scope.selProduct = ProductService.getProduct(productID);
 
         //$scope.sexValues = ProductService.getSexValues();

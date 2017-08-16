@@ -34,12 +34,12 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller: 'BranchEditController',
                 templateUrl: 'app/partials/Branches/BranchEdit.html'
             })
-        .when('/branchDelete/:branchID',
-            {
-                title: 'מחיקת סניף',
-                controller: 'BranchDeleteController',
-                templateUrl: 'app/partials/Branches/BranchDelete.html'
-            })
+        // .when('/branchDelete/:branchID',
+        //     {
+        //         title: 'מחיקת סניף',
+        //         controller: 'BranchDeleteController',
+        //         templateUrl: 'app/partials/Branches/BranchDelete.html'
+        //     })
         .when('/branchCreate',
             {
                 title: 'יצירת סניף',

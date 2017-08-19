@@ -233,17 +233,7 @@ app.controller('BranchByRegionController', function ($scope, $http, BranchServic
 
     function init() {
 
-        $scope.branchesByRegion = [
-            {
-                Region: 'צפון', BranchNumber: 3
-            },
-            {
-                Region: 'מרכז', BranchNumber: 7
-            },
-            {
-                Region: 'דרום', BranchNumber: 25546
-            }
-        ];
+        $scope.branchesByRegion = [];
 
         $scope.propertyName = 'Region';
 
@@ -252,10 +242,10 @@ app.controller('BranchByRegionController', function ($scope, $http, BranchServic
             $scope.propertyName = propertyName;
         };
 
-        // BranchService.getBranchesByRegion().then(function mySuccess(response) {
-        //     $scope.branchesByRegion = response;
-        // }, function myError(error) {
-        //
-        // })
+        BranchService.getBranchesByRegion().then(function mySuccess(response) {
+            $scope.branchesByRegion = response;
+        }, function myError(error) {
+
+        })
     }
 });

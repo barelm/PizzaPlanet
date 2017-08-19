@@ -24,7 +24,7 @@ app.service('BranchService', function ($http) {
 
     this.getBranchesByRegion = function () {
 
-        var url = SERVER_URL + '/BranchesByRegion';
+        var url = SERVER_URL + '/Branches/ByRegion';
 
         return $http.get(url)
             .then(function mySucces(response) {
@@ -114,7 +114,7 @@ app.service('BranchService', function ($http) {
     }
 
     this.getRegionValues = function () {
-        var regionValues = ["צפון","מרכז","דרום"];
+        var regionValues = ["צפון", "שרון", "מרכז", "דרום"];
         return regionValues;
     }
 });

@@ -15,7 +15,26 @@ exports.getAllBranches = function(req, res, next) {
     });
 };
 
+exports.getBranchesByRegion = function(req, res, next) {
+
+    // Get array of region names and the number of branches in each region
+    Branch.aggregate([
+        {
+            $group: {
+                _id: '$Region',
+                count: {$sum: 1}
+            }
+        }
+    ], function (err, branchesByRegion) {
+        if (err) return next(err);
+
+        // Send the fetched branches in the response
+        res.send(branchesByRegion);
+    });
+};
+
 exports.refreshBranches = function() {
+
     // Get all branches and return promise
     return Branch.find({}).exec();
 };

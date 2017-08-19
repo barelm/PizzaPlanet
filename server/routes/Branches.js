@@ -8,6 +8,7 @@ var express = require('express'),
     router = express.Router();
 
 router.get('/', branchesController.getAllBranches);
+router.get('/ByRegion', branchesController.getBranchesByRegion);
 router.post('/', branchesController.createBranch);
 router.put('/:id', branchesController.updateBranch);
 router.delete('/:id', branchesController.deleteBranch);

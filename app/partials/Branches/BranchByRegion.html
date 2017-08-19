@@ -20,10 +20,10 @@
         </tr>
         <tr data-ng-repeat="branchRegion in branchesByRegion | orderBy:propertyName:reverse">
             <td>
-                {{ branchRegion.Region }}
+                {{ branchRegion._id }}
             </td>
             <td>
-                {{ branchRegion.BranchNumber }}
+                {{ branchRegion.count }}
             </td>
         </tr>
         </tbody>

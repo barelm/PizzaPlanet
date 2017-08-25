@@ -6,14 +6,30 @@
     <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
         <thead>
         <tr>
-            <th data-ng-click="setOrder('Name')">שם עובד</th>
-            <th data-ng-click="setOrder('Sex')">מין</th>
-            <th data-ng-click="setOrder('Role')">תפקיד</th>
-            <th data-ng-click="setOrder('BranchName')">סניף</th>
-            <th data-ng-click="setOrder('Wage')">שכר</th>
-            <th data-ng-click="setOrder('City')">עיר</th>
-            <th data-ng-click="setOrder('Birthday')">תאריך לידה</th>
-            <th data-ng-click="setOrder('JoinDate')">תאריך הצטרפות</th>
+            <th data-ng-click="sortBy('Name')">שם עובד
+                <span class="sortorder" ng-show="propertyName === 'Name'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th data-ng-click="sortBy('Sex')">מין
+                <span class="sortorder" ng-show="propertyName === 'Sex'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th data-ng-click="sortBy('Role')">תפקיד
+                <span class="sortorder" ng-show="propertyName === 'Role'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th data-ng-click="sortBy('BranchName')">סניף
+                <span class="sortorder" ng-show="propertyName === 'BranchName'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th data-ng-click="sortBy('Wage')">שכר
+                <span class="sortorder" ng-show="propertyName === 'Wage'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th data-ng-click="sortBy('City')">עיר
+                <span class="sortorder" ng-show="propertyName === 'City'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th data-ng-click="sortBy('Birthday')">תאריך לידה
+                <span class="sortorder" ng-show="propertyName === 'Birthday'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th data-ng-click="sortBy('JoinDate')">תאריך הצטרפות
+                <span class="sortorder" ng-show="propertyName === 'JoinDate'" ng-class="{reverse: reverse}"></span>
+            </th>
             <th>פעולות</th>
         </tr>
         </thead>
@@ -23,7 +39,7 @@
                 <div class="text-center"><strong>לא נמצאו עובדים</strong></div>
             </td>
         </tr>
-        <tr data-ng-repeat="employee in employees | orderBy:orderby:reverse">
+        <tr data-ng-repeat="employee in employees | orderBy:propertyName:reverse">
             <td>
                 {{ employee.Name }}
             </td>
@@ -46,7 +62,7 @@
                 <span ng-bind="employee.Birthday | date:'dd/MM/yyyy'"></span>
             </td>
             <td>
-                <span ng-bind="employee.Birthday | date:'dd/MM/yyyy'"></span>
+                <span ng-bind="employee.JoinDate | date:'dd/MM/yyyy'"></span>
             </td>
             <td>
                 <a ng-href="#/employee/{{employee._id}}">פרטים</a> |

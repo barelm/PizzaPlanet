@@ -2,13 +2,13 @@
     <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
         <thead>
         <tr>
-            <th data-ng-click="sortBy('Region')">
+            <th data-ng-click="sortBy('_id')">
 איזור
-                <span class="sortorder" ng-show="propertyName === 'Region'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder" ng-show="propertyName === '_id'" ng-class="{reverse: reverse}"></span>
             </th>
-            <th data-ng-click="sortBy('BranchNumber')">
+            <th data-ng-click="sortBy('count')">
                 מס' סניפים
-                <span class="sortorder" ng-show="propertyName === 'BranchNumber'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder" ng-show="propertyName === 'count'" ng-class="{reverse: reverse}"></span>
             </th>
         </tr>
         </thead>

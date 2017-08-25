@@ -235,17 +235,17 @@ app.controller('BranchByRegionController', function ($scope, $http, BranchServic
 
         $scope.branchesByRegion = [];
 
-        $scope.propertyName = 'Region';
-
-        $scope.sortBy = function(propertyName) {
-            $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
-            $scope.propertyName = propertyName;
-        };
-
         BranchService.getBranchesByRegion().then(function mySuccess(response) {
             $scope.branchesByRegion = response;
         }, function myError(error) {
 
         })
     }
+
+    $scope.propertyName = '_id';
+
+    $scope.sortBy = function(propertyName) {
+        $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+        $scope.propertyName = propertyName;
+    };
 });

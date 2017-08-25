@@ -18,6 +18,13 @@ app.controller('EmployeeController', function ($scope, EmployeeService) {
 
         })
     }
+
+    $scope.propertyName = 'Name';
+
+    $scope.sortBy = function(propertyName) {
+        $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+        $scope.propertyName = propertyName;
+    };
 });
 
 app.controller('EmployeeCreateController', function ($scope, $routeParams ,$location, EmployeeService, BranchService) {

@@ -23,6 +23,13 @@ app.controller('ProductController', function ($scope, $http, ProductService) {
         }, function myError(error) {
 
         })
+
+        $scope.propertyName = 'Name';
+
+        $scope.sortBy = function(propertyName) {
+            $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+            $scope.propertyName = propertyName;
+        };
     }
 
     $scope.resetSearch = function () {

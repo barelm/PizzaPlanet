@@ -3,20 +3,11 @@
  */
 
 var Employee = require("../models/Employee");
+var utils = require("../utils");
 
 exports.getAllEmployees = function(req, res, next) {
 
-    // // Get all employees
-    // Employee.find({}, function(err, employees) {
-    //     if (err) return next(err);
-    //
-    //     // Send the fetched employees in the response
-    //     res.send(employees);
-    // });
-
-
-
-
+    // Get all employees and the branch for each of them
     Employee.find({}).populate('BranchId').exec(function(err, employees) {
         if (err) return next(err);
 
@@ -72,5 +63,36 @@ exports.deleteEmployee = function(req, res, next) {
         // We have deleted the employee
         console.log('Employee deleted!');
         res.send(req.params.id);
+    });
+};
+
+exports.getEmployeesCountByAges = function(req, res, next) {
+
+    var employeesCountByAges = [{"age": "18-", "count": 0},
+                                {"age": "19-30", "count": 0},
+                                {"age": "31-40", "count": 0},
+                                {"age": "41-50", "count": 0},
+                                {"age": "51+", "count": 0}];
+
+    // Get birthday of all employees
+    Employee.find({}, 'Birthday -_id', function(err, employeesBirthDates) {
+        if (err) return next(err);
+
+        // Loop over all birth dates
+        employeesBirthDates.map(function(birthDate) {
+
+            // Calculate the age of the current employee
+            var employeeAge = utils.calculateAgeByBirthDate(birthDate.Birthday, new Date());
+
+            // Increase the relevant counter accordingly to the age of the current employee
+            if (employeeAge <= 18) employeesCountByAges[0].count++;
+            else if (employeeAge <= 30) employeesCountByAges[1].count++;
+            else if (employeeAge <= 40) employeesCountByAges[2].count++;
+            else if (employeeAge <= 50) employeesCountByAges[3].count++;
+            else employeesCountByAges[4].count++;
+        });
+
+        // Send the calculated data in the response
+        res.send(employeesCountByAges);
     });
 };

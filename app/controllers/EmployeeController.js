@@ -148,3 +148,77 @@ app.controller('EmployeeEditController', function ($scope, $routeParams ,$locati
         })
     }
 });
+
+
+app.controller('EmployeeByAgesController', function ($scope, $routeParams ,$location, EmployeeService) {
+    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
+    //one place...not required though especially in the simple example below
+    init();
+
+    function init() {
+
+        $scope.employeesByAges = [];
+
+        EmployeeService.getEmployeesByAges().then(function mySuccess(response) {
+            $scope.employeesByAges = response;
+
+            function createPieChart(data) {
+
+                var canvas = document.getElementById("pieChartCanvas"),
+                    context = canvas.getContext("2d");
+
+                var width = canvas.width,
+                    height = canvas.height,
+                    radius = Math.min(width, height) / 2;
+
+                var colors = ["#98abc5", "#8a89a6", "#d0743c", "#6b486b", "#a05d56", "#d0743c"];
+
+                var arc = d3.arc()
+                    .outerRadius(radius - 10)
+                    .innerRadius(0)
+                    .context(context);
+
+                var labelArc = d3.arc()
+                    .outerRadius(radius - 40)
+                    .innerRadius(radius - 40)
+                    .context(context);
+
+                var pie = d3.pie()
+                    .sort(null)
+                    .value(function (d) {
+                        return d.count;
+                    });
+
+                context.translate(width / 2, height / 2);
+
+                var arcs = pie(data);
+
+                arcs.forEach(function (d, i) {
+                    context.beginPath();
+                    arc(d);
+                    context.fillStyle = colors[i];
+                    context.fill();
+                });
+
+                context.beginPath();
+                arcs.forEach(arc);
+                context.strokeStyle = "#fff";
+                context.stroke();
+
+                context.textAlign = "center";
+                context.textBaseline = "middle";
+                context.fillStyle = "#fff";
+                arcs.forEach(function (d) {
+                    context.font = "bold 18px Arial";
+                    var c = labelArc.centroid(d);
+                    context.fillText(d.data.age, c[0], c[1]);
+                });
+            }
+
+            createPieChart($scope.employeesByAges);
+
+        }, function myError(error) {
+
+        })
+    }
+});

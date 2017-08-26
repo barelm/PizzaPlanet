@@ -20,27 +20,39 @@
             <tr>
                 <th data-ng-click="sortBy('Name')">
                     שם סניף
-                    <span class="sortorder" ng-show="propertyName === 'Name'" ng-class="{reverse: reverse}"></span>
+                    <span class="sortorder"
+                          ng-style="{'visibility' : propertyName === 'Name' ? 'visible' : 'hidden'}"
+                          ng-class="{reverse: reverse}"></span>
                 </th>
                 <th data-ng-click="sortBy('Region')">
                     איזור
-                    <span class="sortorder" ng-show="propertyName === 'Region'" ng-class="{reverse: reverse}"></span>
+                    <span class="sortorder"
+                          ng-style="{'visibility' : propertyName === 'Region' ? 'visible' : 'hidden'}"
+                          ng-class="{reverse: reverse}"></span>
                 </th>
                 <th data-ng-click="sortBy('City')">
                     עיר
-                    <span class="sortorder" ng-show="propertyName === 'City'" ng-class="{reverse: reverse}"></span>
+                    <span class="sortorder"
+                          ng-style="{'visibility' : propertyName === 'City' ? 'visible' : 'hidden'}"
+                          ng-class="{reverse: reverse}"></span>
                 </th>
                 <th data-ng-click="sortBy('Address')">
                     כתובת
-                    <span class="sortorder" ng-show="propertyName === 'Address'" ng-class="{reverse: reverse}"></span>
+                    <span class="sortorder"
+                          ng-style="{'visibility' : propertyName === 'Address' ? 'visible' : 'hidden'}"
+                          ng-class="{reverse: reverse}"></span>
                 </th>
                 <th data-ng-click="sortBy('IsKosher')">
                     האם כשר?
-                    <span class="sortorder" ng-show="propertyName === 'IsKosher'" ng-class="{reverse: reverse}"></span>
+                    <span class="sortorder"
+                          ng-style="{'visibility' : propertyName === 'IsKosher' ? 'visible' : 'hidden'}"
+                          ng-class="{reverse: reverse}"></span>
                 </th>
                 <th data-ng-click="sortBy('IsDisabledAccessible')">
                     האם נגיש לנכים?
-                    <span class="sortorder" ng-show="propertyName === 'IsDisabledAccessible'" ng-class="{reverse: reverse}"></span>
+                    <span class="sortorder"
+                          ng-style="{'visibility' : propertyName === 'IsDisabledAccessible' ? 'visible' : 'hidden'}"
+                          ng-class="{reverse: reverse}"></span>
                 </th>
                 <th>פעולות</th>
             </tr>

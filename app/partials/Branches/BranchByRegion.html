@@ -1,14 +1,18 @@
 <div class="container mtb">
-    <table class="table table-hover table-striped table-condensed table-bordered ordersTable">
+    <table class="table table-hover table-striped table-condensed table-bordered branchByRegionTable">
         <thead>
         <tr>
             <th data-ng-click="sortBy('_id')">
 איזור
-                <span class="sortorder" ng-show="propertyName === '_id'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === '_id' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('count')">
                 מס' סניפים
-                <span class="sortorder" ng-show="propertyName === 'count'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'count' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
         </tr>
         </thead>

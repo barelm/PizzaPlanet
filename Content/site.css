@@ -30,6 +30,10 @@ th {
 	text-align: center;
 }
 
+th span .ng-hide{
+	visibility: hidden !important;
+}
+
 tr {
 	text-align: center;
 }
@@ -281,49 +285,9 @@ csmall2 {
 	margin-bottom: 40px;
 }
 
-/* Contact Page */
-#contactwrap {
-	background: url('../../SpongeBob-master/src/FinalProject/wwwroot/images/contact.jpg') no-repeat center top;
-	margin-top: -60px;
-	padding-top: 0px;
-	text-align: center;
-	background-attachment: relative;
-	background-position: center center;
-	min-height: 190px;
-	width: 100%;
-	-webkit-background-size: 100%;
-	-moz-background-size: 100%;
-	-o-background-size: 100%;
-	background-size: 100%;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
-
 #person {
 	height: 215px;
 	width: 215px
-}
-
-.loader {
-	border: 16px solid #f3f3f3;
-	border-radius: 50%;
-	border-top: 16px solid #3498db;
-	width: 120px;
-	height: 120px;
-	-webkit-animation: spin 2s linear infinite;
-	animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-	0% { -webkit-transform: rotate(0deg); }
-	100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
 }
 
 #tableHr {
@@ -350,14 +314,6 @@ video{
 canvas{
 	all:initial;
 	margin-right:20px;
-}
-
-/* Multiple column for the about page */
-.contactAddress{
-	-webkit-column-count: 2;
-	-moz-column-count: 2;
-	column-count: 2;
-	margin-top: 10px;
 }
 
 #mainImage{
@@ -422,4 +378,10 @@ canvas{
 
 .sortorder.reverse:after {
 	content: '\25bc';   /*BLACK DOWN-POINTING TRIANGLE*/
+}
+
+.branchByRegionTable {
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
 }

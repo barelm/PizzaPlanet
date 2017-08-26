@@ -23,25 +23,39 @@
         <thead>
         <tr>
             <th data-ng-click="sortBy('Name')">שם מוצר
-                <span class="sortorder" ng-show="propertyName === 'Name'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'Name' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('Description')">תיאור
-                <span class="sortorder" ng-show="propertyName === 'Description'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'Description' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('Cost')">מחיר
-                <span class="sortorder" ng-show="propertyName === 'Cost'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'Cost' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('IsKosher')">האם כשר?
-                <span class="sortorder" ng-show="propertyName === 'IsKosher'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'IsKosher' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('IsVegetarian')">האם צמחוני?
-                <span class="sortorder" ng-show="propertyName === 'IsVegetarian'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'IsVegetarian' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('IsVegan')">האם טבעוני?
-                <span class="sortorder" ng-show="propertyName === 'IsVegan'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'IsVegan' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('usdRate')">מחיר בדולרים
-                <span class="sortorder" ng-show="propertyName === 'usdRate'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'usdRate' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th>פעולות</th>
         </tr>

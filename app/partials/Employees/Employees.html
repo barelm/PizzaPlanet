@@ -7,28 +7,44 @@
         <thead>
         <tr>
             <th data-ng-click="sortBy('Name')">שם עובד
-                <span class="sortorder" ng-show="propertyName === 'Name'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'Name' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('Sex')">מין
-                <span class="sortorder" ng-show="propertyName === 'Sex'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'Sex' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('Role')">תפקיד
-                <span class="sortorder" ng-show="propertyName === 'Role'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'Role' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('BranchName')">סניף
-                <span class="sortorder" ng-show="propertyName === 'BranchName'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'BranchName' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('Wage')">שכר
-                <span class="sortorder" ng-show="propertyName === 'Wage'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'Wage' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('City')">עיר
-                <span class="sortorder" ng-show="propertyName === 'City'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'City' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('Birthday')">תאריך לידה
-                <span class="sortorder" ng-show="propertyName === 'Birthday'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'Birthday' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th data-ng-click="sortBy('JoinDate')">תאריך הצטרפות
-                <span class="sortorder" ng-show="propertyName === 'JoinDate'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder"
+                      ng-style="{'visibility' : propertyName === 'JoinDate' ? 'visible' : 'hidden'}"
+                      ng-class="{reverse: reverse}"></span>
             </th>
             <th>פעולות</th>
         </tr>

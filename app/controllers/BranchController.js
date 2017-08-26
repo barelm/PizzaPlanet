@@ -158,70 +158,82 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
     function init() {
         BranchService.getBranches().then(function mySuccess(response) {
             $scope.branches = response;
+
+            function createMap() {
+
+                // Set the margin bottom of the blue wrap
+                $('#blue').css("margin-bottom", "0px");
+
+                // Set Israel as the center of the map
+                var Israel = new google.maps.LatLng(31.046051, 34.851612);
+
+                // These are options that set initial zoom level, where the map is centered globally to start, and the type of map to show
+                var mapOptions = {
+                    zoom: 8,
+                    center: Israel,
+                    mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                };
+
+                // This makes the div with _id "map_canvas" a google map
+                var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+                // Create the geocoder object
+                var geocoder = new google.maps.Geocoder();
+
+                // Get the branches data from the controller, in JSON format
+                var branchesData = $scope.branches;
+
+                // Using the JQuery "each" selector to iterate through the JSON list and drop marker pins
+                $.each(branchesData, function (i, item) {
+
+                    var address = item.Address + ' ' + item.City;
+                    // Initiate a request to the Google geocoding service to get the location of the branch by the address
+                    geocoder.geocode({'address': address}, function (results, status) {
+
+                        // Set marker in the relevant location on the map
+                        var marker = new google.maps.Marker({
+                            'position': results[0].geometry.location,
+                            'map': map,
+                            'title': item.Name
+                        });
+
+                        // Make the marker-pin blue
+                        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+
+                        // Put in some information about each JSON object - branch's name. address and phone number
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "<div class='infoDiv'><h2><u><center>" + item.Name + "</h2></u></center>" + "<h3><center>" + item.Address + "<br>" + item.City + "</h3></center>" + "</div></div>"
+                        });
+
+                        // Finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked
+                        google.maps.event.addListener(marker, 'click', function () {
+                            infowindow.open(map, marker);
+                        });
+                    });
+                });
+            }
+
+            // If map's script has not been loaded yet
+            if ($("#branchesMap").length == 0) {
+
+                // Create map's script
+                var script = document.createElement('script');
+                script.id = "branchesMap";
+                script.type = 'text/javascript';
+                script.src = "http://maps.google.com/maps/api/js?key=AIzaSyCij6Yc19nHcMJNb63ioB4yYgy3N6CH5aU";
+                script.onload = createMap;
+
+                // Append map's script to the document
+                document.body.appendChild(script);
+
+            } else {
+
+                // Create and show the map
+                createMap();
+            }
         }, function myError(error){
 
         })
-
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = "http://maps.google.com/maps/api/js?key=AIzaSyCij6Yc19nHcMJNb63ioB4yYgy3N6CH5aU";
-        script.onload = function(){
-
-            // Set the margin bottom of the blue wrap
-            $('#blue').css("margin-bottom", "0px");
-
-            // Set Israel as the center of the map
-            var Israel = new google.maps.LatLng(31.046051, 34.851612);
-
-            // These are options that set initial zoom level, where the map is centered globally to start, and the type of map to show
-            var mapOptions = {
-                zoom: 8,
-                center: Israel,
-                mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
-            };
-
-            // This makes the div with _id "map_canvas" a google map
-            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-
-            // Create the geocoder object
-            var geocoder = new google.maps.Geocoder();
-
-            // Get the branches data from the controller, in JSON format
-            var branchesData = $scope.branches;
-
-            // Using the JQuery "each" selector to iterate through the JSON list and drop marker pins
-            $.each(branchesData, function (i, item) {
-
-                var address = item.Address && ' ' && item.City;
-                // Initiate a request to the Google geocoding service to get the location of the branch by the address
-                geocoder.geocode({'address': address}, function(results, status) {
-
-                    // Set marker in the relevant location on the map
-                    var marker = new google.maps.Marker({
-                        'position': results[0].geometry.location,
-                        'map': map,
-                        'title': item.Name
-                    });
-
-                    // Make the marker-pin blue
-                    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
-
-                    // Put in some information about each JSON object - branch's name. address and phone number
-                    var infowindow = new google.maps.InfoWindow({
-                        content: "<div class='infoDiv'><h2><u><center>" + item.Name + "</h2></u></center>" + "<h3><center>" + item.Address + "<br>" + item.City + "</h3></center>" + "</div></div>"
-                    });
-
-                    // Finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked
-                    google.maps.event.addListener(marker, 'click', function () {
-                        infowindow.open(map, marker);
-                    });
-                });
-            })
-
-            console.log('Done');
-        }
-
-        document.body.appendChild(script);
     }
 });
 

@@ -88,6 +88,12 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller: 'EmployeeCreateController',
                 templateUrl: 'app/partials/Employees/EmployeeCreate.html'
             })
+        .when('/employeeByAges',
+            {
+                title: 'כמות עובדים לפי גילאים',
+                controller: 'EmployeeByAgesController',
+                templateUrl: 'app/partials/Employees/EmployeeByAges.html'
+            })
         .when('/employee/:employeeID',
             {
                 title: 'צפייה בעובד',

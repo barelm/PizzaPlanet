@@ -8,6 +8,7 @@ var express = require('express'),
     router = express.Router();
 
 router.get('/', employeesController.getAllEmployees);
+router.get('/ByAges', employeesController.getEmployeesCountByAges);
 router.post('/', employeesController.createEmployee);
 router.put('/:id', employeesController.updateEmployee);
 router.delete('/:id', employeesController.deleteEmployee);

@@ -23,6 +23,19 @@ app.service('EmployeeService', function ($http) {
         // return employees;
     };
 
+    this.getEmployeesByAges = function () {
+
+        var url = SERVER_URL + '/Employees/ByAges';
+
+        return $http.get(url)
+            .then(function mySucces(response) {
+                self.employeesByAges = response.data;
+                return response.data;
+            }, function myError(response) {
+                // TODO: לעשות משהו?
+            });
+    };
+
     this.mongoToAngularData = function (branches) {
         branches.forEach(function(v,i) {
             // Convert date.

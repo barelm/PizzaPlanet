@@ -32,8 +32,13 @@ app.controller('BranchController', function ($scope, $http, BranchService) {
         $scope.propertyName = propertyName;
     };
 
+    // Connect to socket.io server
     var socket = io.connect(SERVER_URL);
+
+    // Listen to an emit of 'refreshBranches' event from socket.io server
     socket.on('refreshBranches', function (data) {
+
+        // Update the branches list stored on the scope
         $scope.$apply(function() {
             $scope.branches = data;
         });
@@ -54,7 +59,10 @@ app.controller('BranchCreateController', function ($scope, $routeParams ,$locati
         // Add new customer
         BranchService.insertBranch($scope.newBranch).then(function mySuccess(response) {
 
+            // Connect to socket.io server
             var socket = io.connect(SERVER_URL);
+
+            // Emit 'branchCreated' event to socket.io server
             socket.emit('branchCreated', {
                 message: 'A new branch has been created: ',
                 name: $scope.newBranch.Name

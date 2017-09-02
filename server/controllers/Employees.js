@@ -68,11 +68,13 @@ exports.deleteEmployee = function(req, res, next) {
 
 exports.getEmployeesCountByAges = function(req, res, next) {
 
-    var employeesCountByAges = [{"age": "18-", "count": 0},
-                                {"age": "19-30", "count": 0},
-                                {"age": "31-40", "count": 0},
-                                {"age": "41-50", "count": 0},
-                                {"age": "51+", "count": 0}];
+    var employeesCountByAges = [
+        {"age": "18-", "count": 0},
+        {"age": "19-30", "count": 0},
+        {"age": "31-40", "count": 0},
+        {"age": "41-50", "count": 0},
+        {"age": "51+", "count": 0}
+    ];
 
     // Get birthday of all employees
     Employee.find({}, 'Birthday -_id', function(err, employeesBirthDates) {
@@ -94,5 +96,42 @@ exports.getEmployeesCountByAges = function(req, res, next) {
 
         // Send the calculated data in the response
         res.send(employeesCountByAges);
+    });
+};
+
+exports.getEmployeesWageByBranch = function(req, res, next) {
+
+    var employeesWageByBranch = [];
+
+    // Get employees average wage for each branch
+    Employee.aggregate([
+        {
+            $group: {
+                _id: '$BranchId',
+                BranchId: { $first: '$BranchId' },
+                average: {$avg: '$Wage'}
+            }
+        }
+    ])
+    .exec(function(err, employeesWages) {
+        if (err) return next(err);
+
+        // Get branches data
+        Employee.populate(employeesWages, {path: 'BranchId'}, function(err, populatedBranches) {
+            if (err) return next(err);
+
+            // Loop over all fetched data
+            populatedBranches.map(function(data) {
+
+                // Create array with the relevant fields only
+                employeesWageByBranch.push({
+                    "branchName": data.BranchId.Name,
+                    "averageWage": data.average
+                });
+            });
+
+            // Return the created array
+            res.send(employeesWageByBranch);
+        });
     });
 };

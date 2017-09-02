@@ -7,15 +7,18 @@ var path = require('path');
 var cors = require("cors");
 var routes = require("./routes");
 var bodyParser = require("body-parser");
-// var mongoose = require("mongoose");
 var dbConnection = require("./dbConnection");
+var branchesController = require('./controllers/Branches.js');
 var io = require('socket.io');
 var app = express();
 
 // Add support for parsing of application/json type post data
 app.use(bodyParser.json());
 
+// Enable CORS Requests
 app.use(cors());
+
+// Define all routes
 app.use(routes);
 
 // Serve static files
@@ -23,32 +26,20 @@ app.use('/Content', express.static(path.join(__dirname, '/../Content')));
 app.use('/Scripts', express.static(path.join(__dirname, '/../Scripts')));
 app.use('/app', express.static(path.join(__dirname, '/../app')));
 
-// app.listen(3000, function() {
-//     console.log('Server running at port %s!', this.address().port)
-// });
-
-
-
-
+// Start the server and the socket.io
 io = io.listen(app.listen(3000, function() {
     console.log('Server running at port %s!', this.address().port)
 }));
 
-var branchesController = require('./controllers/Branches.js');
-
-var temp = [{
-    "Name" : "The First",
-    "Region" : "מרכז",
-    "City" : "פתח תקווה",
-    "IsKosher" : true,
-    "Address" : "דגל ראובן 40",
-    "IsDisabledAccessible" : false
-}];
-
+// Listen to socket.io connection from client
 io.sockets.on('connection', function (socket) {
+
+    // Listen to an emit of 'branchCreated' event from client
     socket.on('branchCreated', function (data) {
         console.log(data.message + data.name);
 
+        // Get promise with the updated branches list and broadcast
+        // emit 'refreshBranches' event to all other clients
         branchesController.refreshBranches()
         .then(function(branches) {
             socket.broadcast.emit('refreshBranches', branches);
@@ -56,6 +47,5 @@ io.sockets.on('connection', function (socket) {
         .catch(function(err) {
             console.log(err);
         });
-
     });
 });

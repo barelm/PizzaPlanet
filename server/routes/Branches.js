@@ -7,6 +7,7 @@ var branchesController = require('../controllers/Branches.js');
 var express = require('express'),
     router = express.Router();
 
+// Define the routes of the model
 router.get('/', branchesController.getAllBranches);
 router.get('/ByRegion', branchesController.getBranchesByRegion);
 router.post('/', branchesController.createBranch);

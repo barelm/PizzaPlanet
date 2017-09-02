@@ -7,6 +7,7 @@ var employeesController = require('../controllers/Employees.js');
 var express = require('express'),
     router = express.Router();
 
+// Define the routes of the model
 router.get('/', employeesController.getAllEmployees);
 router.get('/ByAges', employeesController.getEmployeesCountByAges);
 router.get('/WageByBranch', employeesController.getEmployeesWageByBranch);

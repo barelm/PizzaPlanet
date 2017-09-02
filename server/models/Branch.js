@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// create a schema
+// Create a schema
 var branchSchema = new Schema({
     Name: {type: String, required: true},
     Region: {type: String, required: true, enum: ["צפון", "שרון", "מרכז", "דרום"]},
@@ -11,9 +11,6 @@ var branchSchema = new Schema({
     IsDisabledAccessible: {type: Boolean, default: false }
 });
 
-// the schema is useless so far
-// we need to create a model using it
+// Create a model from the schema and export it
 var Branch = mongoose.model('Branch', branchSchema);
-
-// make this available to our users in our Node applications
 module.exports = Branch;

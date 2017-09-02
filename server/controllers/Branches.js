@@ -64,7 +64,7 @@ exports.createBranch = function(req, res, next) {
 exports.updateBranch = function(req, res, next) {
 
     // Find the required branch by id
-    Branch.findByIdAndUpdate(req.params.id, req.body, function(err, branch) {
+    Branch.findByIdAndUpdate(req.params.id, req.body, { runValidators: true }, function(err, branch) {
         if (err) return next(err);
         if (!branch) return next(new Error("There is no branch with ID: " + req.params.id));
 

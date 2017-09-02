@@ -36,6 +36,19 @@ app.service('EmployeeService', function ($http) {
             });
     };
 
+    this.getEmployeesWageByBranch = function () {
+
+        var url = SERVER_URL + '/Employees/WageByBranch';
+
+        return $http.get(url)
+            .then(function mySucces(response) {
+                self.employeesWageByBranch = response.data;
+                return response.data;
+            }, function myError(response) {
+                // TODO: לעשות משהו?
+            });
+    };
+
     this.mongoToAngularData = function (branches) {
         branches.forEach(function(v,i) {
             // Convert date.

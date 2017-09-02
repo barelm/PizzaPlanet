@@ -94,6 +94,12 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller: 'EmployeeByAgesController',
                 templateUrl: 'app/partials/Employees/EmployeeByAges.html'
             })
+        .when('/employeeWageByBranch',
+            {
+                title: 'שכר עובדים ממוצע לפי סניף',
+                controller: 'EmployeeWageByBranchController',
+                templateUrl: 'app/partials/Employees/EmployeeWageByBranch.html'
+            })
         .when('/employee/:employeeID',
             {
                 title: 'צפייה בעובד',

@@ -125,6 +125,7 @@ app.controller('EmployeeEditController', function ($scope, $routeParams ,$locati
             $location.path('/employee');
         } else {
 
+            // Init drop down list fields value.
             $scope.sexValues = EmployeeService.getSexValues();
             $scope.roleValues = EmployeeService.getRoleValues();
 

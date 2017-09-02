@@ -14,13 +14,9 @@ app.service('EmployeeService', function ($http) {
         return $http.get(url)
             .then(function mySuccess(response) {
                 self.employees = self.mongoToAngularData(response.data)
-                // this.employees = response.data;
                 return self.employees;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
-
-        // return employees;
     };
 
     this.getEmployeesByAges = function () {
@@ -32,7 +28,6 @@ app.service('EmployeeService', function ($http) {
                 self.employeesByAges = response.data;
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     };
 
@@ -45,7 +40,6 @@ app.service('EmployeeService', function ($http) {
                 self.employeesWageByBranch = response.data;
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     };
 
@@ -70,46 +64,20 @@ app.service('EmployeeService', function ($http) {
 
         return $http.post(url, jsonEmployee)
             .then(function mySuccess(response) {
-                // self.insertEmployeeLocal(response.data);
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     };
-
-    this.insertEmployeeLocal= function (employee) {
-        employees.push({
-            _id: employee._id,
-            Name: employee.Name,
-            Sex: employee.Sex,
-            Role: employee.Role,
-            Wage: employee.Wage,
-            City: employee.City,
-            Birthday: employee.Birthday,
-            JoinDate: employee.JoinDate
-        });
-    }
 
     this.deleteEmployee = function (_id) {
         var url = SERVER_URL + '/Employees/' + _id;
 
         return $http.delete(url)
             .then(function mySuccess(response) {
-                // self.deleteEmployeeLocal(_id);
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     };
-
-    this.deleteEmployeeLocal = function (_id) {
-        for (var i = this.employees.length - 1; i >= 0; i--) {
-            if (this.employees[i]._id === _id) {
-                this.employees.splice(i, 1);
-                break;
-            }
-        }
-    }
 
     this.getEmployee = function (_id) {
         for (var i = 0; i < this.employees.length; i++) {
@@ -127,27 +95,19 @@ app.service('EmployeeService', function ($http) {
 
         return $http.put(url, jsonEmployee)
             .then(function mySuccess(response) {
-                // self.editEmployeeLocal(employee);
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     }
 
-    this.editEmployeeLocal = function (employee) {
-        for (var i = this.employees.length - 1; i >= 0; i--) {
-            if (this.employees[i]._id === employee._id) {
-                this.employees[i] = employee;
-            }
-        }
-    }
-
     this.getSexValues = function () {
+        // Define sex values
         var sexValues = ["זכר","נקבה"];
         return sexValues;
     }
 
     this.getRoleValues = function () {
+        // Define role values
         var roleValues = ["מנהל סניף","שליח","אחראי משמרת","מוכר","טבח"];
         return roleValues;
     }

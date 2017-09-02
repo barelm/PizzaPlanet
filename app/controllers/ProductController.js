@@ -12,18 +12,21 @@ app.controller('ProductController', function ($scope, $http, ProductService) {
 
         $scope.products = [];
 
+        // Get products list
         ProductService.getProducts().then(function mySuccess(response) {
             $scope.products = response;
         }, function myError(error) {
 
         })
 
+        //  Get dollar rate
         ProductService.getDollarRate().then(function mySuccess(response) {
             $scope.usdRate = response;
         }, function myError(error) {
 
         })
 
+        // Define initial sort.
         $scope.propertyName = 'Name';
 
         $scope.sortBy = function(propertyName) {
@@ -78,6 +81,7 @@ app.controller('ProductDetailsController', function ($scope, $routeParams, $loca
     init();
 
     function init() {
+        // Get selected products
         var productID = ($routeParams.productID) ? ($routeParams.productID) : 0;
         $scope.selProduct = ProductService.getProduct(productID);
 
@@ -95,6 +99,7 @@ app.controller('ProductDeleteController', function ($scope, $routeParams ,$locat
     init();
 
     function init() {
+        // Get selected products
         var productID = ($routeParams.productID) ? ($routeParams.productID) : 0;
         $scope.selProduct = ProductService.getProduct(productID);
 
@@ -121,6 +126,7 @@ app.controller('ProductEditController', function ($scope, $routeParams ,$locatio
     init();
 
     function init() {
+        // Get selected products
         var productID = ($routeParams.productID) ? ($routeParams.productID) : 0;
         $scope.selProduct = ProductService.getProduct(productID);
 

@@ -15,9 +15,7 @@ app.service('ProductService', function ($http) {
                 self.products = response.data;
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
-        // return products;
     };
 
     this.insertProduct= function (product) {
@@ -27,44 +25,19 @@ app.service('ProductService', function ($http) {
 
         return $http.post(url, jsonProduct)
             .then(function mySuccess(response) {
-                // self.insertProductLocal(response.data);
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     }
-
-    this.insertProductLocal= function (product) {
-        products.push({
-            _id: product._id,
-            Name: product.Name,
-            Description: product.Description,
-            Cost: product.Cost,
-            IsKosher: product.IsKosher,
-            IsVegetarian: product.IsVegetarian,
-            IsVegan: product.IsVegan
-        });
-    };
 
     this.deleteProduct = function (_id) {
         var url = SERVER_URL + '/Products/' + _id;
 
         return $http.delete(url)
             .then(function mySuccess(response) {
-                // self.deleteProductLocal(_id);
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
-    };
-
-    this.deleteProductLocal = function (_id) {
-        for (var i = this.products.length - 1; i >= 0; i--) {
-            if (this.products[i]._id === _id) {
-                this.products.splice(i, 1);
-                break;
-            }
-        }
     };
 
     this.getProduct = function (_id) {
@@ -84,27 +57,17 @@ app.service('ProductService', function ($http) {
 
         return $http.put(url, jsonProduct)
             .then(function mySuccess(response) {
-                // self.editProductLocal(product);
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     }
 
-    this.editProductLocal = function (product) {
-        for (var i = this.products.length - 1; i >= 0; i--) {
-            if (this.products[i]._id === Product._id) {
-                this.products[i] = Product;
-            }
-        }
-    }
-
     this.getDollarRate = function () {
+        // Web service - get dollar rate.
         return $http.get(DOLLAR_RATE_WEB_SERVICE_URL)
             .then(function mySucces(response) {
                 return response.data.rates['USD']
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     }
 

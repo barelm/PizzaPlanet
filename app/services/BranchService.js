@@ -13,12 +13,12 @@ app.service('BranchService', function ($http) {
 
         var url = SERVER_URL + '/Branches';
 
+        // Get branches list from server
         return $http.get(url)
         .then(function mySucces(response) {
             self.branches = response.data;
             return response.data;
         }, function myError(response) {
-            // TODO: לעשות משהו?
         });
     };
 
@@ -26,12 +26,12 @@ app.service('BranchService', function ($http) {
 
         var url = SERVER_URL + '/Branches/ByRegion';
 
+        // Get branches group by according region
         return $http.get(url)
             .then(function mySucces(response) {
                 self.branchesByRegion = response.data;
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     };
 
@@ -42,47 +42,23 @@ app.service('BranchService', function ($http) {
 
         return $http.post(url, jsonBranch)
             .then(function mySucces(response) {
-                // self.insertBranchLocal(branch);
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     };
-
-    this.insertBranchLocal = function (branch) {
-        branches.push({
-            _id: branch._id,
-            Name: branch.Name,
-            Region: branch.Region,
-            City: branch.City,
-            Address: branch.Address,
-            IsKosher: branch.IsKosher,
-            IsDisabledAccessible: branch.IsDisabledAccessible
-        });
-    }
 
     this.deleteBranch = function (_id) {
         var url = SERVER_URL + '/Branches/' + _id;
 
         return $http.delete(url)
             .then(function mySucces(response) {
-                // self.deleteBranchLocal(_id);
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     };
 
-    this.deleteBranchLocal = function (_id) {
-        for (var i = this.branches.length - 1; i >= 0; i--) {
-            if (this.branches[i]._id === _id) {
-                this.branches.splice(i, 1);
-                break;
-            }
-        }
-    }
-
     this.getBranch = function (_id) {
+        // find branch according id
         for (var i = 0; i < this.branches.length; i++) {
             if (this.branches[i]._id === _id) {
                 return this.branches[i];
@@ -98,22 +74,13 @@ app.service('BranchService', function ($http) {
 
         return $http.put(url, jsonBranch)
             .then(function mySuccess(response) {
-                // self.editBranchLocal(branch)
                 return response.data;
             }, function myError(response) {
-                // TODO: לעשות משהו?
             });
     }
 
-    this.editBranchLocal = function (branch) {
-        for (var i = this.branches.length - 1; i >= 0; i--) {
-            if (this.branches[i]._id === branch._id) {
-                this.branches[i] = branch;
-            }
-        }
-    }
-
     this.getRegionValues = function () {
+        // Defind region values
         var regionValues = ["צפון", "שרון", "מרכז", "דרום"];
         return regionValues;
     }

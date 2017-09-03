@@ -4,8 +4,6 @@
 
 app.controller('EmployeeController', function ($scope, EmployeeService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -29,8 +27,6 @@ app.controller('EmployeeController', function ($scope, EmployeeService) {
 
 app.controller('EmployeeCreateController', function ($scope, $routeParams ,$location, EmployeeService, BranchService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -70,8 +66,6 @@ app.controller('EmployeeCreateController', function ($scope, $routeParams ,$loca
 
 app.controller('EmployeeDetailsController', function ($scope, $routeParams, $location, EmployeeService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -87,8 +81,6 @@ app.controller('EmployeeDetailsController', function ($scope, $routeParams, $loc
 
 app.controller('EmployeeDeleteController', function ($scope, $routeParams ,$location, EmployeeService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -113,8 +105,6 @@ app.controller('EmployeeDeleteController', function ($scope, $routeParams ,$loca
 
 app.controller('EmployeeEditController', function ($scope, $routeParams ,$location, EmployeeService, BranchService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -152,8 +142,7 @@ app.controller('EmployeeEditController', function ($scope, $routeParams ,$locati
 
 
 app.controller('EmployeeByAgesController', function ($scope, $routeParams ,$location, EmployeeService) {
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
+
     init();
 
     function init() {
@@ -226,8 +215,7 @@ app.controller('EmployeeByAgesController', function ($scope, $routeParams ,$loca
 
 
 app.controller('EmployeeWageByBranchController', function ($scope, $routeParams ,$location, EmployeeService) {
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
+
     init();
 
     function init() {

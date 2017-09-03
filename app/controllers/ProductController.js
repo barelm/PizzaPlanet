@@ -4,8 +4,6 @@
 
 app.controller('ProductController', function ($scope, $http, ProductService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -46,8 +44,6 @@ app.controller('ProductController', function ($scope, $http, ProductService) {
 
 app.controller('ProductCreateController', function ($scope, $routeParams ,$location, ProductService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -76,8 +72,6 @@ app.controller('ProductCreateController', function ($scope, $routeParams ,$locat
 
 app.controller('ProductDetailsController', function ($scope, $routeParams, $location, ProductService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -94,8 +88,6 @@ app.controller('ProductDetailsController', function ($scope, $routeParams, $loca
 
 app.controller('ProductDeleteController', function ($scope, $routeParams ,$location, ProductService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -121,8 +113,6 @@ app.controller('ProductDeleteController', function ($scope, $routeParams ,$locat
 
 app.controller('ProductEditController', function ($scope, $routeParams ,$location, ProductService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {

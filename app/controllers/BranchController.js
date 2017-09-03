@@ -4,8 +4,6 @@
 
 app.controller('BranchController', function ($scope, $http, BranchService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -47,8 +45,6 @@ app.controller('BranchController', function ($scope, $http, BranchService) {
 
 app.controller('BranchCreateController', function ($scope, $routeParams ,$location, BranchService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -87,8 +83,6 @@ app.controller('BranchCreateController', function ($scope, $routeParams ,$locati
 
 app.controller('BranchDetailsController', function ($scope, $routeParams, $location, BranchService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -104,8 +98,6 @@ app.controller('BranchDetailsController', function ($scope, $routeParams, $locat
 
 app.controller('BranchDeleteController', function ($scope, $routeParams ,$location, BranchService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -130,8 +122,6 @@ app.controller('BranchDeleteController', function ($scope, $routeParams ,$locati
 
 app.controller('BranchEditController', function ($scope, $routeParams ,$location, BranchService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -159,8 +149,6 @@ app.controller('BranchEditController', function ($scope, $routeParams ,$location
 
 app.controller('BranchMapController', function ($scope, $routeParams, BranchService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
@@ -247,8 +235,6 @@ app.controller('BranchMapController', function ($scope, $routeParams, BranchServ
 
 app.controller('BranchByRegionController', function ($scope, $http, BranchService) {
 
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
     init();
 
     function init() {
